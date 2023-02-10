@@ -60,6 +60,8 @@ namespace BreakableWallRandomiser.IC
                             FlingType = FlingType.Everywhere,
                             MessageType = MessageType.Corner,
                         });
+
+                        Placement.AddVisitFlag(VisitState.Opened);
                     });
 
                     // If we already obtained the item at this location, set the wall to an unhittable state:
@@ -86,6 +88,8 @@ namespace BreakableWallRandomiser.IC
                                 ShinyUtility.FlingShinyRandomly(shiny.LocateMyFSM("Shiny Control"));
                                 shiny.SetActive(true);
                             }
+
+                            Placement.AddVisitFlag(VisitState.Opened);
                         });
                     }
 
@@ -122,6 +126,7 @@ namespace BreakableWallRandomiser.IC
                             FlingType = FlingType.Everywhere,
                             MessageType = MessageType.Corner,
                         });
+                        Placement.AddVisitFlag(VisitState.Opened);
                     });
 
                     // If we already obtained the item at this location, set the wall to an unhittable state:
@@ -148,6 +153,7 @@ namespace BreakableWallRandomiser.IC
                                 ShinyUtility.FlingShinyRandomly(shiny.LocateMyFSM("Shiny Control"));
                                 shiny.SetActive(true);
                             }
+                            Placement.AddVisitFlag(VisitState.Opened);
                         });
                     }
 

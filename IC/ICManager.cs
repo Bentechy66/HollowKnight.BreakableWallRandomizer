@@ -91,7 +91,7 @@ namespace BreakableWallRandomiser.IC
                     }
                 };
 
-                // Modding.Logger.Log(wall.getLocationName() + " -> term: " + wall.getTermName() + " / itm: " + wall.getItemName());
+                Modding.Logger.Log(wall.getLocationName() + " -> term: " + wall.getTermName() + " / itm: " + wall.getItemName());
 
                 Finder.DefineCustomLocation(wallLocation);
                 Finder.DefineCustomItem(wallItem);
