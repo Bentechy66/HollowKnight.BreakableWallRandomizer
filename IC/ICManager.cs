@@ -87,11 +87,11 @@ namespace BreakableWallRandomiser.IC
                     {
                         name = new BoxedString(wall.niceName != "" ? wall.niceName : wall.getItemName()),
                         shopDesc = new BoxedString("\n" + wallShopDescriptions[random.Next(0, wallShopDescriptions.Length)]),
-                        sprite = new ItemChangerSprite("ShopIcons.Downslash")
+                        sprite = new ItemChangerSprite("ShopIcons.Downslash") // TODO: Replace this.
                     }
                 };
 
-                Modding.Logger.Log(wall.getLocationName() + " -> term: " + wall.getTermName() + " / itm: " + wall.getItemName());
+                Modding.Logger.LogDebug(wall.getLocationName() + " -> term: " + wall.getTermName() + " / itm: " + wall.getItemName());
 
                 Finder.DefineCustomLocation(wallLocation);
                 Finder.DefineCustomItem(wallItem);

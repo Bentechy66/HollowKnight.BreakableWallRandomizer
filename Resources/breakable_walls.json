@@ -128,7 +128,7 @@
         "logic": "Cliffs_02[bot1] + (ANYCLAW | WINGS) | (BREAKABLE_Cliffs02_OneWayWall + Cliffs_02)",
         "logicSubstitutions": {
             "Cliffs_02": {
-                "Cliffs_02[bot1]": "(Cliffs_02[bot1] + BREAKABLE_Cliffs02_OneWayWall)",
+                "Cliffs_02[bot1]": "(Cliffs_02[bot1] + BREAKABLE_Cliffs02_OneWayWall)"
             },
             "Cliffs_02[bot2]": {
                 "Cliffs_02[bot1]": "(Cliffs_02[bot1] + BREAKABLE_Cliffs02_OneWayWall)"
@@ -549,7 +549,7 @@
         "gameObject": "/Break Floor 1",
         "fsmType": "break_floor",
         "logicOverrides": {
-            "Fungus1_04[left1]": "(ORIG) | (BREAKABLE_Fungus104_BreakFloor1 + (WINGS | LEFTDASH))"
+            "Fungus1_04[left1]": "(ORIG) | (BREAKABLE_Fungus104_BreakFloor1 + (WINGS | LEFTDASH) + Fungus1_04[right1])"
         },
         "niceName": "Hornet Exit Shortcut",
         "sceneName": "Fungus1_04",
@@ -990,8 +990,8 @@
         "gameObject": "/_Scenery/Break Floor 1",
         "fsmType": "break_floor",
         "logicOverrides": {
-            "Tutorial_01[right1]": "(ORIG) + BREAKABLE_Tutorial01_SceneryBreakFloor1",
-            "Lore_Tablet-King's_Pass_Exit": "(ORIG) + BREAKABLE_Tutorial01_SceneryBreakFloor1"
+            "Tutorial_01[right1]": "((ORIG) + BREAKABLE_Tutorial01_SceneryBreakFloor1) | ((Tutorial_01[top1] | Tutorial_01[top2]) + (RIGHTSUPERDASH | (WINGS + (ENEMYPOGOS | ANYCLAW)) | (PRECISEMOVEMENT + OBSCURESKIPS + RIGHTDASH + (ANYCLAW | WINGS | RIGHTSHADOWDASH + SHARPSHADOW))))",
+            "Lore_Tablet-King's_Pass_Exit": "((ORIG) + BREAKABLE_Tutorial01_SceneryBreakFloor1) | ((Tutorial_01[top1] | Tutorial_01[top2]) + (RIGHTSUPERDASH | (WINGS + (ENEMYPOGOS | ANYCLAW)) | (PRECISEMOVEMENT + OBSCURESKIPS + RIGHTDASH + (ANYCLAW | WINGS | RIGHTSHADOWDASH + SHARPSHADOW)))) | Tutorial_01[right1]"
         },
         "niceName": "Tutorial Blocker Floor",
         "sceneName": "Tutorial_01",
