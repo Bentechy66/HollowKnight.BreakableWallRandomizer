@@ -77,11 +77,11 @@ namespace BreakableWallRandomiser.IC
             "These wall names aren't very descriptive, are they?"
         };
 
-        public UnityEngine.Sprite uiSprite;
-
         public void RegisterItemsAndLocations()
         {
             Random random = new Random(0x1337);
+
+            // UnityEngine.Sprite scaledSprite = UnityEngine.Sprite.Create(uiSprite.texture, uiSprite.rect, new UnityEngine.Vector2(0.5f, 0.5f), 100);
 
             foreach (var wall in wallData)
             {
@@ -105,13 +105,13 @@ namespace BreakableWallRandomiser.IC
                     {
                         name = new BoxedString(wall.niceName != "" ? wall.niceName : wall.getItemName()),
                         shopDesc = new BoxedString("\n" + wallShopDescriptions[random.Next(0, wallShopDescriptions.Length)]),
-                        sprite = new BoxedSprite(uiSprite) 
+                        sprite = new WallSprite("cr10_break_wall")
                     }
                 };
 
                 // Modding.Logger.LogDebug(wall.getLocationName() + " -> term: " + wall.getTermName() + " / itm: " + wall.getItemName());
 
-                Finder.DefineCustomLocation(wallLocation);
+                Finder.DefineCustomLocation(wallLocation); 
                 Finder.DefineCustomItem(wallItem);
             }
         }

@@ -20,16 +20,12 @@ namespace BreakableWallRandomiser
         public static WallRandoSettings settings = new WallRandoSettings();
 
         new public string GetName() => "Breakable Wall Randomizer";
-        public override string GetVersion() => "v1.0";
-        public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloadedObjects)
+        public override string GetVersion() => "RC1";
+        public override void Initialize()
         {
             Log("Initializing...");
 
-            ICManager manager = new()
-            {
-                // For now, at least, use this for every wall in the game.
-                uiSprite = preloadedObjects["Crossroads_10"]["Breakable Wall"].GetComponent<SpriteRenderer>().sprite
-            };
+            ICManager manager = new();
 
             RandoMenuPage.Hook();
 
@@ -51,12 +47,6 @@ namespace BreakableWallRandomiser
         public void OnLoadLocal(SaveData s)
         {
             saveData = s;
-        }
-
-        public override List<(string, string)> GetPreloadNames()
-        {
-            // Used for shop textures.
-            return new List<(string, string)> {("Crossroads_10", "Breakable Wall") };
         }
 
         public SaveData OnSaveLocal()

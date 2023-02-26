@@ -20,8 +20,17 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <AdditionalFileItemNames>EmbeddedResource</AdditionalFileItemNames>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\**\*.png" />
+  </ItemGroup>
+
   <Target Name="CopyMod" AfterTargets="PostBuildEvent">
-    <Exec Command="taskkill /f /im hollow_knight.exe 2>NUL" IgnoreExitCode="true" />
+    <Exec Command="taskkill /f /im hollow_knight.exe 2&gt;NUL" IgnoreExitCode="true" />
     <RemoveDir Condition="Exists('$(ExportDir)/$(TargetName)/')" Directories="$(ExportDir)/$(TargetName)/" />
     <MakeDir Directories="$(ExportDir)/$(TargetName)/" />
     <MakeDir Directories="$(ExportDir)/$(TargetName)/zip/" />
@@ -51,7 +60,7 @@
       <Output TaskParameter="Items" ItemName="ZipFilesWithHashes" />
     </GetFileHash>
     <WriteLinesToFile File="$(ExportDir)/$(TargetName)/SHA.txt" Lines="$(OutputFileString);@(FilesWithHashes->'%(FileHash)');$(OutputZipString);@(ZipFilesWithHashes->'%(FileHash)')" Overwrite="true" Encoding="UTF-8" />
-    <Exec Command="E:\lhk.bat"/>
+    <Exec Command="E:\lhk.bat" />
   </Target>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
@@ -357,5 +366,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Textures\" />
   </ItemGroup>
 </Project>
