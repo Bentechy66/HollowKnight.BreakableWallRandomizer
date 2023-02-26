@@ -32,6 +32,7 @@ namespace BreakableWallRandomiser.IC
             public string logic; // The logic required to actually reach _and obtain_ the item at this wall.
             public string persistentBool;
             public string requiredSetting;
+            public string sprite;
 
             public string cleanGameObjectPath() => rgx.Replace(gameObject, "");
             public string cleanSceneName() => rgx.Replace(sceneName, "");
@@ -105,7 +106,7 @@ namespace BreakableWallRandomiser.IC
                     {
                         name = new BoxedString(wall.niceName != "" ? wall.niceName : wall.getItemName()),
                         shopDesc = new BoxedString("\n" + wallShopDescriptions[random.Next(0, wallShopDescriptions.Length)]),
-                        sprite = new WallSprite("cr10_break_wall")
+                        sprite = new WallSprite(wall.sprite)
                     }
                 };
 
