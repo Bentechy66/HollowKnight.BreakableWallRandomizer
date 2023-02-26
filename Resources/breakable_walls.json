@@ -571,7 +571,8 @@
         "gameObject": "/Break Floor 1",
         "fsmType": "break_floor",
         "logicOverrides": {
-            "Fungus1_04[left1]": "(ORIG) | (BREAKABLE_Fungus104_BreakFloor1 + (WINGS | LEFTDASH) + Fungus1_04[right1])"
+            "Fungus1_04[left1]": "(ORIG) | (BREAKABLE_Fungus104_BreakFloor1 + (WINGS | LEFTDASH) + Fungus1_04[right1])",
+            "Fungus1_04[right1]": "(ORIG) + BREAKABLE_Fungus104_BreakFloor1"
         },
         "niceName": "Hornet Exit Shortcut",
         "sceneName": "Fungus1_04",
