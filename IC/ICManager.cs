@@ -31,12 +31,28 @@ namespace BreakableWallRandomiser.IC
             public string niceName;
             public string logic; // The logic required to actually reach _and obtain_ the item at this wall.
             public string persistentBool;
+            public string requiredSetting;
 
             public string cleanGameObjectPath() => rgx.Replace(gameObject, "");
             public string cleanSceneName() => rgx.Replace(sceneName, "");
             public string getLocationName() => niceName != "" ? "Wall_" + rgx.Replace(niceName, "") : $"Loc_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getItemName() => $"Itm_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getTermName() => $"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}";
+            public bool shouldBeIncluded()
+            {
+                if (!BreakableWallRandomiser.settings.RandomizeWalls) { return false; }
+                if (requiredSetting == null) { return true; }
+
+                // TODO: Reflection here is probably a bad idea.
+                var prop = BreakableWallRandomiser.settings.GetType().GetField(requiredSetting);
+                
+                if (prop == null) { 
+                    Modding.Logger.LogWarn($"Unknown settings property referenced: {requiredSetting}"); 
+                    return true; 
+                }
+
+                return (bool)prop.GetValue(BreakableWallRandomiser.settings);
+            }
         }
         #pragma warning restore 0649
 
@@ -61,6 +77,8 @@ namespace BreakableWallRandomiser.IC
             "These wall names aren't very descriptive, are they?"
         };
 
+        public UnityEngine.Sprite uiSprite;
+
         public void RegisterItemsAndLocations()
         {
             Random random = new Random(0x1337);
@@ -80,18 +98,18 @@ namespace BreakableWallRandomiser.IC
                 BreakableWallItem wallItem = new()
                 {
                     objectName = wall.gameObject,
-                    sceneName = wall.sceneName, 
+                    sceneName = wall.sceneName,
                     name = wall.getItemName(),
                     wallData = wall,
                     UIDef = new MsgUIDef
                     {
                         name = new BoxedString(wall.niceName != "" ? wall.niceName : wall.getItemName()),
                         shopDesc = new BoxedString("\n" + wallShopDescriptions[random.Next(0, wallShopDescriptions.Length)]),
-                        sprite = new ItemChangerSprite("ShopIcons.Downslash") // TODO: Replace this.
+                        sprite = new BoxedSprite(uiSprite) 
                     }
                 };
 
-                Modding.Logger.LogDebug(wall.getLocationName() + " -> term: " + wall.getTermName() + " / itm: " + wall.getItemName());
+                // Modding.Logger.LogDebug(wall.getLocationName() + " -> term: " + wall.getTermName() + " / itm: " + wall.getItemName());
 
                 Finder.DefineCustomLocation(wallLocation);
                 Finder.DefineCustomItem(wallItem);
@@ -108,8 +126,45 @@ namespace BreakableWallRandomiser.IC
 
         private void AddWalls(RequestBuilder rb)
         {
+            Modding.Logger.Log("Adding walls.");
+
+            if (BreakableWallRandomiser.settings.WallGroup > 0)
+            {
+                Modding.Logger.Log(BreakableWallRandomiser.settings.WallGroup);
+
+                ItemGroupBuilder wallGroup = null;
+                string label = RBConsts.SplitGroupPrefix + BreakableWallRandomiser.settings.WallGroup;
+
+                foreach (ItemGroupBuilder igb in rb.EnumerateItemGroups())
+                {
+                    if (igb.label == label)
+                    {
+                        wallGroup = igb;
+                        break;
+                    }
+                }
+
+                wallGroup ??= rb.MainItemStage.AddItemGroup(label);
+
+                rb.OnGetGroupFor.Subscribe(0.01f, ResolveWallGroup);
+
+                bool ResolveWallGroup(RequestBuilder rb, string item, RequestBuilder.ElementType type, out GroupBuilder gb)
+                {
+                    if (wallData.Any(x => x.getItemName() == item || x.getLocationName() == item))
+                    {
+                        gb = wallGroup;
+                        return true;
+                    }
+
+                    gb = default;
+                    return false;
+                }
+            }
+
             foreach (var wall in wallData)
             {
+                if (!wall.shouldBeIncluded()) { continue; }
+
                 rb.AddItemByName(wall.getItemName());
                 rb.AddLocationByName(wall.getLocationName());
             }
@@ -119,16 +174,12 @@ namespace BreakableWallRandomiser.IC
         {
             foreach (var wall in wallData)
             {
+                if (!wall.shouldBeIncluded()) { continue; }
+
                 Term wallTerm = lmb.GetOrAddTerm(wall.getTermName());
                 lmb.AddItem(new SingleItem(wall.getItemName(), new TermValue(wallTerm, 1)));
 
-                if (wall.logic == "")
-                {
-                    lmb.AddLogicDef(new(wall.getLocationName(), "Abyss_10[left1]"));
-                } else
-                {
-                    lmb.AddLogicDef(new(wall.getLocationName(), wall.logic));
-                }
+                lmb.AddLogicDef(new(wall.getLocationName(), wall.logic));
 
                 foreach (var logicOverride in wall.logicOverrides)
                 {

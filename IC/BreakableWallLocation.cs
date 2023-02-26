@@ -21,11 +21,15 @@ namespace BreakableWallRandomiser.IC
 
         protected override void OnLoad()
         {
+            if (!wallData.shouldBeIncluded()) { return; } // bit of a bodge
+
             Events.AddFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
         }
 
         protected override void OnUnload()
         {
+            if (!wallData.shouldBeIncluded()) { return; }
+
             Events.RemoveFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
         }
 
@@ -96,10 +100,11 @@ namespace BreakableWallRandomiser.IC
                     fsm.ChangeTransition("Hit", "HIT 3", "GiveItem");
                 }
             }
-            else if (fsmType == "breakable_wall_v2")
+            else if (fsmType == "breakable_wall_v2" || fsmType == "FSM")
             {
                 // Make sure the wall doesn't delete itself because playerdata is set
-                fsm.ChangeTransition("Activated?", "ACTIVATE", "Ruin Lift?");
+                if (fsmType == "breakable_wall_v2") { fsm.ChangeTransition("Activated?", "ACTIVATE", "Ruin Lift?"); }
+                if (fsmType == "FSM") { fsm.ChangeTransition("Initiate", "ACTIVATE", "Idle"); }
 
                 if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
                 {
@@ -157,7 +162,11 @@ namespace BreakableWallRandomiser.IC
                         });
                     }
 
-                    fsm.ChangeTransition("PD Bool?", "FINISHED", "GiveItem");
+                    if (fsmType == "breakable_wall_v2") { fsm.ChangeTransition("PD Bool?", "FINISHED", "GiveItem"); }
+                    if (fsmType == "FSM") { 
+                        fsm.ChangeTransition("Pause Frame", "FINISHED", "GiveItem");
+                        fsm.ChangeTransition("Spell Destroy", "FINISHED", "GiveItem");
+                    }
                 }
             }
         }

@@ -65,7 +65,7 @@
         "logic": "Abyss_19[bot1] + (ANYCLAW | WINGS)",
         "logicSubstitutions": {
             "Abyss_19": {
-                "Abyss_19[right1]": "Abyss_19[right1] + BREAKABLE_Abyss19_OneWayWall"
+                "Abyss_19[right1]": "(Abyss_19[right1] + BREAKABLE_Abyss19_OneWayWall)"
             },
             "Abyss_19[right1]": {
                 "Abyss_19[bot1]": "(Abyss_19[bot1] + BREAKABLE_Abyss19_OneWayWall)",
@@ -147,6 +147,28 @@
             "Crossroads_04[top1]": { "Crossroads_04[right1]": "Crossroads_04[right1] + BREAKABLE_Crossroads04_SceneryBreakFloor1" },
             "Crossroads_04[left1]": { "Crossroads_04[right1]": "Crossroads_04[right1] + BREAKABLE_Crossroads04_SceneryBreakFloor1" }
         },
+        "persistentBool": ""
+    },
+    {
+        "gameObject": "/_Scenery/Break Wall 2",
+        "fsmType": "FSM",
+        "logicOverrides": {
+            "Grub-Crossroads_Stag": "(ORIG) + BREAKABLE_Crossroads03_SceneryBreakWall2"
+        },
+        "niceName": "Crossroads Grub Wall",
+        "sceneName": "Crossroads_03",
+        "logic": "Crossroads_03[top1] | Crossroads_03[right1] | Crossroads_03[left1] | Crossroads_03[right2] | Crossroads_03[top1]",
+        "logicSubstitutions": {},
+        "persistentBool": ""
+    },
+    {
+        "gameObject": "/_Scenery/Break Wall 2",
+        "fsmType": "FSM",
+        "logicOverrides": {},
+        "niceName": "Crossroads Wall Above Aspid Arena",
+        "sceneName": "Crossroads_08",
+        "logic": "Crossroads_08[left1] | Crossroads_08[left2] | Crossroads_08[right1] | Crossroads_08[right2]",
+        "logicSubstitutions": {},
         "persistentBool": ""
     },
     {
@@ -683,7 +705,7 @@
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
         "logicOverrides": {},
-        "niceName": "Queen's Gardens -> Temple Wall'",
+        "niceName": "Queen's Gardens Into Temple Wall'",
         "sceneName": "Fungus3_39",
         "logic": "Fungus3_39[left1] + (Fungus3_39[right1] + BREAKABLE_Fungus339_OneWayWall)",
         "logicSubstitutions": {
@@ -841,7 +863,7 @@
         "gameObject": "/Breakable Wall (2)",
         "fsmType": "breakable_wall_v2",
         "logicOverrides": {},
-        "niceName": "",
+        "niceName": "Catacombs Breakable Wall 2",
         "sceneName": "RestingGrounds_10",
         "logic": "RestingGrounds_10 + BREAKABLE_RestingGrounds10_BreakableWall3",
         "logicSubstitutions": {},
@@ -997,7 +1019,8 @@
         "sceneName": "Tutorial_01",
         "logic": "Tutorial_01",
         "logicSubstitutions": {},
-        "persistentBool": ""
+        "persistentBool": "",
+        "requiredSetting": "RandomizeTutorialBreakableFloor"
     },
     {
         "gameObject": "/Breakable Wall Waterways",

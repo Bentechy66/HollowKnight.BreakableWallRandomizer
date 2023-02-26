@@ -23,7 +23,7 @@ namespace BreakableWallRandomiser.IC
             // If we're already in the same scene as the wall, break it. The wall's FSM should spawn a shiny.
             if (GameManager.instance.sceneName == sceneName)
             {
-                // Conveniently, both of the FSM types use the state "Break" to indicate the wall breaking.
+                // Conveniently, all of the FSM types use the state "Break" to indicate the wall breaking.
                 GameObject.Find(objectName).LocateMyFSM(wallData.fsmType).SetState("Break");
             }
         }
