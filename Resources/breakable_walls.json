@@ -430,7 +430,7 @@
         "logicOverrides": {
             "Weaversong": "(ORIG) + BREAKABLE_Deepnest45v02_BreakableWall"
         },
-        "niceName": "Hornet Room One",
+        "niceName": "Deepnest Hornet Room One",
         "sceneName": "Deepnest_45_v02",
         "logic": "Deepnest_45_v02[left1] + (RIGHTCLAW | (LEFTCLAW + WINGS) | (WINGS + ENEMYPOGOS))",
         "logicSubstitutions": {},
@@ -440,7 +440,7 @@
         "gameObject": "/Breakable Wall Waterways",
         "fsmType": "breakable_wall_v2",
         "logicOverrides": {},
-        "niceName": "Hornet Room Two",
+        "niceName": "Deepnest Hornet Room Two",
         "sceneName": "Deepnest_45_v02",
         "logic": "Deepnest_45_v02[left1] + (RIGHTCLAW | (LEFTCLAW + WINGS) | (WINGS + ENEMYPOGOS)) + BREAKABLE_Deepnest45v02_BreakableWall",
         "logicSubstitutions": {},
