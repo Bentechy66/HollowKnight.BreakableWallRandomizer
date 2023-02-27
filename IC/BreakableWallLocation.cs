@@ -33,141 +33,120 @@ namespace BreakableWallRandomiser.IC
             Events.RemoveFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
         }
 
-        private void ModifyWallBehaviour(PlayMakerFSM fsm)
+        // Recursively set all colliders as triggers on a given gameObject.
+        // Also recursively set any SpriteRenderers on a given gameObject to 0.5 alpha.
+        // Also remove any object called "Camera lock" or any textures beginning with msk_. 
+        private void MakeWallPassable(GameObject go)
         {
-            if (fsmType == "break_floor")
+            foreach (var collider in go.GetComponents<Collider2D>())
             {
-                // Make sure the wall doesn't delete itself because playerdata is set
-                fsm.ChangeTransition("Initiate", "ACTIVATE", "Idle");
+                // Triggers can still be hit by a nail, but won't impede player movement.
+                collider.isTrigger = true;
+            }
 
-                if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
+            // Make sprites transparent
+            foreach (var sprite in go.GetComponents<SpriteRenderer>())
+            {
+                Color tmp = sprite.color;
+                tmp.a = 0.4f;
+                sprite.color = tmp;
+
+                if (sprite.sprite && sprite.sprite.name.StartsWith("msk"))
                 {
-                    // Delete the door, regardless of player state. Spawn a shiny with any uncollected items.
-                    fsm.ChangeTransition("Initiate", "FINISHED", "Activated");
-                    fsm.ChangeTransition("Initiate", "ACTIVATE", "Activated");
-
-                    foreach (var item in Placement.Items.FindAll(x => !x.IsObtained()))
-                    {
-                        GameObject shiny = ShinyUtility.MakeNewShiny(Placement, item, FlingType.StraightUp);
-                        shiny.transform.SetPosition2D(fsm.transform.position.x, fsm.transform.position.y);
-                        ShinyUtility.FlingShinyRandomly(shiny.LocateMyFSM("Shiny Control"));
-                        shiny.SetActive(true);
-                    }
-                } else
-                {
-                    // Door should still be in place.
-                    
-                    fsm.AddState("GiveItem");
-                    fsm.AddCustomAction("GiveItem", () => {
-                        ItemUtility.GiveSequentially(Placement.Items, Placement, new GiveInfo()
-                        {
-                            FlingType = FlingType.Everywhere,
-                            MessageType = MessageType.Corner,
-                        });
-
-                        Placement.AddVisitFlag(VisitState.Opened);
-                    });
-
-                    // If we already obtained the item at this location, set the wall to an unhittable state:
-                    if (Placement.Items.All(x => x.IsObtained()))
-                    {
-                        fsm.SetState("GiveItem");
-                    } else
-                    {
-                        // Copy sound and particles from original
-                        foreach (var action in fsm.GetState("Break").Actions)
-                        {
-                            if (action is AudioPlayerOneShotSingle or PlayParticleEmitter)
-                            {
-                                fsm.AddAction("GiveItem", action);
-                            }
-                        }
-
-                        // In case we're in the same scene when it breaks, spawn the items
-                        fsm.AddCustomAction("Break", () => {
-                            foreach (var item in Placement.Items.FindAll(x => !x.IsObtained()))
-                            {
-                                GameObject shiny = ShinyUtility.MakeNewShiny(Placement, item, FlingType.StraightUp);
-                                shiny.transform.SetPosition2D(fsm.transform.position.x, fsm.transform.position.y);
-                                ShinyUtility.FlingShinyRandomly(shiny.LocateMyFSM("Shiny Control"));
-                                shiny.SetActive(true);
-                            }
-
-                            Placement.AddVisitFlag(VisitState.Opened);
-                        });
-                    }
-
-                    fsm.ChangeTransition("Hit", "HIT 3", "GiveItem");
+                    sprite.enabled = false;
                 }
             }
-            else if (fsmType == "breakable_wall_v2" || fsmType == "FSM")
-            {
-                // Make sure the wall doesn't delete itself because playerdata is set
-                if (fsmType == "breakable_wall_v2") { fsm.ChangeTransition("Activated?", "ACTIVATE", "Ruin Lift?"); }
-                if (fsmType == "FSM") { fsm.ChangeTransition("Initiate", "ACTIVATE", "Idle"); }
 
-                if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
+            if (go.name == "Camera Locks")
+            {
+                UnityEngine.GameObject.Destroy(go);
+            }
+
+            for (var i = 0; i < go.transform.childCount; i++)
+            {
+                MakeWallPassable(go.transform.GetChild(i).gameObject);
+            }
+        }
+
+        private void ModifyWallBehaviour(PlayMakerFSM fsm)
+        {
+            // The wall will delete itself based on its state if we don't do this.
+            if (fsmType == "break_floor" || fsmType == "FSM")
+            {
+                fsm.ChangeTransition("Initiate", "ACTIVATE", "Idle");
+            } else if (fsmType == "breakable_wall_v2")
+            {
+                fsm.ChangeTransition("Activated?", "ACTIVATE", "Ruin Lift?");
+            }
+
+            // If we already unlocked this wall, and items are still left there, make it passable.
+            if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
+            {
+                // If items are left, make wall semi-transparent and passable
+                if (Placement.Items.Any(x => !x.IsObtained()))
                 {
-                    // Delete the door, regardless of player state. Spawn a shiny with any uncollected items.
+                    MakeWallPassable(fsm.gameObject);
+                } else
+                {
+                    // Ensure the wall deletes on-load.
                     fsm.ChangeTransition("Initiate", "FINISHED", "Activated");
                     fsm.ChangeTransition("Initiate", "ACTIVATE", "Activated");
-
-                    foreach (var item in Placement.Items.FindAll(x => !x.IsObtained()))
-                    {
-                        GameObject shiny = ShinyUtility.MakeNewShiny(Placement, item, FlingType.StraightUp);
-                        shiny.transform.SetPosition2D(fsm.transform.position.x, fsm.transform.position.y);
-                        ShinyUtility.FlingShinyRandomly(shiny.LocateMyFSM("Shiny Control"));
-                        shiny.SetActive(true);
-                    }
                 }
-                else
+            }
+
+            fsm.AddState("GiveItem");
+            fsm.AddCustomAction("GiveItem", () => {
+                ItemUtility.GiveSequentially(Placement.Items, Placement, new GiveInfo()
                 {
-                    // The door should still be in place.
+                    FlingType = FlingType.Everywhere,
+                    MessageType = MessageType.Corner,
+                });
 
-                    fsm.AddState("GiveItem");
-                    fsm.AddCustomAction("GiveItem", () => {
-                        ItemUtility.GiveSequentially(Placement.Items, Placement, new GiveInfo()
-                        {
-                            FlingType = FlingType.Everywhere,
-                            MessageType = MessageType.Corner,
-                        });
-                        Placement.AddVisitFlag(VisitState.Opened);
-                    });
+                Placement.AddVisitFlag(VisitState.Opened);
+            });
 
-                    // If we already obtained the item at this location, set the wall to an unhittable state:
-                    if (Placement.Items.All(x => x.IsObtained()))
+            // If we already obtained the item at this location, set the wall to an unhittable state:
+            if (Placement.Items.All(x => x.IsObtained()))
+            {
+                fsm.SetState("GiveItem");
+            }
+            else
+            {
+                // Copy sound and particles from original
+                foreach (var action in fsm.GetState("Break").Actions)
+                {
+                    if (action is AudioPlayerOneShotSingle or PlayParticleEmitter)
                     {
-                        fsm.SetState("GiveItem");
-                    } else
-                    {
-                        // Copy sound and particles from original
-                        foreach (var action in fsm.GetState("Break").Actions)
-                        {
-                            if (action is AudioPlayerOneShotSingle or PlayParticleEmitter)
-                            {
-                                fsm.AddAction("GiveItem", action);
-                            }
-                        }
-
-                        // In case we're in the same scene when it breaks, spawn the items
-                        fsm.AddCustomAction("Break", () => {
-                            foreach (var item in Placement.Items.FindAll(x => !x.IsObtained()))
-                            {
-                                GameObject shiny = ShinyUtility.MakeNewShiny(Placement, item, FlingType.StraightUp);
-                                shiny.transform.SetPosition2D(fsm.transform.position.x, fsm.transform.position.y);
-                                ShinyUtility.FlingShinyRandomly(shiny.LocateMyFSM("Shiny Control"));
-                                shiny.SetActive(true);
-                            }
-                            Placement.AddVisitFlag(VisitState.Opened);
-                        });
-                    }
-
-                    if (fsmType == "breakable_wall_v2") { fsm.ChangeTransition("PD Bool?", "FINISHED", "GiveItem"); }
-                    if (fsmType == "FSM") { 
-                        fsm.ChangeTransition("Pause Frame", "FINISHED", "GiveItem");
-                        fsm.ChangeTransition("Spell Destroy", "FINISHED", "GiveItem");
+                        fsm.AddAction("GiveItem", action);
                     }
                 }
+
+                // In case we're in the same scene when it breaks, check if there are items left,
+                // and then set states accordingly.
+                fsm.AddCustomAction("Break", () => {
+                    if (Placement.Items.Any(x => !x.IsObtained()))
+                    {
+                        MakeWallPassable(fsm.gameObject);
+                    }
+                    else
+                    {
+                        // Delete the wall entirely.
+                        fsm.SetState("Activated");
+                    }
+
+                    Placement.AddVisitFlag(VisitState.Opened);
+                });
+            }
+
+            if (fsmType == "breakable_wall_v2") { 
+                fsm.ChangeTransition("PD Bool?", "FINISHED", "GiveItem"); 
+            } else if (fsmType == "FSM")
+            {
+                fsm.ChangeTransition("Pause Frame", "FINISHED", "GiveItem");
+                fsm.ChangeTransition("Spell Destroy", "FINISHED", "GiveItem");
+            } else if (fsmType == "break_floor")
+            {
+                fsm.ChangeTransition("Hit", "HIT 3", "GiveItem");
             }
         }
     }
