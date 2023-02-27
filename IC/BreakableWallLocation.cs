@@ -92,7 +92,7 @@ namespace BreakableWallRandomiser.IC
                 if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
                 {
                     // Delete the wall entirely.
-                    fsm.SetState("Activated");
+                    fsm.SetState("Break");
                 }
             });
 
@@ -131,11 +131,17 @@ namespace BreakableWallRandomiser.IC
 
                     // In case we're in the same scene when it breaks, check if there are items left,
                     // and then set states accordingly
-                    fsm.InsertCustomAction("Break", () => {
+
+                    fsm.AddState("BreakSameScene");
+
+                    fsm.InsertCustomAction("BreakSameScene", () => {
                         if (Placement.Items.Any(x => !x.IsObtained()))
                         {
                             MakeWallPassable(fsm.gameObject);
                             fsm.SetState("Idle");
+                        } else
+                        {
+                            fsm.SetState("Break");
                         }
 
                         Placement.AddVisitFlag(VisitState.Opened);
