@@ -48,7 +48,7 @@ namespace BreakableWallRandomiser.IC
                 var prop = BreakableWallRandomiser.settings.GetType().GetField(requiredSetting);
                 
                 if (prop == null) { 
-                    Modding.Logger.LogWarn($"Unknown settings property referenced: {requiredSetting}"); 
+                    Modding.Logger.LogWarn($"[Wall Rando] Unknown settings property referenced: {requiredSetting}"); 
                     return true; 
                 }
 
@@ -127,11 +127,8 @@ namespace BreakableWallRandomiser.IC
 
         private void AddWalls(RequestBuilder rb)
         {
-            Modding.Logger.Log("Adding walls.");
-
             if (BreakableWallRandomiser.settings.WallGroup > 0)
             {
-                Modding.Logger.Log(BreakableWallRandomiser.settings.WallGroup);
 
                 ItemGroupBuilder wallGroup = null;
                 string label = RBConsts.SplitGroupPrefix + BreakableWallRandomiser.settings.WallGroup;
