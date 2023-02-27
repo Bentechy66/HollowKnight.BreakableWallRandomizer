@@ -79,6 +79,23 @@ namespace BreakableWallRandomiser.IC
                 fsm.ChangeTransition("Activated?", "ACTIVATE", "Ruin Lift?");
             }
 
+            fsm.AddState("GiveItem");
+            fsm.AddCustomAction("GiveItem", () => {
+                ItemUtility.GiveSequentially(Placement.Items, Placement, new GiveInfo()
+                {
+                    FlingType = FlingType.Everywhere,
+                    MessageType = MessageType.Corner,
+                });
+
+                Placement.AddVisitFlag(VisitState.Opened);
+
+                if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
+                {
+                    // Delete the wall entirely.
+                    fsm.SetState("Activated");
+                }
+            });
+
             // If we already unlocked this wall, and items are still left there, make it passable.
             if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
             {
@@ -92,50 +109,38 @@ namespace BreakableWallRandomiser.IC
                     fsm.ChangeTransition("Initiate", "FINISHED", "Activated");
                     fsm.ChangeTransition("Initiate", "ACTIVATE", "Activated");
                 }
-            }
-
-            fsm.AddState("GiveItem");
-            fsm.AddCustomAction("GiveItem", () => {
-                ItemUtility.GiveSequentially(Placement.Items, Placement, new GiveInfo()
-                {
-                    FlingType = FlingType.Everywhere,
-                    MessageType = MessageType.Corner,
-                });
-
-                Placement.AddVisitFlag(VisitState.Opened);
-            });
-
-            // If we already obtained the item at this location, set the wall to an unhittable state:
-            if (Placement.Items.All(x => x.IsObtained()))
+            } else
+            // If we didn't unlock this door yet...
             {
-                fsm.SetState("GiveItem");
-            }
-            else
-            {
-                // Copy sound and particles from original
-                foreach (var action in fsm.GetState("Break").Actions)
+                // ...and we already obtained the item at this location, set the wall to an unhittable state:
+                if (Placement.Items.All(x => x.IsObtained()))
                 {
-                    if (action is AudioPlayerOneShotSingle or PlayParticleEmitter)
-                    {
-                        fsm.AddAction("GiveItem", action);
-                    }
+                    fsm.SetState("GiveItem");
                 }
-
-                // In case we're in the same scene when it breaks, check if there are items left,
-                // and then set states accordingly.
-                fsm.AddCustomAction("Break", () => {
-                    if (Placement.Items.Any(x => !x.IsObtained()))
+                // ...and there are items left to collect:
+                else
+                {
+                    // Copy sound and particles from original
+                    foreach (var action in fsm.GetState("Break").Actions)
                     {
-                        MakeWallPassable(fsm.gameObject);
-                    }
-                    else
-                    {
-                        // Delete the wall entirely.
-                        fsm.SetState("Activated");
+                        if (action is AudioPlayerOneShotSingle or PlayParticleEmitter)
+                        {
+                            fsm.AddAction("GiveItem", action);
+                        }
                     }
 
-                    Placement.AddVisitFlag(VisitState.Opened);
-                });
+                    // In case we're in the same scene when it breaks, check if there are items left,
+                    // and then set states accordingly
+                    fsm.InsertCustomAction("Break", () => {
+                        if (Placement.Items.Any(x => !x.IsObtained()))
+                        {
+                            MakeWallPassable(fsm.gameObject);
+                            fsm.SetState("Idle");
+                        }
+
+                        Placement.AddVisitFlag(VisitState.Opened);
+                    }, 0);
+                }
             }
 
             if (fsmType == "breakable_wall_v2") { 
@@ -147,7 +152,7 @@ namespace BreakableWallRandomiser.IC
             } else if (fsmType == "break_floor")
             {
                 fsm.ChangeTransition("Hit", "HIT 3", "GiveItem");
-            }
+            } 
         }
     }
 }
