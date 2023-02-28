@@ -260,7 +260,7 @@
         "logicSubstitutions": {},
         "sceneName": "Crossroads_07",
         "niceName": "Crossroads Tall Room Whispering Root Ceiling",
-        "logic": "Crossroads_07 + (RIGHTCLAW | (WINGS + LEFTCLAW)) + UPWALLBREAK",
+        "logic": "Crossroads_07 + (RIGHTCLAW | WINGS) + UPWALLBREAK",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "sil_break_wall_01_90deg",
@@ -1371,7 +1371,7 @@
         "logicOverrides": { "Geo_Chest-Resting_Grounds": "(ORIG) + BREAKABLE_RestingGrounds10_BreakableWall7" },
         "logicSubstitutions": {},
         "sceneName": "RestingGrounds_10",
-        "niceName": "Resting Grounds Breakable Wall Right 1",
+        "niceName": "Catacombs First Breakable Wall to the Right",
         "logic": "RestingGrounds_10",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1469,11 +1469,13 @@
     {
         "gameObject": "/Breakable Wall (8)",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": { "Wanderer's_Journal-Resting_Grounds_Catacombs": "(ORIG) + BREAKABLE_RestingGrounds10_BreakableWall7 + BREAKABLE_RestingGrounds10_BreakableWall8" },
+        "logicOverrides": {
+            "Soul_Eater": "(ORIG) + BREAKABLE_RestingGrounds10_BreakableWall8 + BREAKABLE_RestingGrounds10_BreakableWall7 + BREAKABLE_RestingGrounds10_BreakableWall6"
+        },
         "logicSubstitutions": {},
         "sceneName": "RestingGrounds_10",
-        "niceName": "Resting Grounds Charm Wall",
-        "logic": "RestingGrounds_10 + (ANYCLAW | WINGS) + UPWALLBREAK + BREAKABLE_RestingGrounds10_BreakableWall7",
+        "niceName": "Catacombs Soul Eater Wall",
+        "logic": "RestingGrounds_10 + (ANYCLAW | WINGS) + UPWALLBREAK + BREAKABLE_RestingGrounds10_BreakableWall7 + BREAKABLE_RestingGrounds10_BreakableWall6",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "rest_grounds_break_wall_90deg",
@@ -1492,7 +1494,7 @@
         "logicSubstitutions": {},
         "sceneName": "RestingGrounds_10",
         "niceName": "Resting Grounds Right-Side Wall",
-        "logic": "RestingGrounds_10 + (LEFTCLAW | WINGS) + UPWALLBREAK + BREAKABLE_RestingGrounds10_BreakableWall7",
+        "logic": "RestingGrounds_10 + BREAKABLE_RestingGrounds10_BreakableWall7",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "rest_grounds_break_wall_0deg",
@@ -1567,8 +1569,14 @@
     {
         "gameObject": "/Breakable Wall Ruin Lift",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": { "Ruins1_31[left3]": "(ORIG) | (Ruins1_31[bot1] | Ruins1_31[left1] | Ruins1_31[left2]) + BREAKABLE_Ruins131_BreakableWallRuinLift + (ANYCLAW | WINGS) + ELEGANT" },
-        "logicSubstitutions": {},
+        "logicOverrides": {
+            "Ruins1_31[left3]": "(ORIG) | (Ruins1_31[bot1] | Ruins1_31[left1] | Ruins1_31[left2]) + BREAKABLE_Ruins131_BreakableWallRuinLift + (ANYCLAW | WINGS) + ELEGANT",
+            "Ruins1_31[left2]": "(ORIG) | (Ruins1_31[bot1] | Ruins1_31[left1] | Ruins1_31[left2]) + BREAKABLE_Ruins131_BreakableWallRuinLift + (ANYCLAW | WINGS) + Lever-Shade_Soul + (RIGHTCLAW | RIGHTDASH | RIGHTSUPERDASH)",
+            "Ruins1_31[right1]": "(ORIG) | (Ruins1_31[bot1] | Ruins1_31[left1] | Ruins1_31[left2]) + BREAKABLE_Ruins131_BreakableWallRuinLift"
+        },
+        "logicSubstitutions": {
+            "Ruins1_31": "(ORIG) | (Ruins1_31[bot1] | Ruins1_31[left1] | Ruins1_31[left2]) + BREAKABLE_Ruins131_BreakableWallRuinLift + (ANYCLAW | WINGS)"
+        },
         "sceneName": "Ruins1_31",
         "niceName": "Shade Soul Shortcut Wall",
         "logic": "Ruins1_31[right1] | (Ruins1_31[bot1] | Ruins1_31[left1] | Ruins1_31[left2]) + BREAKABLE_Ruins131_BreakableWallRuinLift",
@@ -1688,7 +1696,7 @@
         "logicSubstitutions": {},
         "sceneName": "Waterways_02",
         "niceName": "Waterways One-Way Next To Bench",
-        "logic": "Bench-Waterways",
+        "logic": "(Waterways_02[top3] + Broke_Waterways_Bench_Quake_Floor_3 | Waterways_02 + (LEFTCLAW | WINGS + RIGHTCLAW | ENEMYPOGOS + DANGEROUSSKIPS + (WINGS | RIGHTCLAW)))",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "waterways_manhole_open0000_270deg",
