@@ -13,6 +13,7 @@ using UnityEngine.SceneManagement;
 using RandomizerCore;
 using System.Text.RegularExpressions;
 using ItemChanger.UIDefs;
+using Mono.Cecil;
 
 namespace BreakableWallRandomiser.IC
 {
@@ -22,6 +23,15 @@ namespace BreakableWallRandomiser.IC
         // This field is assigned to by JSON deserialization
         public class WallData
         {
+            public class RelativeMapLocation
+            {
+                public string sceneName;
+                public float x;
+                public float y;
+
+                public (string, float, float) repr => (sceneName, x, y);
+            }
+
             Regex rgx = new Regex("[^a-zA-Z0-9]");
             public string gameObject;
             public string fsmType;
@@ -33,6 +43,7 @@ namespace BreakableWallRandomiser.IC
             public string persistentBool;
             public string requiredSetting;
             public string sprite;
+            public List<RelativeMapLocation> mapLocations;
 
             public string cleanGameObjectPath() => rgx.Replace(gameObject, "");
             public string cleanSceneName() => rgx.Replace(sceneName, "");
@@ -57,7 +68,9 @@ namespace BreakableWallRandomiser.IC
         }
         #pragma warning restore 0649
 
-        readonly List<WallData> wallData = JsonConvert.DeserializeObject<List<WallData>>(
+        public static string WALL_GROUP = "Breakable Walls";
+
+        public readonly static List<WallData> wallData = JsonConvert.DeserializeObject<List<WallData>>(
             System.Text.Encoding.UTF8.GetString(Properties.Resources.BreakableWallData)
         );
 
@@ -93,7 +106,15 @@ namespace BreakableWallRandomiser.IC
                     name = wall.getLocationName(),
                     sceneName = wall.sceneName,
                     wallData = wall,
-                    nonreplaceable = true
+                    nonreplaceable = true,
+                    tags = new() {
+                        InteropTagFactory.CmiLocationTag(
+                            poolGroup: WALL_GROUP,
+                            pinSprite: new WallSprite(wall.sprite),
+                            sceneNames: new List<string> { wall.sceneName },
+                            mapLocations: wall.mapLocations.Select(x => x.repr).ToArray()
+                        ),
+                    }
                 };
 
                 BreakableWallItem wallItem = new()
@@ -107,6 +128,9 @@ namespace BreakableWallRandomiser.IC
                         name = new BoxedString(wall.niceName != "" ? wall.niceName : wall.getItemName()),
                         shopDesc = new BoxedString("\n" + wallShopDescriptions[random.Next(0, wallShopDescriptions.Length)]),
                         sprite = new WallSprite(wall.sprite)
+                    },
+                    tags = new() {
+                        InteropTagFactory.CmiSharedTag(poolGroup: WALL_GROUP)
                     }
                 };
 
@@ -119,14 +143,39 @@ namespace BreakableWallRandomiser.IC
 
         public void Hook()
         {
-            RCData.RuntimeLogicOverride.Subscribe(999, ApplyLogic);
+            RCData.RuntimeLogicOverride.Subscribe(15f, ApplyLogic);
             RequestBuilder.OnUpdate.Subscribe(0.3f, AddWalls);
-
-            On.UIManager.StartNewGame += UIManager_StartNewGame;
         }
 
         private void AddWalls(RequestBuilder rb)
         {
+            foreach (var wall in wallData)
+            {
+                if (!wall.shouldBeIncluded()) { continue; }
+
+                rb.EditItemRequest(wall.getItemName(), info =>
+                {
+                    info.getItemDef = () => new()
+                    {
+                        Name = wall.getItemName(),
+                        Pool = WALL_GROUP,
+                        MajorItem = false,
+                        PriceCap = 150
+                    };
+                });
+
+                rb.EditLocationRequest(wall.getLocationName(), info =>
+                {
+                    info.getLocationDef = () => new()
+                    {
+                        Name = wall.getLocationName(),
+                        SceneName = wall.sceneName,
+                        FlexibleCount = false,
+                        AdditionalProgressionPenalty = false
+                    };
+                });
+            }
+
             if (BreakableWallRandomiser.settings.WallGroup > 0)
             {
 
@@ -191,19 +240,6 @@ namespace BreakableWallRandomiser.IC
                         lmb.DoSubst(new(substitutionDef.Key, substitution.Key, substitution.Value));  
                     }
                 }
-            }
-        }
-
-        private void UIManager_StartNewGame(On.UIManager.orig_StartNewGame orig, UIManager self, bool permaDeath, bool bossRush)
-        {
-            orig(self, permaDeath, bossRush);
-
-            ItemChangerMod.CreateSettingsProfile(false);
-
-            foreach (var wall in wallData)
-            {
-                AbstractPlacement placement = Finder.GetLocation(wall.getLocationName()).Wrap();
-                ItemChangerMod.AddPlacements(new List<AbstractPlacement>() { placement });
             }
         }
     }

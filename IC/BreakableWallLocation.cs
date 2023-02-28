@@ -48,7 +48,7 @@ namespace BreakableWallRandomiser.IC
             foreach (var sprite in go.GetComponents<SpriteRenderer>())
             {
                 Color tmp = sprite.color;
-                tmp.a = 0.4f;
+                tmp.a = 0.7f;
                 sprite.color = tmp;
 
                 if (sprite.sprite && sprite.sprite.name.StartsWith("msk"))
