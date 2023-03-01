@@ -30,7 +30,7 @@ namespace BreakableWallRandomiser
             RandoMenuPage.Hook();
 
             manager.RegisterItemsAndLocations();
-            if (settings.RandomizeWalls) { manager.Hook(); }
+            manager.Hook();
 
             // On.GameManager.BeginSceneTransition += LogTransName;
 

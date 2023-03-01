@@ -148,6 +148,7 @@ namespace BreakableWallRandomiser.IC
         public void Hook()
         {
             RCData.RuntimeLogicOverride.Subscribe(15f, ApplyLogic);
+
             RequestBuilder.OnUpdate.Subscribe(0.3f, AddWalls);
 
             RandomizerMenuAPI.OnGenerateStartLocationDict += RandomizerMenuAPI_OnGenerateStartLocationDict;
