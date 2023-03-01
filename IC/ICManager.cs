@@ -14,6 +14,8 @@ using RandomizerCore;
 using System.Text.RegularExpressions;
 using ItemChanger.UIDefs;
 using Mono.Cecil;
+using RandomizerMod.Menu;
+using Modding;
 
 namespace BreakableWallRandomiser.IC
 {
@@ -147,6 +149,37 @@ namespace BreakableWallRandomiser.IC
         {
             RCData.RuntimeLogicOverride.Subscribe(15f, ApplyLogic);
             RequestBuilder.OnUpdate.Subscribe(0.3f, AddWalls);
+
+            RandomizerMenuAPI.OnGenerateStartLocationDict += RandomizerMenuAPI_OnGenerateStartLocationDict;
+        }
+
+        private void RandomizerMenuAPI_OnGenerateStartLocationDict(Dictionary<string, RandomizerMod.RandomizerData.StartDef> startDefs)
+        {
+            try
+            {
+                if (!BreakableWallRandomiser.settings.RandomizeWalls) { return; }
+
+                (string westBlueLakeName, RandomizerMod.RandomizerData.StartDef westBlueLakeStart)
+                        = startDefs.First(pair => pair.Value.SceneName == SceneNames.Crossroads_50);
+
+                startDefs[westBlueLakeName] = westBlueLakeStart with
+                {
+                    Logic = "FALSE",
+                    RandoLogic = "FALSE"
+                };
+
+                (string coloStartName, RandomizerMod.RandomizerData.StartDef coloStart)
+                        = startDefs.First(pair => pair.Value.SceneName == SceneNames.Deepnest_East_09);
+
+                startDefs[coloStartName] = coloStart with
+                {
+                    Logic = $"({coloStart.Logic}) + OBSCURESKIPS + ENEMYPOGOS + PRECISEMOVEMENT",
+                    RandoLogic = "FALSE" // Only about 5 checks are reachable even *with* the above settings.
+                };
+            } catch (InvalidOperationException)
+            {
+                Modding.Logger.LogWarn("[Breakable Walls] Couldn't patch start locations.");
+            }
         }
 
         private void AddWalls(RequestBuilder rb)
