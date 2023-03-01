@@ -16,6 +16,7 @@ using ItemChanger.UIDefs;
 using Mono.Cecil;
 using RandomizerMod.Menu;
 using Modding;
+using ItemChanger.FsmStateActions;
 
 namespace BreakableWallRandomiser.IC
 {
@@ -54,9 +55,14 @@ namespace BreakableWallRandomiser.IC
             public string getLocationName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Loc_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getItemName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Itm_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getTermName() => $"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}";
+            public string getGroupName() => WALL_GROUPS[fsmType].Item1;
             public bool shouldBeIncluded()
             {
-                if (!BreakableWallRandomiser.settings.RandomizeWalls) { return false; }
+                if (!BreakableWallRandomiser.settings.Any) { return false; }
+
+                if ((fsmType == "FSM" || fsmType == "breakable_wall_v2") && !BreakableWallRandomiser.settings.RandomizeBreakableRockWalls) { return false; }
+                if (fsmType == "break_floor" && !BreakableWallRandomiser.settings.RandomizeBreakableWoodenPlankWalls) { return false; }
+
                 if (requiredSetting == null) { return true; }
 
                 // TODO: Reflection here is probably a bad idea.
@@ -72,7 +78,15 @@ namespace BreakableWallRandomiser.IC
         }
         #pragma warning restore 0649
 
-        public static string WALL_GROUP = "Breakable Walls";
+        // Map: FSM Name -> Group Name
+        public readonly static Dictionary<string, (string, Func<int>)> WALL_GROUPS = new() { 
+            { "break_floor", ("Breakable Planks Walls", () => BreakableWallRandomiser.settings.WoodenPlankWallGroup ) },
+            { "FSM", ("Breakable Planks Walls", () => BreakableWallRandomiser.settings.WoodenPlankWallGroup ) },
+
+            { "breakable_wall_v2", ("Breakable Rock Walls", () => BreakableWallRandomiser.settings.RockWallGroup ) },
+        };
+
+        private static Dictionary<string, ItemGroupBuilder> definedGroups = new();
 
         public readonly static List<WallData> wallData = JsonConvert.DeserializeObject<List<WallData>>(
             System.Text.Encoding.UTF8.GetString(Properties.Resources.BreakableWallData)
@@ -113,7 +127,7 @@ namespace BreakableWallRandomiser.IC
                     nonreplaceable = true,
                     tags = new() {
                         InteropTagFactory.CmiLocationTag(
-                            poolGroup: WALL_GROUP,
+                            poolGroup: wall.getGroupName(),
                             pinSprite: new WallSprite(wall.sprite),
                             sceneNames: new List<string> { wall.sceneName },
                             mapLocations: wall.mapLocations.Select(x => x.repr).ToArray()
@@ -134,7 +148,7 @@ namespace BreakableWallRandomiser.IC
                         sprite = new WallSprite(wall.sprite)
                     },
                     tags = new() {
-                        InteropTagFactory.CmiSharedTag(poolGroup: WALL_GROUP)
+                        InteropTagFactory.CmiSharedTag(poolGroup: wall.getGroupName())
                     }
                 };
 
@@ -158,7 +172,7 @@ namespace BreakableWallRandomiser.IC
         {
             try
             {
-                if (!BreakableWallRandomiser.settings.RandomizeWalls) { return; }
+                if (!BreakableWallRandomiser.settings.Any) { return; }
 
                 (string westBlueLakeName, RandomizerMod.RandomizerData.StartDef westBlueLakeStart)
                         = startDefs.First(pair => pair.Value.SceneName == SceneNames.Crossroads_50);
@@ -194,7 +208,7 @@ namespace BreakableWallRandomiser.IC
                     info.getItemDef = () => new()
                     {
                         Name = wall.getItemName(),
-                        Pool = WALL_GROUP,
+                        Pool = wall.getGroupName(),
                         MajorItem = false,
                         PriceCap = 150
                     };
@@ -212,58 +226,79 @@ namespace BreakableWallRandomiser.IC
                 });
             }
 
-            if (BreakableWallRandomiser.settings.WallGroup > 0)
+            // Create groups
+            definedGroups.Clear();
+
+            foreach (var group in WALL_GROUPS)
             {
-
-                ItemGroupBuilder wallGroup = null;
-                string label = RBConsts.SplitGroupPrefix + BreakableWallRandomiser.settings.WallGroup;
-
-                foreach (ItemGroupBuilder igb in rb.EnumerateItemGroups())
+                if (group.Value.Item2() > 0)
                 {
-                    if (igb.label == label)
+                    ItemGroupBuilder wallGroup = null;
+                    string label = RBConsts.SplitGroupPrefix + group.Value.Item2();
+
+                    foreach (ItemGroupBuilder igb in rb.EnumerateItemGroups())
                     {
-                        wallGroup = igb;
-                        break;
+                        if (igb.label == label)
+                        {
+                            wallGroup = igb;
+                            break;
+                        }
                     }
+
+                    wallGroup ??= rb.MainItemStage.AddItemGroup(label);
+
+                    definedGroups[group.Key] = wallGroup;
                 }
+            }
 
-                wallGroup ??= rb.MainItemStage.AddItemGroup(label);
+            // Hook Groups
+            rb.OnGetGroupFor.Subscribe(0.01f, ResolveWallGroup);
 
-                rb.OnGetGroupFor.Subscribe(0.01f, ResolveWallGroup);
+            bool ResolveWallGroup(RequestBuilder rb, string item, RequestBuilder.ElementType type, out GroupBuilder gb)
+            {
+                var wall = wallData.Find(x => x.getItemName() == item || x.getLocationName() == item);
 
-                bool ResolveWallGroup(RequestBuilder rb, string item, RequestBuilder.ElementType type, out GroupBuilder gb)
+                if (wall != null)
                 {
-                    if (wallData.Any(x => x.getItemName() == item || x.getLocationName() == item))
+                    if (definedGroups.ContainsKey(wall.fsmType))
                     {
-                        gb = wallGroup;
+                        gb = definedGroups[wall.fsmType];
                         return true;
                     }
-
-                    gb = default;
-                    return false;
                 }
+
+                gb = default;
+                return false;
             }
 
+            // Add to randomization request
             foreach (var wall in wallData)
             {
-                if (!wall.shouldBeIncluded()) { continue; }
-
-                rb.AddItemByName(wall.getItemName());
-                rb.AddLocationByName(wall.getLocationName());
-            }
+                if (wall.shouldBeIncluded()) {
+                    rb.AddItemByName(wall.getItemName());
+                    rb.AddLocationByName(wall.getLocationName());
+                } else if (BreakableWallRandomiser.settings.Any)
+                {
+                    rb.AddToVanilla(new(wall.getItemName(), wall.getLocationName()));
+                }
+            } 
         }
 
         private void ApplyLogic(GenerationSettings gs, LogicManagerBuilder lmb)
         {
             foreach (var wall in wallData)
             {
-                if (!wall.shouldBeIncluded()) { continue; }
+                // Always define terms, unless all options are off.
+                if (!BreakableWallRandomiser.settings.Any) { continue; }
 
                 Term wallTerm = lmb.GetOrAddTerm(wall.getTermName());
                 lmb.AddItem(new SingleItem(wall.getItemName(), new TermValue(wallTerm, 1)));
 
                 lmb.AddLogicDef(new(wall.getLocationName(), wall.logic));
 
+                if (!wall.shouldBeIncluded()) { continue; }
+
+                // Add to logic. Walls which aren't included shouldn't affect existing logic.
                 foreach (var logicOverride in wall.logicOverrides)
                 {
                     lmb.DoLogicEdit(new(logicOverride.Key, logicOverride.Value));

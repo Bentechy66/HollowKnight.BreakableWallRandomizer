@@ -10,12 +10,17 @@ namespace BreakableWallRandomiser.Rando
 {
     public class WallRandoSettings
     {
-        public bool RandomizeWalls = true;
+        public bool RandomizeBreakableWoodenPlankWalls = true;
+        public bool RandomizeBreakableRockWalls = true;
         
         public bool RandomizeTutorialBreakableFloor = false;
 
         [MenuChanger.Attributes.MenuRange(-1, 99)]
-        public int WallGroup = -1;
+        public int WoodenPlankWallGroup = -1;
+        public int RockWallGroup = -1;
+
+        [Newtonsoft.Json.JsonIgnore]
+        public bool Any => RandomizeBreakableRockWalls || RandomizeBreakableWoodenPlankWalls;
     }
 
     public class RandoMenuPage
@@ -30,7 +35,7 @@ namespace BreakableWallRandomiser.Rando
 
         public static void OnExitMenu()
         {
-            Instance = null;
+            Instance = null; 
         }
 
         public static void Hook()
