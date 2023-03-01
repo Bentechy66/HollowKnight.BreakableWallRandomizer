@@ -33,6 +33,8 @@ namespace BreakableWallRandomiser.IC
             }
 
             Regex rgx = new Regex("[^a-zA-Z0-9]");
+            Regex rgx_with_spaces = new Regex("[^a-zA-Z0-9 ]");
+
             public string gameObject;
             public string fsmType;
             public Dictionary<string, string> logicOverrides;
@@ -47,8 +49,8 @@ namespace BreakableWallRandomiser.IC
 
             public string cleanGameObjectPath() => rgx.Replace(gameObject, "");
             public string cleanSceneName() => rgx.Replace(sceneName, "");
-            public string getLocationName() => niceName != "" ? "Wall_" + rgx.Replace(niceName, "") : $"Loc_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
-            public string getItemName() => $"Itm_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
+            public string getLocationName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Loc_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
+            public string getItemName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Itm_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getTermName() => $"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}";
             public bool shouldBeIncluded()
             {
