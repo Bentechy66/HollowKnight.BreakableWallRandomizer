@@ -240,9 +240,7 @@
     {
         "gameObject": "/Break Wall 2",
         "fsmType": "FSM",
-        "logicOverrides": {
-            "Geo_Rock-Crossroads_Aspid_Arena_Hidden": "(ORIG) + BREAKABLE_Crossroads08_BreakWall2"
-        },
+        "logicOverrides": { "Geo_Rock-Crossroads_Aspid_Arena_Hidden": "(ORIG) + BREAKABLE_Crossroads08_BreakWall2" },
         "logicSubstitutions": {},
         "sceneName": "Crossroads_08",
         "niceName": "Crossroads Wall Above Aspid Arena",
@@ -1146,12 +1144,8 @@
         "fsmType": "break_floor",
         "logicOverrides": {},
         "logicSubstitutions": {
-            "Fungus3_39[right1]": {
-                "Fungus3_39[left1]": "(Fungus3_39[left1] + BREAKABLE_Fungus339_OneWayWall)"
-            },
-            "Fungus3_39[left1]": {
-                "Fungus3_39[right1]": "(Fungus3_39[right1] + BREAKABLE_Fungus339_OneWayWall)"
-            }
+            "Fungus3_39[right1]": { "Fungus3_39[left1]": "(Fungus3_39[left1] + BREAKABLE_Fungus339_OneWayWall)" },
+            "Fungus3_39[left1]": { "Fungus3_39[right1]": "(Fungus3_39[right1] + BREAKABLE_Fungus339_OneWayWall)" }
         },
         "sceneName": "Fungus3_39",
         "niceName": "Queen's Gardens Into Temple Wall",
@@ -1484,9 +1478,7 @@
     {
         "gameObject": "/Breakable Wall (8)",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {
-            "Soul_Eater": "(ORIG) + BREAKABLE_RestingGrounds10_BreakableWall8 + BREAKABLE_RestingGrounds10_BreakableWall7 + BREAKABLE_RestingGrounds10_BreakableWall6"
-        },
+        "logicOverrides": { "Soul_Eater": "(ORIG) + BREAKABLE_RestingGrounds10_BreakableWall8 + BREAKABLE_RestingGrounds10_BreakableWall7 + BREAKABLE_RestingGrounds10_BreakableWall6" },
         "logicSubstitutions": {},
         "sceneName": "RestingGrounds_10",
         "niceName": "Catacombs Soul Eater Wall",
@@ -1630,9 +1622,7 @@
     {
         "gameObject": "/Breakable Wall",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {
-            "Ruins_Bathhouse[right1]": "(ORIG) + BREAKABLE_RuinsBathhouse_BreakableWall"
-        },
+        "logicOverrides": { "Ruins_Bathhouse[right1]": "(ORIG) + BREAKABLE_RuinsBathhouse_BreakableWall" },
         "logicSubstitutions": { "Ruins2_10b[left1]": { "Opened_Pleasure_House_Wall": "BREAKABLE_RuinsBathhouse_BreakableWall" } },
         "sceneName": "Ruins_Bathhouse",
         "niceName": "Bath-house Wall Next to Bench",
@@ -1803,638 +1793,802 @@
             }
         ]
     },
-
-
-
-
-
-
-
-
-
-
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Basin_Grub_Quake_Floor": "BREAKABLE_Abyss17_QuakeFloor"
-        },
-        "niceName": "Basin Grub Dive Floor",
+        "logicOverrides": { "Broke_Basin_Grub_Quake_Floor": "BREAKABLE_Abyss17_QuakeFloor" },
+        "logicSubstitutions": {},
         "sceneName": "Abyss_17",
+        "niceName": "Basin Grub Dive Floor",
         "logic": "Abyss_17[top1] + QUAKE + $CASTSPELL[before:ROOMSOUL]",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Abyss_17",
+                "x": 116.01,
+                "y": 13.08
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Cliffs_Dark_Room_Quake_Floor": "BREAKABLE_Cliffs04_QuakeFloor"
-        },
-        "niceName": "Joni's Dive Floor",
+        "logicOverrides": { "Broke_Cliffs_Dark_Room_Quake_Floor": "BREAKABLE_Cliffs04_QuakeFloor" },
+        "logicSubstitutions": {},
         "sceneName": "Cliffs_04",
+        "niceName": "Joni's Dive Floor",
         "logic": "Cliffs_04[right1] + (DARKROOMS | LANTERN) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Cliffs_04",
+                "x": 49.5512924,
+                "y": 50.08
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Goam_Entry_Quake_Floor": "BREAKABLE_Crossroads52_QuakeFloor"
-        },
-        "niceName": "Goam Journal Entry Dive Floor",
+        "logicOverrides": { "Broke_Goam_Entry_Quake_Floor": "BREAKABLE_Crossroads52_QuakeFloor" },
+        "logicSubstitutions": {},
         "sceneName": "Crossroads_52",
+        "niceName": "Goam Journal Entry Dive Floor",
         "logic": "Crossroads_52[left1] + QUAKE + $CASTSPELL[before:ITEMSOUL]",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Crossroads_52",
+                "x": 18.73,
+                "y": 57.99
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Lower_Edge_Quake_Floor": "BREAKABLE_DeepnestEast02_QuakeFloor"
-        },
-        "niceName": "Lower Edge Dive Floor",
-        "sceneName": "Deepnest_East_02",
-        "logic": "Deepnest_East_02 + QUAKE + $CASTSPELL[before:ROOMSOUL]",
+        "logicOverrides": { "Broke_Lower_Edge_Quake_Floor": "BREAKABLE_DeepnestEast02_QuakeFloor" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_02",
+        "niceName": "Lower Edge Dive Floor",
+        "logic": "Deepnest_East_02 + QUAKE + $CASTSPELL[before:ROOMSOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_02",
+                "x": 99.074,
+                "y": 14.084
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Oro_Quake_Floor_2": "BREAKABLE_DeepnestEast14_QuakeFloor1"
-        },
-        "niceName": "Oro Dive Floor Two",
-        "sceneName": "Deepnest_East_14",
-        "logic": "Deepnest_East_14[top2] + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_Oro_Quake_Floor_2": "BREAKABLE_DeepnestEast14_QuakeFloor1" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_14",
+        "niceName": "Oro Dive Floor Two",
+        "logic": "Deepnest_East_14[top2] + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_14",
+                "x": 140.1,
+                "y": 51.069
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor (2)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Oro_Quake_Floor_3": "BREAKABLE_DeepnestEast14_QuakeFloor2"
-        },
-        "niceName": "Oro Dive Floor Three",
-        "sceneName": "Deepnest_East_14",
-        "logic": "Deepnest_East_14[top2] + Broke_Oro_Quake_Floor_2 + (RIGHTCLAW | WINGS | LEFTCLAW + ENEMYPOGOS) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
+        "logicOverrides": { "Broke_Oro_Quake_Floor_3": "BREAKABLE_DeepnestEast14_QuakeFloor2" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_14",
+        "niceName": "Oro Dive Floor Three",
+        "logic": "Deepnest_East_14[top2] + Broke_Oro_Quake_Floor_2 + (RIGHTCLAW | WINGS | LEFTCLAW + ENEMYPOGOS) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_14",
+                "x": 89.23,
+                "y": 54.03
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Oro_Quake_Floor_1": "BREAKABLE_DeepnestEast16_QuakeFloor"
-        },
-        "niceName": "Oro Dive Floor",
-        "sceneName": "Deepnest_East_16",
-        "logic": "(Deepnest_East_16[left1] | Deepnest_East_16[bot1]) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
+        "logicOverrides": { "Broke_Oro_Quake_Floor_1": "BREAKABLE_DeepnestEast16_QuakeFloor" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_16",
+        "niceName": "Oro Dive Floor",
+        "logic": "(Deepnest_East_16[left1] | Deepnest_East_16[bot1]) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_16",
+                "x": 42.09,
+                "y": 2.712
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_1": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor"
-        },
-        "niceName": "420 Rock Dive Floor One",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_1": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor One",
+        "logic": "Deepnest_East_17[left1] + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": 3.22706985,
+                "y": 114.012573
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_2": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor1"
-        },
-        "niceName": "420 Rock Dive Floor Two",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_2": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor1" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Two",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": -14.296031,
+                "y": 97.01257
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (5)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_3": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor5"
-        },
-        "niceName": "420 Rock Dive Floor Three",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_3": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor5" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Three",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": -3.28,
+                "y": 85.012
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (9)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_4": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor9"
-        },
-        "niceName": "420 Rock Dive Floor Four",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_4": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor9" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Four",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": -3.28000069,
+                "y": 63.8
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (10)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_5": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor10"
-        },
-        "niceName": "420 Rock Dive Floor Five",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_5": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor10" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Five",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": -3.28000069,
+                "y": 37.87
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (2)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_6": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor2"
-        },
-        "niceName": "420 Rock Dive Floor Six",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_6": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor2" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Six",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": 8.23407,
+                "y": 10.0075684
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (3)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_7": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor3"
-        },
-        "niceName": "420 Rock Dive Floor Seven",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_7": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor3" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Seven",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": -13.2779312,
+                "y": -10.98793
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (8)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_8": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor8"
-        },
-        "niceName": "420 Rock Dive Floor Eight",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + Broke_420_Rock_Quake_Floor_7 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_8": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor8" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Eight",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + Broke_420_Rock_Quake_Floor_7 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": -13.29,
+                "y": -38.98
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (4)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_9": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor4"
-        },
-        "niceName": "420 Rock Dive Floor Nine",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + Broke_420_Rock_Quake_Floor_7 + Broke_420_Rock_Quake_Floor_8 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_9": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor4" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Nine",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + Broke_420_Rock_Quake_Floor_7 + Broke_420_Rock_Quake_Floor_8 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": 9.357069,
+                "y": -63.0585
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (6)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_10": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor6"
-        },
-        "niceName": "420 Rock Dive Floor Ten",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + Broke_420_Rock_Quake_Floor_7 + Broke_420_Rock_Quake_Floor_8 + Broke_420_Rock_Quake_Floor_9 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_10": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor6" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Ten",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + Broke_420_Rock_Quake_Floor_7 + Broke_420_Rock_Quake_Floor_8 + Broke_420_Rock_Quake_Floor_9 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": 9.357069,
+                "y": -94.91
+            }
+        ]
     },
     {
         "gameObject": "/quake floors/Quake Floor (7)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_420_Rock_Quake_Floor_11": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor7"
-        },
-        "niceName": "420 Rock Dive Floor Eleven",
-        "sceneName": "Deepnest_East_17",
-        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + Broke_420_Rock_Quake_Floor_7 + Broke_420_Rock_Quake_Floor_8 + Broke_420_Rock_Quake_Floor_9 + Broke_420_Rock_Quake_Floor_10 + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_420_Rock_Quake_Floor_11": "BREAKABLE_DeepnestEast17_quakefloorsQuakeFloor7" },
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_17",
+        "niceName": "420 Rock Dive Floor Eleven",
+        "logic": "Deepnest_East_17[left1] + Broke_420_Rock_Quake_Floor_1 + Broke_420_Rock_Quake_Floor_2 + Broke_420_Rock_Quake_Floor_3 + Broke_420_Rock_Quake_Floor_4 + Broke_420_Rock_Quake_Floor_5 + Broke_420_Rock_Quake_Floor_6 + Broke_420_Rock_Quake_Floor_7 + Broke_420_Rock_Quake_Floor_8 + Broke_420_Rock_Quake_Floor_9 + Broke_420_Rock_Quake_Floor_10 + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_17",
+                "x": 9.357069,
+                "y": -133.79
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor (2)",
         "fsmType": "quake_floor",
         "logicOverrides": {},
-        "niceName": "Edge Journal Dive Floor Exit",
-        "sceneName": "Deepnest_East_18",
-        "logic": "Broke_Edge_Journal_Quake_Floor + QUAKE + $CASTSPELL + (ANYCLAW | WINGS | Deepnest_East_18[top1]) + Deepnest_East_18",
         "logicSubstitutions": {},
+        "sceneName": "Deepnest_East_18",
+        "niceName": "Edge Journal Dive Floor Exit",
+        "logic": "Broke_Edge_Journal_Quake_Floor + QUAKE + $CASTSPELL + (ANYCLAW | WINGS | Deepnest_East_18[top1]) + Deepnest_East_18",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_18",
+                "x": 43.59,
+                "y": 18.72
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Edge_Journal_Quake_Floor": "BREAKABLE_DeepnestEast18_QuakeFloor2"
-        },
-        "niceName": "Edge Journal Dive Floor",
+        "logicOverrides": { "Broke_Edge_Journal_Quake_Floor": "BREAKABLE_DeepnestEast18_QuakeFloor2" },
+        "logicSubstitutions": {},
         "sceneName": "Deepnest_East_18",
+        "niceName": "Edge Journal Dive Floor",
         "logic": "Deepnest_East_18 + (ANYCLAW | WINGS | Deepnest_East_18[top1]) + QUAKE + $CASTSPELL",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_East_18",
+                "x": 43.38,
+                "y": 29.95
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Pilgrim's_Way_Quake_Floor": "BREAKABLE_Fungus221_QuakeFloor"
-        },
-        "niceName": "City to Fungal Dive Floor",
+        "logicOverrides": { "Broke_Pilgrim's_Way_Quake_Floor": "BREAKABLE_Fungus221_QuakeFloor" },
+        "logicSubstitutions": {},
         "sceneName": "Fungus2_21",
+        "niceName": "City to Fungal Dive Floor",
         "logic": "Fungus2_21[right1] + (FULLCLAW + (LEFTDASH | LEFTSUPERDASH) | ANYCLAW + WINGS) + QUAKE + $CASTSPELL[before:ITEMSOUL]",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Fungus2_21",
+                "x": 105.59,
+                "y": 39.079
+            }
+        ]
     },
     {
         "gameObject": "/_Scenery/mine_1_quake_floor",
         "fsmType": "Detect Quake",
-        "logicOverrides": {
-            "Broke_Crystal_Peak_Entrance_Quake_Floor": "BREAKABLE_Mines01_Scenerymine1quakefloor"
-        },
-        "niceName": "Peaks Entrance Dive Floor",
+        "logicOverrides": { "Broke_Crystal_Peak_Entrance_Quake_Floor": "BREAKABLE_Mines01_Scenerymine1quakefloor" },
+        "logicSubstitutions": {},
         "sceneName": "Mines_01",
+        "niceName": "Peaks Entrance Dive Floor",
         "logic": "Mines_01[left1] + QUAKE + $CASTSPELL",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Mines_01",
+                "x": 15.774,
+                "y": 46.947
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Crystal_Peak_Dive_Egg_Quake_Floor": "BREAKABLE_Mines20_QuakeFloor"
-        },
-        "niceName": "Peaks Egg Dive Floor",
+        "logicOverrides": { "Broke_Crystal_Peak_Dive_Egg_Quake_Floor": "BREAKABLE_Mines20_QuakeFloor" },
+        "logicSubstitutions": {},
         "sceneName": "Mines_20",
+        "niceName": "Peaks Egg Dive Floor",
         "logic": "Mines_20 + QUAKE + $CASTSPELL[before:ROOMSOUL]",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Mines_20",
+                "x": 12.83,
+                "y": 170.04
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Hallownest's_Crown_Quake_Floor": "BREAKABLE_Mines25_QuakeFloor"
-        },
-        "niceName": "Hallowneset's Crown Dive Floor",
-        "sceneName": "Mines_25",
-        "logic": "(Mines_25[left1] + (FULLCLAW | WINGS + ANYCLAW) | Mines_25[top1]) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
+        "logicOverrides": { "Broke_Hallownest's_Crown_Quake_Floor": "BREAKABLE_Mines25_QuakeFloor" },
         "logicSubstitutions": {},
+        "sceneName": "Mines_25",
+        "niceName": "Hallowneset's Crown Dive Floor",
+        "logic": "(Mines_25[left1] + (FULLCLAW | WINGS + ANYCLAW) | Mines_25[top1]) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Mines_25",
+                "x": 20.13004,
+                "y": 60.9589958
+            }
+        ]
     },
     {
         "gameObject": "/_Scenery/mine_1_quake_floor",
         "fsmType": "Detect Quake",
-        "logicOverrides": {
-            "Broke_Crystallized_Mound_Quake_Floor": "BREAKABLE_Mines35_Scenerymine1quakefloor"
-        },
-        "niceName": "Crystallized Mound Dive Floor",
-        "sceneName": "Mines_35",
-        "logic": "Mines_35[left1] + QUAKE + $CASTSPELL",
+        "logicOverrides": { "Broke_Crystallized_Mound_Quake_Floor": "BREAKABLE_Mines35_Scenerymine1quakefloor" },
         "logicSubstitutions": {},
+        "sceneName": "Mines_35",
+        "niceName": "Crystallized Mound Dive Floor",
+        "logic": "Mines_35[left1] + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Mines_35",
+                "x": 15.774,
+                "y": 46.947
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Resting_Grounds_Quake_Floor": "BREAKABLE_RestingGrounds05_QuakeFloor"
-        },
-        "niceName": "Resting Grounds Coffin Dive Floor",
-        "sceneName": "RestingGrounds_05",
-        "logic": "RestingGrounds_05 + QUAKE + $CASTSPELL",
+        "logicOverrides": { "Broke_Resting_Grounds_Quake_Floor": "BREAKABLE_RestingGrounds05_QuakeFloor" },
         "logicSubstitutions": {},
+        "sceneName": "RestingGrounds_05",
+        "niceName": "Resting Grounds Coffin Dive Floor",
+        "logic": "RestingGrounds_05 + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "RestingGrounds_05",
+                "x": 34.412,
+                "y": 3.281
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass (2)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Sanctum_Glass_Floor": "BREAKABLE_Ruins130_QuakeFloorGlass2"
-        },
+        "logicOverrides": { "Broke_Sanctum_Glass_Floor": "BREAKABLE_Ruins130_QuakeFloorGlass2" },
+        "logicSubstitutions": {},
+        "sceneName": "Ruins1_30",
         "niceName": "Sanctum to Soul Warrior Dive Floor",
-        "sceneName": "Ruins1_30",
         "logic": "Ruins1_30 + QUAKE + $CASTSPELL",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_30",
+                "x": 58.0781975,
+                "y": 1.332
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Sanctum_Escape_Quake_Floor_1": "BREAKABLE_Ruins130_QuakeFloorGlass1"
-        },
+        "logicOverrides": { "Broke_Sanctum_Escape_Quake_Floor_1": "BREAKABLE_Ruins130_QuakeFloorGlass1" },
+        "logicSubstitutions": {},
+        "sceneName": "Ruins1_30",
         "niceName": "Sanctum Escape Quake Floor One",
-        "sceneName": "Ruins1_30",
         "logic": "Ruins1_30[left2] + (LEFTCLAW | RIGHTCLAW + BACKGROUNDPOGOS | WINGS) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_30",
+                "x": 22.49,
+                "y": 8.39
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Sanctum_Escape_Quake_Floor_2": "BREAKABLE_Ruins130_QuakeFloorGlass"
-        },
-        "niceName": "Santcum Escape Quake Floor Two",
+        "logicOverrides": { "Broke_Sanctum_Escape_Quake_Floor_2": "BREAKABLE_Ruins130_QuakeFloorGlass" },
+        "logicSubstitutions": {},
         "sceneName": "Ruins1_30",
+        "niceName": "Santcum Escape Quake Floor Two",
         "logic": "Ruins1_30[left2] + Broke_Sanctum_Escape_Quake_Floor_1 + (LEFTCLAW | RIGHTCLAW + BACKGROUNDPOGOS | WINGS) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_30",
+                "x": 22.49,
+                "y": 17.01
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Quake_Floor_After_Soul_Master_1": "BREAKABLE_Ruins132_QuakeFloorGlass"
-        },
-        "niceName": "Dive Floor After Soul Master One",
-        "sceneName": "Ruins1_32",
-        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_Quake_Floor_After_Soul_Master_1": "BREAKABLE_Ruins132_QuakeFloorGlass" },
         "logicSubstitutions": {},
+        "sceneName": "Ruins1_32",
+        "niceName": "Dive Floor After Soul Master One",
+        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_32",
+                "x": 27.75,
+                "y": 75.331
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Quake_Floor_After_Soul_Master_2": "BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2 + BREAKABLE_Ruins132_QuakeFloorGlass3"
-        },
-        "niceName": "Dive Floor After Soul Master Two",
+        "logicOverrides": { "Broke_Quake_Floor_After_Soul_Master_2": "BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2 + BREAKABLE_Ruins132_QuakeFloorGlass3" },
+        "logicSubstitutions": { "Hallownest_Seal-Soul_Sanctum": { "Broke_Quake_Floor_After_Soul_Master_2": "BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2" } },
         "sceneName": "Ruins1_32",
+        "niceName": "Dive Floor After Soul Master Two",
         "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1",
-        "logicSubstitutions": {
-            "Hallownest_Seal-Soul_Sanctum": { "Broke_Quake_Floor_After_Soul_Master_2": "BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2" }
-        },
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_32",
+                "x": 22.478,
+                "y": 55.329
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Quake_Floor_After_Soul_Master_3": "BREAKABLE_Ruins132_QuakeFloor1"
-        },
-        "niceName": "Grub Dive Floor After Soul Master",
-        "sceneName": "Ruins1_32",
-        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1",
+        "logicOverrides": { "Broke_Quake_Floor_After_Soul_Master_3": "BREAKABLE_Ruins132_QuakeFloor1" },
         "logicSubstitutions": {},
+        "sceneName": "Ruins1_32",
+        "niceName": "Grub Dive Floor After Soul Master",
+        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_32",
+                "x": 12.09,
+                "y": 46.04
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass (2)",
         "fsmType": "quake_floor",
         "logicOverrides": {},
-        "niceName": "Sanctum Dive Floor to Journal",
-        "sceneName": "Ruins1_32",
-        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1 + BREAKABLE_Ruins132_QuakeFloorGlass1",
         "logicSubstitutions": {},
+        "sceneName": "Ruins1_32",
+        "niceName": "Sanctum Dive Floor to Journal",
+        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1 + BREAKABLE_Ruins132_QuakeFloorGlass1",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_32",
+                "x": 22.478,
+                "y": 46.325
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Sanctum_Geo_Rock_Quake_Floor": "BREAKABLE_Ruins132_QuakeFloor"
-        },
-        "niceName": "Sanctum Hidden Geo Rock Dive Floor",
-        "sceneName": "Ruins1_32",
-        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:AREASOUL]",
+        "logicOverrides": { "Broke_Sanctum_Geo_Rock_Quake_Floor": "BREAKABLE_Ruins132_QuakeFloor" },
         "logicSubstitutions": {},
+        "sceneName": "Ruins1_32",
+        "niceName": "Sanctum Hidden Geo Rock Dive Floor",
+        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_32",
+                "x": 41.15,
+                "y": 106.079
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass (3)",
         "fsmType": "quake_floor",
         "logicOverrides": {},
-        "niceName": "Sanctum Dive Floor to Lever",
-        "sceneName": "Ruins1_32",
-        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1 + BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2",
         "logicSubstitutions": {},
+        "sceneName": "Ruins1_32",
+        "niceName": "Sanctum Dive Floor to Lever",
+        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1 + BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_32",
+                "x": 22.478,
+                "y": 34.328
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass (4)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Quake_Floor_After_Soul_Master_4": "BREAKABLE_Ruins132_QuakeFloorGlass4"
-        },
-        "niceName": "Dive Floor Four After Soul Master",
-        "sceneName": "Ruins1_32",
-        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_3 + Broke_Quake_Floor_After_Soul_Master_1",
+        "logicOverrides": { "Broke_Quake_Floor_After_Soul_Master_4": "BREAKABLE_Ruins132_QuakeFloorGlass4" },
         "logicSubstitutions": {},
+        "sceneName": "Ruins1_32",
+        "niceName": "Dive Floor Four After Soul Master",
+        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_3 + Broke_Quake_Floor_After_Soul_Master_1",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_32",
+                "x": 11.981,
+                "y": 22.332
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor Glass",
         "fsmType": "quake_floor",
         "logicOverrides": {},
-        "niceName": "Watcher's Spire Dive Floor",
+        "logicSubstitutions": {},
         "sceneName": "Ruins2_01_b",
+        "niceName": "Watcher's Spire Dive Floor",
         "logic": "Ruins2_01_b",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Ruins2_01_b",
+                "x": 38.15,
+                "y": 22.54
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Waterways_Bench_Quake_Floor_3": "BREAKABLE_Waterways02_QuakeFloor1"
-        },
+        "logicOverrides": { "Broke_Waterways_Bench_Quake_Floor_3": "BREAKABLE_Waterways02_QuakeFloor1" },
+        "logicSubstitutions": {},
+        "sceneName": "Waterways_02",
         "niceName": "Waterways Dive Floor Directly Above Bench",
-        "sceneName": "Waterways_02",
         "logic": "Waterways_02[top3] + QUAKE + $CASTSPELL",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Waterways_02",
+                "x": 10.05,
+                "y": 31.21
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Flukemarm_Quake_Floor": "BREAKABLE_Waterways02_QuakeFloor"
-        },
-        "niceName": "Waterways Flukemarm Dive Floor",
+        "logicOverrides": { "Broke_Flukemarm_Quake_Floor": "BREAKABLE_Waterways02_QuakeFloor" },
+        "logicSubstitutions": {},
         "sceneName": "Waterways_02",
+        "niceName": "Waterways Flukemarm Dive Floor",
         "logic": "Waterways_02[bot1] | (Waterways_02[top1] | Waterways_02[top2] + (ANYCLAW | WINGS | SWIM) | Waterways_02[top3] + Broke_Waterways_Bench_Quake_Floor_3 | Waterways_02[bot1] | Waterways_02[bot2] + (ANYCLAW | WINGS | SWIM)) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
-        "logicSubstitutions": {},
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Waterways_02",
+                "x": 9.02,
+                "y": 2.86
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Waterways_Bench_Quake_Floor_1": "BREAKABLE_Waterways04_QuakeFloor"
-        },
-        "niceName": "Waterways Bench Dive One",
-        "sceneName": "Waterways_04",
-        "logic": "(Waterways_04[right1] | Waterways_04[left1] + (RIGHTCLAW | WINGS | ENEMYPOGOS) | Waterways_04[left2] + (RIGHTCLAW | WINGS + ENEMYPOGOS) + (SWIM | RIGHTSKIPACID)) + QUAKE + $CASTSPELL",
+        "logicOverrides": { "Broke_Waterways_Bench_Quake_Floor_1": "BREAKABLE_Waterways04_QuakeFloor" },
         "logicSubstitutions": {},
+        "sceneName": "Waterways_04",
+        "niceName": "Waterways Bench Dive One",
+        "logic": "(Waterways_04[right1] | Waterways_04[left1] + (RIGHTCLAW | WINGS | ENEMYPOGOS) | Waterways_04[left2] + (RIGHTCLAW | WINGS + ENEMYPOGOS) + (SWIM | RIGHTSKIPACID)) + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Waterways_04",
+                "x": 146.06,
+                "y": 17.0
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Waterways_Bench_Quake_Floor_2": "BREAKABLE_Waterways04_QuakeFloor1 + Broke_Waterways_Bench_Quake_Floor_1"
-        },
-        "niceName": "Waterways Bench Dive Two",
-        "sceneName": "Waterways_04",
-        "logic": "Waterways_04[bot1] | (Waterways_04[right1] | Waterways_04[left1] + (RIGHTCLAW | WINGS | ENEMYPOGOS) | Waterways_04[left2] + (RIGHTCLAW | WINGS + ENEMYPOGOS) + (SWIM | RIGHTSKIPACID)) + Broke_Waterways_Bench_Quake_Floor_1 + QUAKE + $CASTSPELL",
+        "logicOverrides": { "Broke_Waterways_Bench_Quake_Floor_2": "BREAKABLE_Waterways04_QuakeFloor1 + Broke_Waterways_Bench_Quake_Floor_1" },
         "logicSubstitutions": {},
+        "sceneName": "Waterways_04",
+        "niceName": "Waterways Bench Dive Two",
+        "logic": "Waterways_04[bot1] | (Waterways_04[right1] | Waterways_04[left1] + (RIGHTCLAW | WINGS | ENEMYPOGOS) | Waterways_04[left2] + (RIGHTCLAW | WINGS + ENEMYPOGOS) + (SWIM | RIGHTSKIPACID)) + Broke_Waterways_Bench_Quake_Floor_1 + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Waterways_04",
+                "x": 146.06,
+                "y": 0.42
+            }
+        ]
     },
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": {
-            "Broke_Dung_Defender_Quake_Floor": "BREAKABLE_Waterways05_QuakeFloor"
-        },
-        "niceName": "",
-        "sceneName": "Waterways_05",
-        "logic": "Waterways_05[bot2] | (Waterways_05[right1] | Waterways_05[bot1] + (ANYCLAW | WINGS) + Defeated_Dung_Defender) + QUAKE + $CASTSPELL",
+        "logicOverrides": { "Broke_Dung_Defender_Quake_Floor": "BREAKABLE_Waterways05_QuakeFloor" },
         "logicSubstitutions": {},
+        "sceneName": "Waterways_05",
+        "niceName": "",
+        "logic": "Waterways_05[bot2] | (Waterways_05[right1] | Waterways_05[bot1] + (ANYCLAW | WINGS) + Defeated_Dung_Defender) + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
-        "mapLocations": []
+        "mapLocations": [
+            {
+                "sceneName": "Waterways_05",
+                "x": 104.12,
+                "y": 5.08
+            }
+        ]
     }
 ]

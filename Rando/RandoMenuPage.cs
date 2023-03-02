@@ -26,7 +26,7 @@ namespace BreakableWallRandomiser.Rando
         public int DiveFloorGroup = -1;
 
         [Newtonsoft.Json.JsonIgnore]
-        public bool AnyWalls => RandomizeBreakableRockWalls || RandomizeBreakableWoodenPlankWalls;
+        public bool AnyWalls => RandomizeBreakableRockWalls || RandomizeBreakableWoodenPlankWalls || RandomizeDiveFloors;
     }
 
     public class RandoMenuPage

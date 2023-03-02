@@ -32,6 +32,7 @@ namespace BreakableWallRandomiser.IC
                 public float x;
                 public float y;
 
+                [Newtonsoft.Json.JsonIgnore]
                 public (string, float, float) repr => (sceneName, x, y);
             }
 
