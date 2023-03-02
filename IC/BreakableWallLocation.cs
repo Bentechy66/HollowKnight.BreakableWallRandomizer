@@ -49,7 +49,13 @@ namespace BreakableWallRandomiser.IC
             foreach (var sprite in go.GetComponents<SpriteRenderer>())
             {
                 Color tmp = sprite.color;
-                tmp.a = 0.7f;
+                if (fsmType == "Detect Quake" || fsmType == "quake_floor")
+                {
+                    tmp.a = 0.4f;
+                } else
+                {
+                    tmp.a = 0.5f;
+                }
                 sprite.color = tmp;
 
                 if (sprite.sprite && sprite.sprite.name.StartsWith("msk"))

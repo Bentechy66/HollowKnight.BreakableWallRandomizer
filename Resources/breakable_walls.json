@@ -2578,7 +2578,7 @@
         "logicOverrides": { "Broke_Dung_Defender_Quake_Floor": "BREAKABLE_Waterways05_QuakeFloor" },
         "logicSubstitutions": {},
         "sceneName": "Waterways_05",
-        "niceName": "",
+        "niceName": "Dung Defender Dive Floor",
         "logic": "Waterways_05[bot2] | (Waterways_05[right1] | Waterways_05[bot1] + (ANYCLAW | WINGS) + Defeated_Dung_Defender) + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
