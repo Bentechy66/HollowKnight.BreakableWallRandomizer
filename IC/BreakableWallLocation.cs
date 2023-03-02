@@ -10,6 +10,7 @@ using ItemChanger.Util;
 using static ItemChanger.Internal.SpriteManager;
 using UnityEngine;
 using HutongGames.PlayMaker.Actions;
+using HutongGames.PlayMaker;
 
 namespace BreakableWallRandomiser.IC
 {
@@ -74,13 +75,34 @@ namespace BreakableWallRandomiser.IC
             if (fsmType == "break_floor" || fsmType == "FSM")
             {
                 fsm.ChangeTransition("Initiate", "ACTIVATE", "Idle");
-            } else if (fsmType == "breakable_wall_v2")
+            }
+            else if (fsmType == "breakable_wall_v2")
             {
                 fsm.ChangeTransition("Activated?", "ACTIVATE", "Ruin Lift?");
+            } else if (fsmType == "quake_floor")
+            {
+                fsm.ChangeTransition("Init", "ACTIVATE", "Solid");
+                fsm.RemoveAction("Transient", 0); // Sets the floor to a trigger
+                if (fsm.GetState("Solid").GetActions<SetBoxColliderTrigger>().Length >= 1)
+                {
+                    fsm.RemoveAction("Solid", 0); // Sets the floor to a triggern't
+                }
+
+                var collider = fsm.gameObject.GetComponent<BoxCollider2D>();
+                collider.isTrigger = true; // Make the first collider always a trigger
+
+                // Add our own collider for physics collision.
+                var newCollider = fsm.gameObject.AddComponent<BoxCollider2D>();
+                newCollider.offset = collider.offset;
+                newCollider.size = collider.size;
+            } else if (fsmType == "Detect Quake")
+            {
+                fsm.ChangeTransition("Init", "ACTIVATE", "Detect");
             }
 
             fsm.AddState("GiveItem");
-            fsm.AddCustomAction("GiveItem", () => {
+            fsm.AddCustomAction("GiveItem", () =>
+            {
                 ItemUtility.GiveSequentially(Placement.Items, Placement, new GiveInfo()
                 {
                     FlingType = FlingType.Everywhere,
@@ -92,7 +114,9 @@ namespace BreakableWallRandomiser.IC
                 if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
                 {
                     // Delete the wall entirely.
-                    fsm.SetState("Break");
+                    if (fsmType == "quake_floor") { fsm.SetState("Destroy"); }
+                    else if (fsmType == "Detect Quake") { fsm.SetState("Break 2"); }
+                    else { fsm.SetState("Break"); }
                 }
             });
 
@@ -103,13 +127,25 @@ namespace BreakableWallRandomiser.IC
                 if (Placement.Items.Any(x => !x.IsObtained()))
                 {
                     MakeWallPassable(fsm.gameObject);
-                } else
+                }
+                else
                 {
                     // Ensure the wall deletes on-load.
-                    fsm.ChangeTransition("Initiate", "FINISHED", "Activated");
-                    fsm.ChangeTransition("Initiate", "ACTIVATE", "Activated");
+                    if (fsmType == "quake_floor")
+                    {
+                        fsm.ChangeTransition("Init", "FINISHED", "Activate");
+                        fsm.ChangeTransition("Init", "ACTIVATE", "Activate");
+                    } else if (fsmType == "Detect Quake") {
+                        fsm.ChangeTransition("Init", "ACTIVATE", "Activate !!!");
+                        fsm.ChangeTransition("Init", "FINISHED", "Activate !!!");
+                    } else
+                    {
+                        fsm.ChangeTransition("Initiate", "FINISHED", "Activated");
+                        fsm.ChangeTransition("Initiate", "ACTIVATE", "Activated");
+                    }
                 }
-            } else
+            }
+            else
             // If we didn't unlock this door yet...
             {
                 // ...and we already obtained the item at this location, set the wall to an unhittable state:
@@ -120,10 +156,28 @@ namespace BreakableWallRandomiser.IC
                 // ...and there are items left to collect:
                 else
                 {
-                    // Copy sound and particles from original
-                    foreach (var action in fsm.GetState("Break").Actions)
+                    var originalIdleStateName = fsmType switch
                     {
-                        if (action is AudioPlayerOneShotSingle or PlayParticleEmitter)
+                        "quake_floor" => "Solid",
+
+                        "Detect Quake" => "Detect",
+
+                        _ => "Idle"
+                    };
+
+                    // Copy sound and particles from original
+                    var originalBreakStateName = fsmType switch
+                    {
+                        "quake_floor" => "Glass",
+
+                        "Detect Quake" => "Break 2",
+
+                        _ => "Break"
+                    };
+
+                    foreach (var action in fsm.GetState(originalBreakStateName).Actions)
+                    {
+                        if (action is AudioPlayerOneShotSingle or PlayParticleEmitter or AudioPlayerOneShot)
                         {
                             fsm.AddAction("GiveItem", action);
                         }
@@ -134,14 +188,17 @@ namespace BreakableWallRandomiser.IC
 
                     fsm.AddState("BreakSameScene");
 
-                    fsm.InsertCustomAction("BreakSameScene", () => {
+                    fsm.InsertCustomAction("BreakSameScene", () =>
+                    {
                         if (Placement.Items.Any(x => !x.IsObtained()))
                         {
                             MakeWallPassable(fsm.gameObject);
-                            fsm.SetState("Idle");
-                        } else
+                            fsm.SetState(originalIdleStateName);
+                        }
+                        else
                         {
-                            fsm.SetState("Break");
+                            if (fsmType == "quake_floor") { MakeWallPassable(fsm.gameObject); } // ensure everything is passable.
+                            fsm.SetState(originalBreakStateName);
                         }
 
                         Placement.AddVisitFlag(VisitState.Opened);
@@ -149,16 +206,25 @@ namespace BreakableWallRandomiser.IC
                 }
             }
 
-            if (fsmType == "breakable_wall_v2") { 
-                fsm.ChangeTransition("PD Bool?", "FINISHED", "GiveItem"); 
-            } else if (fsmType == "FSM")
+            if (fsmType == "breakable_wall_v2")
+            {
+                fsm.ChangeTransition("PD Bool?", "FINISHED", "GiveItem");
+            }
+            else if (fsmType == "FSM")
             {
                 fsm.ChangeTransition("Pause Frame", "FINISHED", "GiveItem");
                 fsm.ChangeTransition("Spell Destroy", "FINISHED", "GiveItem");
-            } else if (fsmType == "break_floor")
+            }
+            else if (fsmType == "break_floor")
             {
                 fsm.ChangeTransition("Hit", "HIT 3", "GiveItem");
-            } 
+            } else if (fsmType == "quake_floor")
+            {
+                fsm.ChangeTransition("PD Bool?", "FINISHED", "GiveItem");
+            } else if (fsmType == "Detect Quake")
+            {
+                fsm.ChangeTransition("Quake Hit", "FINISHED", "GiveItem");
+            }
         }
     }
 }

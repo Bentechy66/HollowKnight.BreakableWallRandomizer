@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,10 +58,11 @@ namespace BreakableWallRandomiser.IC
             public string getGroupName() => WALL_GROUPS[fsmType].Item1;
             public bool shouldBeIncluded()
             {
-                if (!BreakableWallRandomiser.settings.Any) { return false; }
+                if (!BreakableWallRandomiser.settings.AnyWalls && !BreakableWallRandomiser.settings.RandomizeDiveFloors) { return false; }
 
                 if ((fsmType == "FSM" || fsmType == "breakable_wall_v2") && !BreakableWallRandomiser.settings.RandomizeBreakableRockWalls) { return false; }
                 if (fsmType == "break_floor" && !BreakableWallRandomiser.settings.RandomizeBreakableWoodenPlankWalls) { return false; }
+                if ((fsmType == "quake_floor" || fsmType == "Detect Quake") && !BreakableWallRandomiser.settings.RandomizeDiveFloors) { return false; }
 
                 if (requiredSetting == null) { return true; }
 
@@ -84,6 +85,9 @@ namespace BreakableWallRandomiser.IC
             { "FSM", ("Breakable Planks Walls", () => BreakableWallRandomiser.settings.WoodenPlankWallGroup ) },
 
             { "breakable_wall_v2", ("Breakable Rock Walls", () => BreakableWallRandomiser.settings.RockWallGroup ) },
+
+            { "quake_floor", ("Desolate Dive Floors", () => BreakableWallRandomiser.settings.DiveFloorGroup ) },
+            { "Detect Quake", ("Desolate Dive Floors", () => BreakableWallRandomiser.settings.DiveFloorGroup ) },
         };
 
         private static Dictionary<string, ItemGroupBuilder> definedGroups = new();
@@ -172,7 +176,7 @@ namespace BreakableWallRandomiser.IC
         {
             try
             {
-                if (!BreakableWallRandomiser.settings.Any) { return; }
+                if (!BreakableWallRandomiser.settings.AnyWalls) { return; }
 
                 (string westBlueLakeName, RandomizerMod.RandomizerData.StartDef westBlueLakeStart)
                         = startDefs.First(pair => pair.Value.SceneName == SceneNames.Crossroads_50);
@@ -277,7 +281,7 @@ namespace BreakableWallRandomiser.IC
                 if (wall.shouldBeIncluded()) {
                     rb.AddItemByName(wall.getItemName());
                     rb.AddLocationByName(wall.getLocationName());
-                } else if (BreakableWallRandomiser.settings.Any)
+                } else if (BreakableWallRandomiser.settings.AnyWalls)
                 {
                     rb.AddToVanilla(new(wall.getItemName(), wall.getLocationName()));
                 }
@@ -289,7 +293,7 @@ namespace BreakableWallRandomiser.IC
             foreach (var wall in wallData)
             {
                 // Always define terms, unless all options are off.
-                if (!BreakableWallRandomiser.settings.Any) { continue; }
+                if (!BreakableWallRandomiser.settings.AnyWalls) { continue; }
 
                 Term wallTerm = lmb.GetOrAddTerm(wall.getTermName());
                 lmb.AddItem(new SingleItem(wall.getItemName(), new TermValue(wallTerm, 1)));

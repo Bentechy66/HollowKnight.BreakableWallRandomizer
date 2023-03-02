@@ -12,15 +12,21 @@ namespace BreakableWallRandomiser.Rando
     {
         public bool RandomizeBreakableWoodenPlankWalls = true;
         public bool RandomizeBreakableRockWalls = true;
-        
+        public bool RandomizeDiveFloors = true;
+
         public bool RandomizeTutorialBreakableFloor = false;
 
         [MenuChanger.Attributes.MenuRange(-1, 99)]
         public int WoodenPlankWallGroup = -1;
+
+        [MenuChanger.Attributes.MenuRange(-1, 99)]
         public int RockWallGroup = -1;
 
+        [MenuChanger.Attributes.MenuRange(-1, 99)]
+        public int DiveFloorGroup = -1;
+
         [Newtonsoft.Json.JsonIgnore]
-        public bool Any => RandomizeBreakableRockWalls || RandomizeBreakableWoodenPlankWalls;
+        public bool AnyWalls => RandomizeBreakableRockWalls || RandomizeBreakableWoodenPlankWalls;
     }
 
     public class RandoMenuPage
