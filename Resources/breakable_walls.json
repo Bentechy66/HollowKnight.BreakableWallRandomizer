@@ -1057,7 +1057,7 @@
         "logicSubstitutions": {},
         "sceneName": "Fungus2_29",
         "niceName": "Fungal Core Shortcut",
-        "logic": "Fungus2_29[right1]",
+        "logic": "Fungus2_29[right1] + WINGS + ANYCLAW",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "grass_break_wall_0deg",
