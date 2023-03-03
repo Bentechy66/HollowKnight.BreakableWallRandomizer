@@ -20,7 +20,7 @@ namespace BreakableWallRandomiser
         public static WallRandoSettings settings = new WallRandoSettings();
 
         new public string GetName() => "Breakable Wall Randomizer";
-        public override string GetVersion() => "v2_RC2";
+        public override string GetVersion() => "1.0.0.0";
         public override void Initialize()
         {
             Log("Initializing...");

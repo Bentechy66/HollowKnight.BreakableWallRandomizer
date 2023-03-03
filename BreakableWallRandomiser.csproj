@@ -15,8 +15,8 @@
     <Product>BreakableWallRandomiser</Product>
     <Description>A Hollow Knight Mod</Description>
     <Copyright>Copyright ©  2023</Copyright>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
@@ -64,7 +64,19 @@
   </Target>
 
   <ItemGroup>
+    <None Remove="Resources\Sprites\ancient_wall_pieces_0000_a_294deg.png" />
+    <None Remove="Resources\Sprites\ancient_wall_pieces_0000_a_deep_quake_269deg.png" />
     <None Remove="Resources\Sprites\break_floor.png" />
+    <None Remove="Resources\Sprites\break_floor_glass.png" />
+    <None Remove="Resources\Sprites\ext_0002_hive_break_1_12deg.png" />
+    <None Remove="Resources\Sprites\fungd_mush_01_0001_a_break_floor_270deg.png" />
+    <None Remove="Resources\Sprites\gg_break_wall_nailsmith_269deg.png" />
+    <None Remove="Resources\Sprites\gg_grate_break_0deg.png" />
+    <None Remove="Resources\Sprites\mage_lord_room_0003_floor_wing_0deg.png" />
+    <None Remove="Resources\Sprites\one_way_fung_266deg.png" />
+    <None Remove="Resources\Sprites\roof_05_351deg.png" />
+    <None Remove="Resources\Sprites\shaman_one_way_270deg.png" />
+    <None Remove="Resources\Sprites\_0017_waterway_arch_break wall_0deg.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
