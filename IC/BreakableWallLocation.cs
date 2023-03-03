@@ -34,10 +34,26 @@ namespace BreakableWallRandomiser.IC
             Events.RemoveFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
         }
 
+        private void MakeWallPassable(GameObject go)
+        {
+            if (wallData.alsoDestroy != null)
+            {
+                foreach (var objectName in wallData.alsoDestroy)
+                {
+                    try
+                    {
+                        var obj = GameObject.Find(objectName);
+                        GameObject.Destroy(obj);
+                    } catch { }
+                }
+            }
+            Recursive_MakeWallPassable(go);
+        }
+
         // Recursively set all colliders as triggers on a given gameObject.
         // Also recursively set any SpriteRenderers on a given gameObject to 0.5 alpha.
         // Also remove any object called "Camera lock" or any textures beginning with msk_. 
-        private void MakeWallPassable(GameObject go)
+        private void Recursive_MakeWallPassable(GameObject go)
         {
             foreach (var collider in go.GetComponents<Collider2D>())
             {
@@ -64,7 +80,7 @@ namespace BreakableWallRandomiser.IC
                 }
             }
 
-            if (go.name == "Camera Locks")
+            if (go.name.Contains("Camera"))
             {
                 UnityEngine.GameObject.Destroy(go);
             }

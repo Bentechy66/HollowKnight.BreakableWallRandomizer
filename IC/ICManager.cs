@@ -50,6 +50,7 @@ namespace BreakableWallRandomiser.IC
             public string requiredSetting;
             public string sprite;
             public List<RelativeMapLocation> mapLocations;
+            public List<string> alsoDestroy;
 
             public string cleanGameObjectPath() => rgx.Replace(gameObject, "");
             public string cleanSceneName() => rgx.Replace(sceneName, "");
