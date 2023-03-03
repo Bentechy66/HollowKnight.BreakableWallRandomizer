@@ -74,7 +74,7 @@
                 "y": 15.6466045
             }
         ],
-        "alsoDestroy": ["/Secret Mask (1)"]
+        "alsoDestroy": [ "/Secret Mask (1)" ]
     },
     {
         "gameObject": "/One Way Wall",
@@ -118,6 +118,25 @@
         "mapLocations": [
             {
                 "sceneName": "Cliffs_01",
+                "x": 109.91,
+                "y": 31.54
+            }
+        ]
+    },
+    {
+        "gameObject": "/break wall bits/One Way Wall",
+        "fsmType": "break_floor",
+        "logicOverrides": { "Ruins1_04[bot1]": "(ORIG) | BREAKABLE_Ruins104_breakwallbitsOneWayWall + Ruins1_04[right1]" },
+        "logicSubstitutions": {},
+        "sceneName": "Ruins1_04",
+        "niceName": "Godhome Shortcut Near Nailsmith",
+        "logic": "Ruins1_04[bot1] | BREAKABLE_Ruins104_breakwallbitsOneWayWall + Ruins1_04[right1]",
+        "persistentBool": "",
+        "requiredSetting": null,
+        "sprite": "ancient_wall_cliffs_270deg",
+        "mapLocations": [
+            {
+                "sceneName": "Ruins1_04",
                 "x": 109.91,
                 "y": 31.54
             }
@@ -283,6 +302,26 @@
         ]
     },
     {
+        "gameObject": "/Breakable Grate",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {},
+        "logicSubstitutions": {},
+        "sceneName": "Room_GG_Shortcut",
+        "niceName": "Fluke Hermit Wall",
+        "logic": "(Room_GG_Shortcut[top1] | Room_GG_Shortcut[left1] + (LEFTCLAW + WINGS | RIGHTCLAW) + (RIGHTCLAW + WINGS | (WINGS + LEFTDASH | WINGS + LEFTSUPERDASH | SWIM) + (RIGHTCLAW + (RIGHTDASH | LEFTCLAW + (RIGHTSUPERDASH | ENEMYPOGOS))) | LEFTCLAW + RIGHTDASH + WINGS + PRECISEMOVEMENT)) + (SWIM | (FULLCLAW + RIGHTSUPERDASH + ACIDSKIPS))",
+        "persistentBool": "",
+        "requiredSetting": null,
+        "sprite": "sil_break_wall_01_90deg",
+        "mapLocations": [
+            {
+                "sceneName": "Crossroads_07",
+                "x": 34.4,
+                "y": 92.95
+            }
+        ],
+        "_TODO": "Patch Fluke Hermit logic for LoreMaster"
+    },
+    {
         "gameObject": "/Break Floor 1",
         "fsmType": "break_floor",
         "logicOverrides": {},
@@ -443,7 +482,7 @@
         "logicOverrides": {
             "Deepnest_02[right1]": "(ORIG) + BREAKABLE_Deepnest02_BreakableWall"
         },
-        "logicSubstitutions": { },
+        "logicSubstitutions": {},
         "sceneName": "Deepnest_02",
         "niceName": "Deepnest Mimic Room Wall",
         "logic": "Deepnest_02[left1] | (Deepnest_02[left2] + ANYCLAW) | (Deepnest_02[right1] + BREAKABLE_Deepnest02_BreakableWall)",
@@ -634,6 +673,26 @@
                 "y": 85.151
             }
         ]
+    },
+    {
+        "gameObject": "/Breakable Wall",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {},
+        "logicSubstitutions": {},
+        "sceneName": "Deepnest_41",
+        "niceName": "Deepnest Midwife Wall",
+        "logic": "Deepnest_41[left1] + (LANTERN | DARKROOMS)",
+        "persistentBool": "",
+        "requiredSetting": null,
+        "sprite": "collapser_short_0deg",
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_41",
+                "x": 83.48,
+                "y": 85.151
+            }
+        ],
+        "_TODO": "Patch midwife logic in loremaster"
     },
     {
         "gameObject": "/One Way Wall (2)",
@@ -962,6 +1021,49 @@
         "mapLocations": [
             {
                 "sceneName": "Fungus1_22",
+                "x": 16.09,
+                "y": 114.11
+            }
+        ]
+    },
+    {
+        "gameObject": "/Breakable Wall",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": { "Fungus1_12[left1]": "(ORIG) + BREAKABLE_Fungus112_BreakableWall" },
+        "logicSubstitutions": {},
+        "sceneName": "Fungus1_12",
+        "niceName": "Greenpath Breakable Wall Near QG",
+        "logic": "Fungus1_12[right1]",
+        "persistentBool": "",
+        "requiredSetting": null,
+        "sprite": "grass_break_wall_0deg",
+        "mapLocations": [
+            {
+                "sceneName": "Fungus1_12",
+                "x": 16.09,
+                "y": 114.11
+            }
+        ]
+    },
+    {
+        "gameObject": "/Break Floor 1",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {
+            "Rancid_Egg-Fungal_Core": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + LEFTCLAW",
+            "Geo_Rock-Fungal_Core_Entrance": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + LEFTCLAW",
+            "Soul_Totem-Fungal_Core": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + LEFTCLAW",
+            "Fungus2_29[bot1]": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1]"
+        },
+        "logicSubstitutions": {},
+        "sceneName": "Fungus2_29",
+        "niceName": "Fungal Core Shortcut",
+        "logic": "Fungus2_29[right1]",
+        "persistentBool": "",
+        "requiredSetting": null,
+        "sprite": "grass_break_wall_0deg",
+        "mapLocations": [
+            {
+                "sceneName": "Fungus1_12",
                 "x": 16.09,
                 "y": 114.11
             }
@@ -1576,6 +1678,27 @@
         ]
     },
     {
+        "gameObject": "/Breakable Wall_Silhouette",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {
+            "Room_Colosseum_Spectate[right1]": "(ORIG) + BREAKABLE_RoomColosseumSpectate_BreakableWallSilhouette"
+        },
+        "logicSubstitutions": {},
+        "sceneName": "Room_Colosseum_Spectate",
+        "niceName": "Colosseum Pale Lurker Wall",
+        "logic": "Room_Colosseum_Spectate[bot1]",
+        "persistentBool": "",
+        "requiredSetting": null,
+        "sprite": "col_break_wall_0deg",
+        "mapLocations": [
+            {
+                "sceneName": "Room_Colosseum_Spectate",
+                "x": 140.46,
+                "y": 42.84
+            }
+        ]
+    },
+    {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
         "logicOverrides": {},
@@ -1812,6 +1935,27 @@
         ]
     },
     {
+        "gameObject": "/Breakable Wall Waterways",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {
+            "Waterways_08[left2]": "(ORIG) + BREAKABLE_Waterways08_BreakableWallWaterways"
+        },
+        "logicSubstitutions": {},
+        "sceneName": "Waterways_08",
+        "niceName": "Waterways Godhome Entrance",
+        "logic": "Waterways_08[left2] | Waterways_08[left1] + (LEFTCLAW | WINGS) + UPWALLBREAK",
+        "persistentBool": "",
+        "requiredSetting": null,
+        "sprite": "ancient_wall_pieces_0000_a_270deg",
+        "mapLocations": [
+            {
+                "sceneName": "Waterways_08",
+                "x": 16.14,
+                "y": 44.58
+            }
+        ]
+    },
+    {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
         "logicOverrides": { "Broke_Basin_Grub_Quake_Floor": "BREAKABLE_Abyss17_QuakeFloor" },
@@ -1829,7 +1973,7 @@
                 "y": 13.08
             }
         ],
-        "alsoDestroy": ["Secret Mask"]
+        "alsoDestroy": [ "Secret Mask" ]
     },
     {
         "gameObject": "/Quake Floor",
@@ -2366,7 +2510,7 @@
     {
         "gameObject": "/Quake Floor Glass",
         "fsmType": "quake_floor",
-        "logicOverrides": { "Broke_Quake_Floor_After_Soul_Master_1": "BREAKABLE_Ruins132_QuakeFloorGlass" },
+        "logicOverrides": {},
         "logicSubstitutions": {},
         "sceneName": "Ruins1_32",
         "niceName": "Dive Floor After Soul Master One",
@@ -2385,11 +2529,14 @@
     {
         "gameObject": "/Quake Floor Glass (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": { "Broke_Quake_Floor_After_Soul_Master_2": "BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2 + BREAKABLE_Ruins132_QuakeFloorGlass3" },
+        "logicOverrides": {
+            "Broke_Quake_Floor_After_Soul_Master_1": "BREAKABLE_Ruins132_QuakeFloorGlass1",
+            "Broke_Quake_Floor_After_Soul_Master_2": "BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2 + BREAKABLE_Ruins132_QuakeFloorGlass3"
+        },
         "logicSubstitutions": { "Hallownest_Seal-Soul_Sanctum": { "Broke_Quake_Floor_After_Soul_Master_2": "BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2" } },
         "sceneName": "Ruins1_32",
         "niceName": "Dive Floor After Soul Master Two",
-        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1",
+        "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + BREAKABLE_Ruins132_QuakeFloorGlass",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_floor",
