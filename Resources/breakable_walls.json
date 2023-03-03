@@ -16,7 +16,8 @@
                 "x": 128.0249,
                 "y": 9.937618
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -35,7 +36,8 @@
                 "x": 182.95,
                 "y": 17.93
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -54,7 +56,8 @@
                 "x": 47.93,
                 "y": 13.54
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -66,7 +69,7 @@
         "logic": "(Abyss_17[top1] + (ANYCLAW | WINGS | DAMAGEBOOSTS + $TAKEDAMAGE)) | (Abyss_17[top1] + BREAKABLE_Abyss17_OneWayWall)",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "ancient_wall_pieces_0000_a_deep_quake_270deg",
+        "sprite": "ancient_wall_pieces_0000_a_mushroom_270deg",
         "mapLocations": [
             {
                 "sceneName": "Abyss_17",
@@ -102,7 +105,8 @@
                 "x": 100.82,
                 "y": 32.54
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -121,7 +125,8 @@
                 "x": 109.91,
                 "y": 31.54
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/break wall bits/One Way Wall",
@@ -133,14 +138,15 @@
         "logic": "Ruins1_04[bot1] | BREAKABLE_Ruins104_breakwallbitsOneWayWall + Ruins1_04[right1]",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "ancient_wall_cliffs_270deg",
+        "sprite": "gg_break_wall_nailsmith_269deg",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_04",
-                "x": 109.91,
-                "y": 31.54
+                "x": 6.97999954,
+                "y": -2.87
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall grimm",
@@ -159,7 +165,8 @@
                 "x": 123.34,
                 "y": 32.22
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -185,7 +192,8 @@
                 "x": 109.21,
                 "y": 55.02
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -207,7 +215,8 @@
                 "x": 161.749,
                 "y": 14.08
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/_Scenery/Break Floor 1",
@@ -237,9 +246,7 @@
                 "y": 14.02
             }
         ],
-        "alsoDestroy": [
-            "/Secret Mask"
-        ]
+        "alsoDestroy": [ "/Secret Mask" ]
     },
     {
         "gameObject": "/_Scenery/Break Wall 2",
@@ -258,7 +265,8 @@
                 "x": 15.95,
                 "y": 39.93
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Break Wall 2",
@@ -277,7 +285,8 @@
                 "x": 18.44,
                 "y": 34.11
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall_Silhouette",
@@ -299,7 +308,8 @@
                 "x": 34.4,
                 "y": 92.95
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Grate",
@@ -311,15 +321,15 @@
         "logic": "(Room_GG_Shortcut[top1] | Room_GG_Shortcut[left1] + (LEFTCLAW + WINGS | RIGHTCLAW) + (RIGHTCLAW + WINGS | (WINGS + LEFTDASH | WINGS + LEFTSUPERDASH | SWIM) + (RIGHTCLAW + (RIGHTDASH | LEFTCLAW + (RIGHTSUPERDASH | ENEMYPOGOS))) | LEFTCLAW + RIGHTDASH + WINGS + PRECISEMOVEMENT)) + (SWIM | (FULLCLAW + RIGHTSUPERDASH + ACIDSKIPS))",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "sil_break_wall_01_90deg",
+        "sprite": "gg_grate_break_0deg",
         "mapLocations": [
             {
-                "sceneName": "Crossroads_07",
-                "x": 34.4,
-                "y": 92.95
+                "sceneName": "Room_GG_Shortcut",
+                "x": 67.92,
+                "y": 72.41
             }
         ],
-        "_TODO": "Patch Fluke Hermit logic for LoreMaster"
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Break Floor 1",
@@ -338,7 +348,8 @@
                 "x": 81.47,
                 "y": 4.84
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -357,7 +368,8 @@
                 "x": 54.57,
                 "y": 47.92
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Break Floor 1",
@@ -376,7 +388,8 @@
                 "x": 23.41,
                 "y": 24.65
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall Waterways",
@@ -395,7 +408,8 @@
                 "x": 27.48,
                 "y": 12.21
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -417,7 +431,8 @@
                 "x": 53.89,
                 "y": 8.28
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/_Props/Break Floor 1",
@@ -436,7 +451,8 @@
                 "x": 87.93,
                 "y": 6.013
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -455,7 +471,8 @@
                 "x": 16.35,
                 "y": 6.54
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -474,14 +491,13 @@
                 "x": 37.72,
                 "y": 61.3
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {
-            "Deepnest_02[right1]": "(ORIG) + BREAKABLE_Deepnest02_BreakableWall"
-        },
+        "logicOverrides": { "Deepnest_02[right1]": "(ORIG) + BREAKABLE_Deepnest02_BreakableWall" },
         "logicSubstitutions": {},
         "sceneName": "Deepnest_02",
         "niceName": "Deepnest Mimic Room Wall",
@@ -495,7 +511,8 @@
                 "x": 28.0891571,
                 "y": 45.0276756
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -514,7 +531,8 @@
                 "x": 3.86,
                 "y": 14.9
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -533,7 +551,8 @@
                 "x": 109.79,
                 "y": 31.86
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall (1)",
@@ -558,7 +577,8 @@
                 "x": 44.32,
                 "y": 16.97
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -577,7 +597,8 @@
                 "x": 95.1,
                 "y": 45.09
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -596,7 +617,8 @@
                 "x": 184.91,
                 "y": 9.053206
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -615,7 +637,8 @@
                 "x": 182.38,
                 "y": 40.13
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall (1)",
@@ -634,7 +657,8 @@
                 "x": 66.66,
                 "y": 4.75
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -653,7 +677,8 @@
                 "x": 126.269,
                 "y": 59.36
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall (1)",
@@ -672,7 +697,8 @@
                 "x": 83.48,
                 "y": 85.151
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -684,15 +710,15 @@
         "logic": "Deepnest_41[left1] + (LANTERN | DARKROOMS)",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "collapser_short_0deg",
+        "sprite": "break_wall_deepnest_0deg",
         "mapLocations": [
             {
                 "sceneName": "Deepnest_41",
-                "x": 83.48,
-                "y": 85.151
+                "x": 58.89,
+                "y": 5.85
             }
         ],
-        "_TODO": "Patch midwife logic in loremaster"
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall (2)",
@@ -711,7 +737,8 @@
                 "x": 87.38,
                 "y": 68.168
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -730,7 +757,8 @@
                 "x": 75.44,
                 "y": 72.72
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -749,7 +777,8 @@
                 "x": 34.67,
                 "y": 5.17
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -768,7 +797,8 @@
                 "x": 59.278,
                 "y": 31.569
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall Waterways",
@@ -787,7 +817,8 @@
                 "x": 23.65,
                 "y": 49.32
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -799,14 +830,15 @@
         "logic": "Deepnest_East_01[right1] | ((Deepnest_East_01[top1] | Deepnest_East_01[bot1]) + BREAKABLE_DeepnestEast01_OneWayWall)",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "ancient_wall_pieces_0000_a_hive_270deg",
+        "sprite": "ext_0002_hive_break_1_12deg",
         "mapLocations": [
             {
                 "sceneName": "Deepnest_East_01",
                 "x": 39.79,
                 "y": 36.89
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -825,7 +857,8 @@
                 "x": 107.7,
                 "y": 17.224
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall Waterways",
@@ -844,7 +877,8 @@
                 "x": 34.29,
                 "y": 57.18
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -859,14 +893,15 @@
         "logic": "(Deepnest_East_06[bot1]) | (BREAKABLE_DeepnestEast06_OneWayWall + ((Deepnest_East_06[door1] + LEFTCLAW) | (Deepnest_East_06[left1] + RIGHTCLAW) | Deepnest_East_06[top1]))",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "ancient_wall_pieces_0000_a_deep_quake_270deg",
+        "sprite": "ancient_wall_pieces_0000_a_deep_quake_269deg",
         "mapLocations": [
             {
                 "sceneName": "Deepnest_East_06",
                 "x": 214.99,
                 "y": 9.31
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -885,7 +920,8 @@
                 "x": 51.0,
                 "y": 11.98
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -905,9 +941,7 @@
                 "y": 13.04
             }
         ],
-        "alsoDestroy": [
-            "/Secret Mask"
-        ]
+        "alsoDestroy": [ "/Secret Mask" ]
     },
     {
         "gameObject": "/Breakable Wall",
@@ -926,7 +960,8 @@
                 "x": 85.471,
                 "y": 43.03
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall top",
@@ -945,7 +980,8 @@
                 "x": 78.08,
                 "y": 127.88
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -964,7 +1000,8 @@
                 "x": 126.99,
                 "y": 6.89
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -983,7 +1020,8 @@
                 "x": 24.28,
                 "y": 99.73
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Break Floor 1",
@@ -1005,7 +1043,8 @@
                 "x": 51.84,
                 "y": 30.0
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1024,7 +1063,8 @@
                 "x": 16.09,
                 "y": 114.11
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1040,10 +1080,11 @@
         "mapLocations": [
             {
                 "sceneName": "Fungus1_12",
-                "x": 16.09,
-                "y": 114.11
+                "x": 0.33,
+                "y": 7.635508
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Break Floor 1",
@@ -1060,14 +1101,15 @@
         "logic": "Fungus2_29[right1] + WINGS + ANYCLAW",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "grass_break_wall_0deg",
+        "sprite": "fungd_mush_01_0001_a_break_floor_270deg",
         "mapLocations": [
             {
-                "sceneName": "Fungus1_12",
-                "x": 16.09,
-                "y": 114.11
+                "sceneName": "Fungus2_29",
+                "x": 75.67,
+                "y": 31.75
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1079,14 +1121,15 @@
         "logic": "((Fungus1_28[left1] | (Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP))) + Defeated_Right_Cliffs_Baldur) | (Fungus1_28[left2] | Fungus1_28[left1]) + BREAKABLE_Fungus128_OneWayWall1",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break0000_270deg",
+        "sprite": "ancient_wall_pieces_0000_a_mushroom_270deg",
         "mapLocations": [
             {
                 "sceneName": "Fungus1_28",
                 "x": 53.04,
                 "y": 5.44
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall (1)",
@@ -1105,7 +1148,8 @@
                 "x": 88.758,
                 "y": 62.769
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/_Props/Breakable Wall",
@@ -1124,7 +1168,8 @@
                 "x": 10.118,
                 "y": 83.75
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1143,7 +1188,8 @@
                 "x": 14.22,
                 "y": 23.982
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1155,14 +1201,15 @@
         "logic": "Fungus1_Slug[right1] + (ACID | FULLSKIPACID) + ANYCLAW",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "ancient_wall_pieces_0000_a_slug_270deg",
+        "sprite": "ancient_wall_pieces_0000_a_mushroom_270deg",
         "mapLocations": [
             {
                 "sceneName": "Fungus1_Slug",
                 "x": 8.4409,
                 "y": 49.87258
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall (1)",
@@ -1174,14 +1221,15 @@
         "logic": "Fungus1_Slug[right1] + (ACID | FULLSKIPACID) + ANYCLAW",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "ancient_wall_pieces_0000_a_slug_270deg",
+        "sprite": "ancient_wall_pieces_0000_a_mushroom_270deg",
         "mapLocations": [
             {
                 "sceneName": "Fungus1_Slug",
                 "x": 38.73,
                 "y": 41.8
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1200,7 +1248,8 @@
                 "x": 60.702,
                 "y": 55.392
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1219,7 +1268,8 @@
                 "x": 12.05,
                 "y": 27.92
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1238,7 +1288,8 @@
                 "x": 48.61,
                 "y": 23.74
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1257,7 +1308,8 @@
                 "x": 57.709,
                 "y": 23.76
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1272,14 +1324,15 @@
         "logic": "Fungus3_39[left1] + (Fungus3_39[right1] + BREAKABLE_Fungus339_OneWayWall)",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "one_way_fung_270deg",
+        "sprite": "one_way_fung_266deg",
         "mapLocations": [
             {
                 "sceneName": "Fungus3_39",
                 "x": 40.35,
                 "y": 7.49
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1298,7 +1351,8 @@
                 "x": 41.358,
                 "y": 38.18
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1317,7 +1371,8 @@
                 "x": 3.83,
                 "y": 7.39
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Break Floor 1",
@@ -1336,7 +1391,8 @@
                 "x": 119.8,
                 "y": 96.01
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1355,7 +1411,8 @@
                 "x": 1.44,
                 "y": 22.18
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1377,7 +1434,8 @@
                 "x": 43.84,
                 "y": 4.14
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1396,7 +1454,8 @@
                 "x": 11.2,
                 "y": 95.74
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1415,7 +1474,8 @@
                 "x": 24.95,
                 "y": 36.49
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1427,14 +1487,15 @@
         "logic": "(Mines_33[left1] | Mines_33[right1]) + LANTERN",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "ancient_wall_pieces_0000_a_mushroom_270deg",
+        "sprite": "ancient_wall_pieces_0000_a_cave_270deg",
         "mapLocations": [
             {
                 "sceneName": "Mines_33",
                 "x": 75.356,
                 "y": 5.86
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1450,14 +1511,15 @@
         "logic": "(Mines_35[left1] + Broke_Crystallized_Mound_Quake_Floor + (LEFTCLAW | RIGHTCLAW + PRECISEMOVEMENT + (RIGHTDASH | OBSCURESKIPS + DIFFICULTSKIPS) | WINGS + OBSCURESKIPS)) | BREAKABLE_Mines35_OneWayWall + Mines_35[left1]",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "shaman_one_way_258deg",
+        "sprite": "shaman_one_way_270deg",
         "mapLocations": [
             {
                 "sceneName": "Mines_35",
                 "x": 30.09,
                 "y": 48.76
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1476,7 +1538,8 @@
                 "x": 8.28,
                 "y": 16.24
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall (5)",
@@ -1495,7 +1558,8 @@
                 "x": 144.86,
                 "y": 14.87
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall (7)",
@@ -1514,7 +1578,8 @@
                 "x": 80.21,
                 "y": 7.1955
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall (2)",
@@ -1533,7 +1598,8 @@
                 "x": 37.11,
                 "y": 14.22
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall (4)",
@@ -1555,7 +1621,8 @@
                 "x": 102.39,
                 "y": 13.97
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1574,7 +1641,8 @@
                 "x": 54.17,
                 "y": 14.44
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1596,7 +1664,8 @@
                 "x": 4.61,
                 "y": 11.32
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall (8)",
@@ -1615,7 +1684,8 @@
                 "x": 208.62,
                 "y": 13.4
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall (6)",
@@ -1634,7 +1704,8 @@
                 "x": 148.49,
                 "y": 8.14
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall (3)",
@@ -1656,7 +1727,8 @@
                 "x": 27.45,
                 "y": 12.22
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall_Silhouette",
@@ -1675,14 +1747,13 @@
                 "x": 140.46,
                 "y": 42.84
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall_Silhouette",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {
-            "Room_Colosseum_Spectate[right1]": "(ORIG) + BREAKABLE_RoomColosseumSpectate_BreakableWallSilhouette"
-        },
+        "logicOverrides": { "Room_Colosseum_Spectate[right1]": "(ORIG) + BREAKABLE_RoomColosseumSpectate_BreakableWallSilhouette" },
         "logicSubstitutions": {},
         "sceneName": "Room_Colosseum_Spectate",
         "niceName": "Colosseum Pale Lurker Wall",
@@ -1693,10 +1764,11 @@
         "mapLocations": [
             {
                 "sceneName": "Room_Colosseum_Spectate",
-                "x": 140.46,
-                "y": 42.84
+                "x": 141.22,
+                "y": 7.71
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1715,14 +1787,13 @@
                 "x": 95.23,
                 "y": 6.93
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall Ruin Lift",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {
-            "Ruins1_31": "(ORIG) | (Ruins1_31[bot1] | Ruins1_31[left1]) + BREAKABLE_Ruins131_BreakableWallRuinLift + (ANYCLAW | WINGS | RIGHTSLASH | GREATSLASH | CYCLONE | RIGHTDASHSLASH)"
-        },
+        "logicOverrides": { "Ruins1_31": "(ORIG) | (Ruins1_31[bot1] | Ruins1_31[left1]) + BREAKABLE_Ruins131_BreakableWallRuinLift + (ANYCLAW | WINGS | RIGHTSLASH | GREATSLASH | CYCLONE | RIGHTDASHSLASH)" },
         "logicSubstitutions": {
             "Ruins1_31[bot1]": { "Ruins1_31": "(Ruins1_31 + BREAKABLE_Ruins131_BreakableWallRuinLift)" },
             "Ruins1_31[left1]": { "Ruins1_31": "(Ruins1_31 + BREAKABLE_Ruins131_BreakableWallRuinLift)" }
@@ -1739,7 +1810,8 @@
                 "x": 44.98,
                 "y": 20.07
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1758,7 +1830,8 @@
                 "x": 14.87,
                 "y": 80.91
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1777,7 +1850,8 @@
                 "x": 75.37,
                 "y": 33.14
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1796,7 +1870,8 @@
                 "x": 37.18,
                 "y": 6.75
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/_Scenery/Break Floor 1",
@@ -1818,7 +1893,8 @@
                 "x": 144.21,
                 "y": 61.01
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall Waterways",
@@ -1837,7 +1913,8 @@
                 "x": 150.754761,
                 "y": 41.2
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1849,14 +1926,15 @@
         "logic": "(Waterways_02[top3] + Broke_Waterways_Bench_Quake_Floor_3 | Waterways_02 + (LEFTCLAW | WINGS + RIGHTCLAW | ENEMYPOGOS + DANGEROUSSKIPS + (WINGS | RIGHTCLAW)))",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "waterways_manhole_open0000_270deg",
+        "sprite": "ancient_wall_pieces_0000_a_294deg",
         "mapLocations": [
             {
                 "sceneName": "Waterways_02",
                 "x": 26.0382042,
                 "y": 21.68681
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall Waterways",
@@ -1875,7 +1953,8 @@
                 "x": 113.61,
                 "y": 9.080026
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1894,7 +1973,8 @@
                 "x": 113.99,
                 "y": 7.94
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/One Way Wall",
@@ -1913,7 +1993,8 @@
                 "x": 12.34,
                 "y": 79.55
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Break Floor 1",
@@ -1932,28 +2013,28 @@
                 "x": 16.14,
                 "y": 44.58
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall Waterways",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {
-            "Waterways_08[left2]": "(ORIG) + BREAKABLE_Waterways08_BreakableWallWaterways"
-        },
+        "logicOverrides": { "Waterways_08[left2]": "(ORIG) + BREAKABLE_Waterways08_BreakableWallWaterways" },
         "logicSubstitutions": {},
         "sceneName": "Waterways_08",
         "niceName": "Waterways Godhome Entrance",
         "logic": "Waterways_08[left2] | Waterways_08[left1] + (LEFTCLAW | WINGS) + UPWALLBREAK",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "ancient_wall_pieces_0000_a_270deg",
+        "sprite": "_0017_waterway_arch_break wall_0deg",
         "mapLocations": [
             {
                 "sceneName": "Waterways_08",
-                "x": 16.14,
-                "y": 44.58
+                "x": 6.49,
+                "y": 52.29
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -1992,7 +2073,8 @@
                 "x": 49.5512924,
                 "y": 50.08
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2011,7 +2093,8 @@
                 "x": 18.73,
                 "y": 57.99
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2030,7 +2113,8 @@
                 "x": 99.074,
                 "y": 14.084
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor (1)",
@@ -2049,7 +2133,8 @@
                 "x": 140.1,
                 "y": 51.069
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor (2)",
@@ -2068,7 +2153,8 @@
                 "x": 89.23,
                 "y": 54.03
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2087,7 +2173,8 @@
                 "x": 42.09,
                 "y": 2.712
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor",
@@ -2106,7 +2193,8 @@
                 "x": 3.22706985,
                 "y": 114.012573
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (1)",
@@ -2125,7 +2213,8 @@
                 "x": -14.296031,
                 "y": 97.01257
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (5)",
@@ -2144,7 +2233,8 @@
                 "x": -3.28,
                 "y": 85.012
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (9)",
@@ -2163,7 +2253,8 @@
                 "x": -3.28000069,
                 "y": 63.8
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (10)",
@@ -2182,7 +2273,8 @@
                 "x": -3.28000069,
                 "y": 37.87
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (2)",
@@ -2201,7 +2293,8 @@
                 "x": 8.23407,
                 "y": 10.0075684
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (3)",
@@ -2220,7 +2313,8 @@
                 "x": -13.2779312,
                 "y": -10.98793
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (8)",
@@ -2239,7 +2333,8 @@
                 "x": -13.29,
                 "y": -38.98
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (4)",
@@ -2258,7 +2353,8 @@
                 "x": 9.357069,
                 "y": -63.0585
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (6)",
@@ -2277,7 +2373,8 @@
                 "x": 9.357069,
                 "y": -94.91
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/quake floors/Quake Floor (7)",
@@ -2296,7 +2393,8 @@
                 "x": 9.357069,
                 "y": -133.79
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor (2)",
@@ -2315,7 +2413,8 @@
                 "x": 43.59,
                 "y": 18.72
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor (1)",
@@ -2334,7 +2433,8 @@
                 "x": 43.38,
                 "y": 29.95
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2353,7 +2453,8 @@
                 "x": 105.59,
                 "y": 39.079
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/_Scenery/mine_1_quake_floor",
@@ -2365,14 +2466,15 @@
         "logic": "Mines_01[left1] + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "roof_05_351deg",
         "mapLocations": [
             {
                 "sceneName": "Mines_01",
                 "x": 15.774,
                 "y": 46.947
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2391,7 +2493,8 @@
                 "x": 12.83,
                 "y": 170.04
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2410,7 +2513,8 @@
                 "x": 20.13004,
                 "y": 60.9589958
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/_Scenery/mine_1_quake_floor",
@@ -2422,14 +2526,15 @@
         "logic": "Mines_35[left1] + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "roof_05_351deg",
         "mapLocations": [
             {
                 "sceneName": "Mines_35",
                 "x": 15.774,
                 "y": 46.947
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2448,7 +2553,8 @@
                 "x": 34.412,
                 "y": 3.281
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass (2)",
@@ -2460,14 +2566,15 @@
         "logic": "Ruins1_30 + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "break_floor_glass",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_30",
                 "x": 58.0781975,
                 "y": 1.332
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass",
@@ -2479,14 +2586,15 @@
         "logic": "Ruins1_30[left2] + (LEFTCLAW | RIGHTCLAW + BACKGROUNDPOGOS | WINGS) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "break_floor_glass",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_30",
                 "x": 22.49,
-                "y": 8.39
+                "y": 17.01
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass (1)",
@@ -2498,14 +2606,15 @@
         "logic": "Ruins1_30[left2] + Broke_Sanctum_Escape_Quake_Floor_1 + (LEFTCLAW | RIGHTCLAW + BACKGROUNDPOGOS | WINGS) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "break_floor_glass",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_30",
                 "x": 22.49,
-                "y": 17.01
+                "y": 8.39
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass",
@@ -2517,14 +2626,15 @@
         "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:AREASOUL]",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "break_floor_glass",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_32",
                 "x": 27.75,
                 "y": 75.331
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass (1)",
@@ -2539,14 +2649,15 @@
         "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + BREAKABLE_Ruins132_QuakeFloorGlass",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "break_floor_glass",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_32",
                 "x": 22.478,
                 "y": 55.329
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor (1)",
@@ -2565,7 +2676,8 @@
                 "x": 12.09,
                 "y": 46.04
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass (2)",
@@ -2577,14 +2689,15 @@
         "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1 + BREAKABLE_Ruins132_QuakeFloorGlass1",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "break_floor_glass",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_32",
                 "x": 22.478,
                 "y": 46.325
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2603,7 +2716,8 @@
                 "x": 41.15,
                 "y": 106.079
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass (3)",
@@ -2615,14 +2729,15 @@
         "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_1 + BREAKABLE_Ruins132_QuakeFloorGlass1 + BREAKABLE_Ruins132_QuakeFloorGlass2",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "break_floor_glass",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_32",
                 "x": 22.478,
                 "y": 34.328
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass (4)",
@@ -2634,14 +2749,15 @@
         "logic": "Ruins1_32[right1] + ANYCLAW + QUAKE + $CASTSPELL[before:ROOMSOUL] + Broke_Quake_Floor_After_Soul_Master_3 + Broke_Quake_Floor_After_Soul_Master_1",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "break_floor_glass",
         "mapLocations": [
             {
                 "sceneName": "Ruins1_32",
                 "x": 11.981,
                 "y": 22.332
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor Glass",
@@ -2653,14 +2769,15 @@
         "logic": "Ruins2_01_b",
         "persistentBool": "",
         "requiredSetting": null,
-        "sprite": "break_floor",
+        "sprite": "mage_lord_room_0003_floor_wing_0deg",
         "mapLocations": [
             {
                 "sceneName": "Ruins2_01_b",
                 "x": 38.15,
                 "y": 22.54
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor (1)",
@@ -2679,7 +2796,8 @@
                 "x": 10.05,
                 "y": 31.21
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2698,7 +2816,8 @@
                 "x": 9.02,
                 "y": 2.86
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2717,7 +2836,8 @@
                 "x": 146.06,
                 "y": 17.0
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor (1)",
@@ -2736,7 +2856,8 @@
                 "x": 146.06,
                 "y": 0.42
             }
-        ]
+        ],
+        "alsoDestroy": null
     },
     {
         "gameObject": "/Quake Floor",
@@ -2755,6 +2876,7 @@
                 "x": 104.12,
                 "y": 5.08
             }
-        ]
+        ],
+        "alsoDestroy": null
     }
 ]
