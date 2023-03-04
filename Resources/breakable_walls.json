@@ -821,6 +821,64 @@
         "alsoDestroy": null
     },
     {
+        "gameObject": "/Breakable Wall Waterways",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {},
+        "logicSubstitutions": {},
+        "sceneName": "White_Palace_12",
+        "niceName": "White Palace Shortcut Wall",
+        "logic": "White_Palace_12[bot1] + (SPIKETUNNELS | RIGHTDASH | (RIGHTSUPERDASH + LEFTCLAW) | WINGS) + RIGHTCLAW + LEFTSUPERDASH",
+        "persistentBool": "",
+        "requiredSetting": "Rando_WP",
+        "sprite": "waterway_break_wall_acid_02_270deg",
+        "mapLocations": [],
+        "alsoDestroy": null
+    },
+    {
+        "gameObject": "/Break Floor 1",
+        "fsmType": "break_floor",
+        "logicOverrides": {},
+        "logicSubstitutions": {},
+        "sceneName": "White_Palace_12",
+        "niceName": "White Palace Shortcut Wall Exit",
+        "logic": "White_Palace_12[bot1] + (SPIKETUNNELS | RIGHTDASH | (RIGHTSUPERDASH + LEFTCLAW) | WINGS) + RIGHTCLAW + LEFTSUPERDASH + BREAKABLE_WhitePalace12_BreakableWallWaterways",
+        "persistentBool": "",
+        "requiredSetting": "Rando_WP",
+        "sprite": "collapser_short_270deg",
+        "mapLocations": [],
+        "alsoDestroy": null
+    },
+    {
+        "gameObject": "/Breakable Wall Ruin Lift",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {
+            "White_Palace_06[left1]": "(ORIG) + BREAKABLE_WhitePalace06_BreakableWallRuinLift"
+        },
+        "logicSubstitutions": {},
+        "sceneName": "White_Palace_06",
+        "niceName": "Path of Pain Entrance Door",
+        "logic": "White_Palace_06[bot1] | White_Palace_06[left1] | White_Palace_06[top1]",
+        "persistentBool": "",
+        "requiredSetting": "Rando_WP",
+        "sprite": "collapser_short_270deg",
+        "mapLocations": [],
+        "alsoDestroy": null
+    },
+    {
+        "gameObject": "/Breakable Wall Waterways",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {},
+        "logicSubstitutions": {},
+        "sceneName": "White_Palace_09",
+        "niceName": "Throne Room Breakable",
+        "logic": "*King_Fragment",
+        "persistentBool": "",
+        "requiredSetting": "Rando_WP",
+        "sprite": "ancient_one_way_wall_270deg",
+        "mapLocations": [],
+        "alsoDestroy": null
+    },
+    {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
         "logicOverrides": { "Deepnest_East_01[right1]": "(ORIG) | ((Deepnest_East_01[top1] | Deepnest_East_01[bot1]) + BREAKABLE_DeepnestEast01_OneWayWall)" },
@@ -1309,7 +1367,7 @@
                 "y": 23.76
             }
         ],
-        "alsoDestroy": ["/Secret Mask (1)"]
+        "alsoDestroy": [ "/Secret Mask (1)" ]
     },
     {
         "gameObject": "/One Way Wall",
@@ -1820,7 +1878,7 @@
         "logicSubstitutions": {},
         "sceneName": "Ruins2_03",
         "niceName": "Watcher Knights Chandelier Wall",
-        "logic": "Ruins2_03[bot1] + (((SCREAM | QUAKE>1 + PRECISESKIPS + OBSCURESKIPS + DANGEROUSSKIPS) + $CASTSPELL) | (ANYCLAW | WINGS) + UPWALLBREAK)",
+        "logic": "Ruins2_03[bot1] + (((SCREAM | QUAKE>1 + PRECISEMOVEMENT + OBSCURESKIPS + DANGEROUSSKIPS) + $CASTSPELL) | (ANYCLAW | WINGS) + UPWALLBREAK)",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "ruin_break_roof_90deg",
@@ -2877,6 +2935,34 @@
                 "y": 5.08
             }
         ],
+        "alsoDestroy": null
+    },
+    {
+        "gameObject": "/Quake Floor",
+        "fsmType": "quake_floor",
+        "logicOverrides": {},
+        "logicSubstitutions": {},
+        "sceneName": "White_Palace_09",
+        "niceName": "Nursery Dive Floor",
+        "logic": "*Soul_Totem-White_Palace_Final + QUAKE + $CASTSPELL",
+        "persistentBool": "",
+        "requiredSetting": "Rando_WP",
+        "sprite": "break_floor",
+        "mapLocations": [],
+        "alsoDestroy": null
+    },
+    {
+        "gameObject": "/Quake Floor",
+        "fsmType": "quake_floor",
+        "logicOverrides": {},
+        "logicSubstitutions": {},
+        "sceneName": "White_Palace_15",
+        "niceName": "WP Right Shortcut Floor",
+        "logic": "*Soul_Totem-White_Palace_Right",
+        "persistentBool": "",
+        "requiredSetting": "Rando_WP",
+        "sprite": "break_floor",
+        "mapLocations": [],
         "alsoDestroy": null
     }
 ]

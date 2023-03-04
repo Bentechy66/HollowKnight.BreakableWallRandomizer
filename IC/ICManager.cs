@@ -59,7 +59,7 @@ namespace BreakableWallRandomiser.IC
             public string getItemName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Itm_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getTermName() => $"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getGroupName() => WALL_GROUPS[fsmType].Item1;
-            public bool shouldBeIncluded()
+            public bool shouldBeIncluded(GenerationSettings gs)
             {
                 if (!BreakableWallRandomiser.settings.AnyWalls && !BreakableWallRandomiser.settings.RandomizeDiveFloors) { return false; }
 
@@ -68,6 +68,10 @@ namespace BreakableWallRandomiser.IC
                 if ((fsmType == "quake_floor" || fsmType == "Detect Quake") && !BreakableWallRandomiser.settings.RandomizeDiveFloors) { return false; }
 
                 if (requiredSetting == null) { return true; }
+
+                if (requiredSetting == "Rando_WP") {
+                    return gs.LongLocationSettings.WhitePalaceRando != RandomizerMod.Settings.LongLocationSettings.WPSetting.ExcludeWhitePalace;
+                }
 
                 // TODO: Reflection here is probably a bad idea.
                 var prop = BreakableWallRandomiser.settings.GetType().GetField(requiredSetting);
@@ -218,7 +222,7 @@ namespace BreakableWallRandomiser.IC
         {
             foreach (var wall in wallData)
             {
-                if (!wall.shouldBeIncluded()) { continue; }
+                if (!wall.shouldBeIncluded(rb.gs)) { continue; }
 
                 rb.EditItemRequest(wall.getItemName(), info =>
                 {
@@ -291,7 +295,7 @@ namespace BreakableWallRandomiser.IC
             // Add to randomization request
             foreach (var wall in wallData)
             {
-                if (wall.shouldBeIncluded()) {
+                if (wall.shouldBeIncluded(rb.gs)) {
                     rb.AddItemByName(wall.getItemName());
                     rb.AddLocationByName(wall.getLocationName());
                 } else if (BreakableWallRandomiser.settings.AnyWalls)
@@ -313,7 +317,7 @@ namespace BreakableWallRandomiser.IC
 
                 lmb.AddLogicDef(new(wall.getLocationName(), wall.logic));
 
-                if (!wall.shouldBeIncluded()) { continue; }
+                if (!wall.shouldBeIncluded(gs)) { continue; }
 
                 // Add to logic. Walls which aren't included shouldn't affect existing logic.
                 foreach (var logicOverride in wall.logicOverrides)

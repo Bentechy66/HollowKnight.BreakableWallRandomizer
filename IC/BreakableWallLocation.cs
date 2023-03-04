@@ -22,14 +22,14 @@ namespace BreakableWallRandomiser.IC
 
         protected override void OnLoad()
         {
-            if (!wallData.shouldBeIncluded()) { return; } // bit of a bodge
+            if (!wallData.shouldBeIncluded(RandomizerMod.RandomizerMod.RS.GenerationSettings)) { return; } // bit of a bodge
 
             Events.AddFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
         }
 
         protected override void OnUnload()
         {
-            if (!wallData.shouldBeIncluded()) { return; }
+            if (!wallData.shouldBeIncluded(RandomizerMod.RandomizerMod.RS.GenerationSettings)) { return; }
 
             Events.RemoveFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
         }
