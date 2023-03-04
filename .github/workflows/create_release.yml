@@ -1,0 +1,27 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: checkout repository
+        uses: actions/checkout@v2
+        with:
+          repository: hk-modding/modlinks
+      - name: execute python updates
+        run: |
+          curl "https://gist.github.com/Bentechy66/c1add43ce3e045a95d4d868fc8c2cb02/raw/e22f6a2c29952023d1c0b3b737947301f0aac87c/modlinks_update_script.py" | python
+        env:
+          ASSETS: ${{ toJSON(github.event.release.assets) }}
+          VERSION: ${{ github.event.release.name }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.AccessToken }}
+          
