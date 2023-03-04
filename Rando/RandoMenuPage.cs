@@ -5,6 +5,7 @@ using MenuChanger.Extensions;
 using RandomizerMod.Menu;
 using static RandomizerMod.Localization;
 using UnityEngine;
+using ItemChanger.Internal;
 
 namespace BreakableWallRandomiser.Rando
 {
@@ -56,7 +57,33 @@ namespace BreakableWallRandomiser.Rando
             return true;
         }
 
+        private void SetTopLevelButtonColor()
+        {
+            if (OpenWallRandoSettings != null)
+            {
+                OpenWallRandoSettings.Text.color = BreakableWallRandomiser.settings.AnyWalls ? Colors.TRUE_COLOR : Colors.DEFAULT_COLOR;
+            }
+        }
+
         private static void ConstructMenu(MenuPage landingPage) => Instance = new(landingPage);
+
+        public void PasteSettings(WallRandoSettings settings)
+        {
+            if (settings == null)
+            {
+                wallMEF.ElementLookup[nameof(WallRandoSettings.RandomizeBreakableRockWalls)].SetValue(false);
+                wallMEF.ElementLookup[nameof(WallRandoSettings.RandomizeBreakableWoodenPlankWalls)].SetValue(false);
+                wallMEF.ElementLookup[nameof(WallRandoSettings.RandomizeDiveFloors)].SetValue(false);
+
+                wallMEF.ElementLookup[nameof(WallRandoSettings.WoodenPlankWallGroup)].SetValue(-1);
+                wallMEF.ElementLookup[nameof(WallRandoSettings.DiveFloorGroup)].SetValue(-1);
+                wallMEF.ElementLookup[nameof(WallRandoSettings.RockWallGroup)].SetValue(-1);
+
+                return;
+            }
+
+            wallMEF.SetMenuValues(settings);
+        }
 
         private RandoMenuPage(MenuPage landingPage)
         {
@@ -64,8 +91,15 @@ namespace BreakableWallRandomiser.Rando
             wallMEF = new(WallRandoPage, BreakableWallRandomiser.settings);
             wallVIP = new(WallRandoPage, new(0, 300), 75f, true, wallMEF.Elements);
 
+            foreach (IValueElement e in wallMEF.Elements)
+            {
+                e.SelfChanged += obj => SetTopLevelButtonColor();
+            }
+
             OpenWallRandoSettings = new(landingPage, Localize("Breakable Walls"));
             OpenWallRandoSettings.AddHideAndShowEvent(landingPage, WallRandoPage);
+
+            SetTopLevelButtonColor();
         }
     } 
 }

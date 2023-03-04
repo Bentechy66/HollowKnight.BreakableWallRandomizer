@@ -6,6 +6,8 @@ using UnityEngine;
 using UObject = UnityEngine.Object;
 using BreakableWallRandomiser.IC;
 using BreakableWallRandomiser.Rando;
+using RandoSettingsManager;
+using RandoSettingsManager.SettingsManagement;
 
 namespace BreakableWallRandomiser
 {
@@ -29,12 +31,26 @@ namespace BreakableWallRandomiser
 
             RandoMenuPage.Hook();
 
+            if (ModHooks.GetMod("RandoSettingsManager") is Mod)
+            {
+                HookRSM();
+            }
+
             manager.RegisterItemsAndLocations();
             manager.Hook();
 
             // On.GameManager.BeginSceneTransition += LogTransName;
 
             Log("Initialized.");
+        }
+
+        private void HookRSM()
+        {
+            RandoSettingsManagerMod.Instance.RegisterConnection(new SimpleSettingsProxy<WallRandoSettings>(
+                this,
+                (settings) => RandoMenuPage.Instance.PasteSettings(settings),
+                () => settings.AnyWalls ? settings : null
+            ));
         }
 
         private void LogTransName(On.GameManager.orig_BeginSceneTransition orig, GameManager self, GameManager.SceneLoadInfo info)
