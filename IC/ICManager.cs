@@ -17,6 +17,7 @@ using Mono.Cecil;
 using RandomizerMod.Menu;
 using Modding;
 using ItemChanger.FsmStateActions;
+using RandomizerMod.Logging;
 
 namespace BreakableWallRandomiser.IC
 {
@@ -82,14 +83,14 @@ namespace BreakableWallRandomiser.IC
         #pragma warning restore 0649
 
         // Map: FSM Name -> Group Name
-        public readonly static Dictionary<string, (string, Func<int>)> WALL_GROUPS = new() { 
-            { "break_floor", ("Breakable Planks Walls", () => BreakableWallRandomiser.settings.WoodenPlankWallGroup ) },
-            { "FSM", ("Breakable Planks Walls", () => BreakableWallRandomiser.settings.WoodenPlankWallGroup ) },
+        public readonly static Dictionary<string, (string, Func<int>, Func<bool>)> WALL_GROUPS = new() { 
+            { "break_floor", ("Breakable Planks Walls", () => BreakableWallRandomiser.settings.WoodenPlankWallGroup, () => BreakableWallRandomiser.settings.RandomizeBreakableWoodenPlankWalls )},
+            { "FSM", ("Breakable Planks Walls", () => BreakableWallRandomiser.settings.WoodenPlankWallGroup, () => BreakableWallRandomiser.settings.RandomizeBreakableWoodenPlankWalls )},
 
-            { "breakable_wall_v2", ("Breakable Rock Walls", () => BreakableWallRandomiser.settings.RockWallGroup ) },
+            { "breakable_wall_v2", ("Breakable Rock Walls", () => BreakableWallRandomiser.settings.RockWallGroup, () => BreakableWallRandomiser.settings.RandomizeBreakableRockWalls )},
 
-            { "quake_floor", ("Desolate Dive Floors", () => BreakableWallRandomiser.settings.DiveFloorGroup ) },
-            { "Detect Quake", ("Desolate Dive Floors", () => BreakableWallRandomiser.settings.DiveFloorGroup ) },
+            { "quake_floor", ("Desolate Dive Floors", () => BreakableWallRandomiser.settings.DiveFloorGroup, () => BreakableWallRandomiser.settings.RandomizeDiveFloors )},
+            { "Detect Quake", ("Desolate Dive Floors", () => BreakableWallRandomiser.settings.DiveFloorGroup, () => BreakableWallRandomiser.settings.RandomizeDiveFloors )},
         };
 
         private static Dictionary<string, ItemGroupBuilder> definedGroups = new();
@@ -172,6 +173,16 @@ namespace BreakableWallRandomiser.IC
             RequestBuilder.OnUpdate.Subscribe(0.3f, AddWalls);
 
             RandomizerMenuAPI.OnGenerateStartLocationDict += RandomizerMenuAPI_OnGenerateStartLocationDict;
+
+            SettingsLog.AfterLogSettings += LogWallRandoSettings;
+        }
+
+        private static void LogWallRandoSettings(LogArguments args, System.IO.TextWriter tw)
+        {
+            tw.WriteLine("Logging Wall Rando settings:");
+            using Newtonsoft.Json.JsonTextWriter jtw = new(tw) { CloseOutput = false, };
+            RandomizerMod.RandomizerData.JsonUtil._js.Serialize(jtw, BreakableWallRandomiser.settings);
+            tw.WriteLine();
         }
 
         private void RandomizerMenuAPI_OnGenerateStartLocationDict(Dictionary<string, RandomizerMod.RandomizerData.StartDef> startDefs)
@@ -237,7 +248,7 @@ namespace BreakableWallRandomiser.IC
 
             foreach (var group in WALL_GROUPS)
             {
-                if (group.Value.Item2() > 0)
+                if (group.Value.Item2() > 0 && group.Value.Item3())
                 {
                     ItemGroupBuilder wallGroup = null;
                     string label = RBConsts.SplitGroupPrefix + group.Value.Item2();

@@ -2766,7 +2766,7 @@
         "logicSubstitutions": {},
         "sceneName": "Ruins2_01_b",
         "niceName": "Watcher's Spire Dive Floor",
-        "logic": "Ruins2_01_b",
+        "logic": "Ruins2_01_b + QUAKE + $CASTSPELL",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "mage_lord_room_0003_floor_wing_0deg",

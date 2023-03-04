@@ -11,9 +11,9 @@ namespace BreakableWallRandomiser.Rando
 {
     public class WallRandoSettings
     {
-        public bool RandomizeBreakableWoodenPlankWalls = true;
-        public bool RandomizeBreakableRockWalls = true;
-        public bool RandomizeDiveFloors = true;
+        public bool RandomizeBreakableWoodenPlankWalls = false;
+        public bool RandomizeBreakableRockWalls = false;
+        public bool RandomizeDiveFloors = false;
 
         public bool RandomizeTutorialBreakableFloor = false;
 
