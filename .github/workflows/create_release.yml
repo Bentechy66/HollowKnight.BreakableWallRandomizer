@@ -26,4 +26,6 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.AccessToken }}
-          
+          title: Update Breakable Wall Randomiser
+          body: Auto-generated PR on release.
+          push-to-fork: bentechy-service-account/modlinks
