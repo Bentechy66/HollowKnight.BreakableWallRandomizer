@@ -16,10 +16,12 @@ jobs:
           repository: hk-modding/modlinks
       - name: execute python updates
         run: |
-          curl "https://gist.github.com/Bentechy66/c1add43ce3e045a95d4d868fc8c2cb02/raw/e22f6a2c29952023d1c0b3b737947301f0aac87c/modlinks_update_script.py" | python
+          curl "https://gist.githubusercontent.com/Bentechy66/c1add43ce3e045a95d4d868fc8c2cb02/raw/676278218a67c9c479055e9c49f77e68baf546e7/modlinks_update_script.py" | python
         env:
           ASSETS: ${{ toJSON(github.event.release.assets) }}
           VERSION: ${{ github.event.release.name }}
+      - name: commit
+        run: git add . && git commit -m "Update BWR Version"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
