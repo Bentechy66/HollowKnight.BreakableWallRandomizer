@@ -1297,7 +1297,7 @@
         "logicOverrides": { "Fungus3_05[right2]": "(ORIG) + BREAKABLE_Fungus305_OneWayWall" },
         "logicSubstitutions": {},
         "sceneName": "Fungus3_05",
-        "niceName": "Queen's Garden Lever Exit Wall",
+        "niceName": "Petra Arena Lever Exit Wall",
         "logic": "Fungus3_05[right2] | (Fungus3_05[left1] | Fungus3_05[right1]) + (WINGS | (LEFTDASH | RIGHTCLAW + LEFTSUPERDASH) + (RIGHTDASH | RIGHTSUPERDASH))",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1309,7 +1309,7 @@
                 "y": 23.76
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["/Secret Mask (1)"]
     },
     {
         "gameObject": "/One Way Wall",
@@ -1820,7 +1820,7 @@
         "logicSubstitutions": {},
         "sceneName": "Ruins2_03",
         "niceName": "Watcher Knights Chandelier Wall",
-        "logic": "Ruins2_03[bot1] + (ANYCLAW | WINGS) + UPWALLBREAK",
+        "logic": "Ruins2_03[bot1] + (((SCREAM | QUAKE>1 + PRECISESKIPS + OBSCURESKIPS + DANGEROUSSKIPS) + $CASTSPELL) | (ANYCLAW | WINGS) + UPWALLBREAK)",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "ruin_break_roof_90deg",
