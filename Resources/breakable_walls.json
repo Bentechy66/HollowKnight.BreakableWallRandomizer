@@ -1480,7 +1480,7 @@
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": { "Geo_Rock-Crystal_Peak_Entrance": "(ORIG) | Mines_33[right1] + BREAKABLE_Mines33_OneWayWall" },
+        "logicOverrides": { "Geo_Rock-Crystal_Peak_Entrance": "(ORIG) | Mines_33[right1] + BREAKABLE_Mines33_OneWayWall + (DARKROOMS | LANTERN)" },
         "logicSubstitutions": {},
         "sceneName": "Mines_33",
         "niceName": "Crystal Peaks Entrance Toll Wall",
