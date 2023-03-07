@@ -21,7 +21,7 @@ jobs:
           ASSETS: ${{ toJSON(github.event.release.assets) }}
           VERSION: ${{ github.event.release.name }}
       - name: commit
-        run: git config --global user.name "BenTechy Service Account" && git config --global user.email "ben.griffiths@ada.ac.uk" && git add . && git commit -m "Update BWR Version"
+        run: git config --global user.name "BenTechy Service Account" && git config --global user.email "123170249+bentechy-service-account@users.noreply.github.com" && git add . && git commit -m "Update BWR Version"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:

@@ -9,7 +9,7 @@ Randomizes some walls in the game hollow knight. Currently randomizes, with a fe
  - Any floor broken by Dive / Descending Dark in the game
 
  The exceptions:
- - Any walls or floors in White Palace or Godhome
+ - Any walls in Godhome
  - The two Hunter's Mark one-ways
  - Fungal Wastes to Deepnest wall which had annoying logic implications
 
