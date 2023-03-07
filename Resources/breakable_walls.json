@@ -1172,11 +1172,13 @@
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": { "Baldur_Shell": "(ORIG) | (Fungus1_28[left2] | Fungus1_28[left1]) + BREAKABLE_Fungus128_OneWayWall1" },
+        "logicOverrides": {
+            "Baldur_Shell": "(ORIG) | (Fungus1_28[left1] | Fungus1_28[left2] + ((WINGS + LEFTCLAW) | WINGS + (ANYDASH | SPELLAIRSTALL + $CASTSPELL[2,before:ITEMSOUL,after:AREASOUL]) + DIFFICULTSKIPS + $SHADESKIP[2HITS])) + BREAKABLE_Fungus128_OneWayWall1"
+        },
         "logicSubstitutions": {},
         "sceneName": "Fungus1_28",
         "niceName": "Baldur Shell Exit Wall",
-        "logic": "((Fungus1_28[left1] | (Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP))) + Defeated_Right_Cliffs_Baldur) | (Fungus1_28[left2] | Fungus1_28[left1]) + BREAKABLE_Fungus128_OneWayWall1",
+        "logic": "((Fungus1_28[left1] | (Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP))) + LEFTBALDURS)",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "ancient_wall_pieces_0000_a_mushroom_270deg",
@@ -1196,7 +1198,7 @@
         "logicSubstitutions": {},
         "sceneName": "Fungus1_28",
         "niceName": "Baldur Shell Exit Wall Two",
-        "logic": "FULLCLAW + (((Fungus1_28[left1] | (Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP))) + Defeated_Right_Cliffs_Baldur) | ((Fungus1_28[left2] | Fungus1_28[left1]) + BREAKABLE_Fungus128_OneWayWall1))",
+        "logic": "FULLCLAW + (((Fungus1_28[left1] | (Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP))) + Defeated_Right_Cliffs_Baldur) | (((Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP)) | Fungus1_28[left1]) + BREAKABLE_Fungus128_OneWayWall1))",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "rock__break_floor_270deg",

@@ -4,8 +4,6 @@ using MenuChanger.MenuPanels;
 using MenuChanger.Extensions;
 using RandomizerMod.Menu;
 using static RandomizerMod.Localization;
-using UnityEngine;
-using ItemChanger.Internal;
 
 namespace BreakableWallRandomiser.Rando
 {

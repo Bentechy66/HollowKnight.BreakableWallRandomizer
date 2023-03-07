@@ -1,22 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ItemChanger;
 using Newtonsoft.Json;
 using RandomizerCore.Logic;
 using RandomizerCore.LogicItems;
 using RandomizerMod.RC;
 using RandomizerMod.Settings;
-using UnityEngine.SceneManagement;
 using RandomizerCore;
 using System.Text.RegularExpressions;
 using ItemChanger.UIDefs;
-using Mono.Cecil;
 using RandomizerMod.Menu;
 using Modding;
-using ItemChanger.FsmStateActions;
 using RandomizerMod.Logging;
 
 namespace BreakableWallRandomiser.IC
@@ -112,12 +107,54 @@ namespace BreakableWallRandomiser.IC
             "Call in Bob the Builder. He won't fix it, he'll break it.",
             "Donate to Menderbug so that he can have a day off and break a wall instead of fixing one.",
             "This is probably just another useless shortcut wall. Still...",
-            "Did you know there are exactly 100 breakable walls in this game? If you round a bit?",
-            "Hot Loading Screen Tip: White Palace Breakable Walls and some others aren't randomized.",
+            "Fun fact: this mod adds exactly 100 breakable wall checks, and even more dive floor checks!",
+            "There's only one breakable wall in the game which isn't randomized. Do you know which one?",
             "Writing shop descriptions for these things is kinda hard.",
             "Vague and non-specific description somehow tangentially related to walls goes here.",
             "I bet you don't even know where this one is, do you?",
-            "These wall names aren't very descriptive, are they?"
+            "These wall descriptions aren't very descriptive, are they?",
+            "How am I going to break this wall without leaving your sight? I have my ways...",
+            "This wall is begging to be shattered. Do it for the thrill.",
+            "Behind this wall lies a mystery waiting to be uncovered. Unless you use a map mod. Cheat.",
+            "I'm pretty sure the wall won't see this one coming.",
+            "This wall was asking for it. I just answered the call.",
+            "Rumour has it that breaking this wall will bring good luck. Worth a shot, right?",
+            "This wall is a roadblock on the path to victory. It's time to remove it.",
+            "Maybe, if you run really fast at this wall, it'll just let you through instead?",
+            "Hey kid, wanna buy some cracks?",
+            "This one's definitely the one you've been looking for. Trust me, I checked.",
+            "All craftsmanship is of the lowest quality.",
+            "Menderbug has been trying to get his hands on this one for years!",
+
+
+            "I'll cast some Bad Magic to break this wall for ya -- for a fee.",
+            "Bring in a Sock Mower to mow down this wall.",
+            "What even *is* a Sockmower?",
+            "FlibberZERO this wall.",
+            "You Onrywon't be seeing this wall any more after you purchase this product.",
+
+            "Hot Loading Screen Tip: Walls which you've unlocked, but haven't checked, will be transparent. You can fall walk through them!",
+            "Hot Loading Screen Tip: It can be kinda hard to tell if a wall is transparent. You can also completely just not see them! You should double check!",
+            "Hot Loading Screen Tip: Breakable Walls in the white palace follow the WP Rando setting.",
+        };
+
+        readonly string[] diveFloorDescriptions =
+        {
+            "Real Estate has really suffered in recent years. Clear out this piece of quality land!",
+            "This one's just someone's driveway.",
+            "We need to go deeper!",
+            "How do we break these? We just give Oro a sledgehammer.",
+            "So... how much soul did you waste before you remembered this mod was on?",
+            "We'll send someone around to Desolate Dive harder than Bitcoin prices into this wall.",
+            "Fun fact: this mod adds exactly 46 dive floor checks, and even more breakable wall checks!",
+            "Vague and non-specific description somehow tangentially related to floors goes here.",
+
+            "I'll cast some Bad Magic to break this floor for ya -- for a fee.",
+            "We'll drop a Sock Mower onto this floor; that aughtta break it.",
+            
+            "Hot Loading Screen Tip: Floors which you've unlocked, but haven't checked, will be transparent. You can fall through them!",
+            "Hot Loading Screen Tip: It can be kinda hard to tell if a floor is transparent. You can also completely just not see them! You should double check!",
+            "Hot Loading Screen Tip: Dive Floors in the white palace follow the WP Rando setting.",
         };
 
         public void RegisterItemsAndLocations()
@@ -155,7 +192,11 @@ namespace BreakableWallRandomiser.IC
                     UIDef = new MsgUIDef
                     {
                         name = new BoxedString(wall.niceName != "" ? wall.niceName : wall.getItemName()),
-                        shopDesc = new BoxedString("\n" + wallShopDescriptions[random.Next(0, wallShopDescriptions.Length)]),
+                        shopDesc = new BoxedString("\n" + 
+                            (wall.getGroupName() == "Desolate Dive Floors" ? 
+                            diveFloorDescriptions[random.Next(0, diveFloorDescriptions.Length)] :
+                            wallShopDescriptions[random.Next(0, wallShopDescriptions.Length)])
+                        ),
                         sprite = new WallSprite(wall.sprite)
                     },
                     tags = new() {
