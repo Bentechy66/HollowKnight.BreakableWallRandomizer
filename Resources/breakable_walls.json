@@ -286,7 +286,7 @@
                 "y": 34.11
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": [ "break_wall_masks" ]
     },
     {
         "gameObject": "/Breakable Wall_Silhouette",
@@ -831,7 +831,13 @@
         "persistentBool": "",
         "requiredSetting": "Rando_WP",
         "sprite": "waterway_break_wall_acid_02_270deg",
-        "mapLocations": [],
+        "mapLocations": [
+            {
+                "sceneName": "White_Palace_12",
+                "x": 32.53,
+                "y": 198.56
+            }
+        ],
         "alsoDestroy": null
     },
     {
@@ -845,15 +851,19 @@
         "persistentBool": "",
         "requiredSetting": "Rando_WP",
         "sprite": "collapser_short_270deg",
-        "mapLocations": [],
+        "mapLocations": [
+            {
+                "sceneName": "White_Palace_12",
+                "x": 57.938,
+                "y": 198.17
+            }
+        ],
         "alsoDestroy": null
     },
     {
         "gameObject": "/Breakable Wall Ruin Lift",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {
-            "White_Palace_06[left1]": "(ORIG) + BREAKABLE_WhitePalace06_BreakableWallRuinLift"
-        },
+        "logicOverrides": { "White_Palace_06[left1]": "(ORIG) + BREAKABLE_WhitePalace06_BreakableWallRuinLift" },
         "logicSubstitutions": {},
         "sceneName": "White_Palace_06",
         "niceName": "Path of Pain Entrance Door",
@@ -861,7 +871,13 @@
         "persistentBool": "",
         "requiredSetting": "Rando_WP",
         "sprite": "collapser_short_270deg",
-        "mapLocations": [],
+        "mapLocations": [
+            {
+                "sceneName": "White_Palace_06",
+                "x": 12.021,
+                "y": 8.19
+            }
+        ],
         "alsoDestroy": null
     },
     {
@@ -875,7 +891,13 @@
         "persistentBool": "",
         "requiredSetting": "Rando_WP",
         "sprite": "ancient_one_way_wall_270deg",
-        "mapLocations": [],
+        "mapLocations": [
+            {
+                "sceneName": "White_Palace_09",
+                "x": 94.77,
+                "y": 96.14095
+            }
+        ],
         "alsoDestroy": null
     },
     {
@@ -1152,9 +1174,7 @@
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": {
-            "Baldur_Shell": "(ORIG) | (Fungus1_28[left1] | Fungus1_28[left2] + ((WINGS + LEFTCLAW) | WINGS + (ANYDASH | SPELLAIRSTALL + $CASTSPELL[2,before:ITEMSOUL,after:AREASOUL]) + DIFFICULTSKIPS + $SHADESKIP[2HITS])) + BREAKABLE_Fungus128_OneWayWall1"
-        },
+        "logicOverrides": { "Baldur_Shell": "(ORIG) | (Fungus1_28[left1] | Fungus1_28[left2] + ((WINGS + LEFTCLAW) | WINGS + (ANYDASH | SPELLAIRSTALL + $CASTSPELL[2,before:ITEMSOUL,after:AREASOUL]) + DIFFICULTSKIPS + $SHADESKIP[2HITS])) + BREAKABLE_Fungus128_OneWayWall1" },
         "logicSubstitutions": {},
         "sceneName": "Fungus1_28",
         "niceName": "Baldur Shell Exit Wall",
@@ -1169,7 +1189,7 @@
                 "y": 5.44
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": [ "mask_01", "Secret Mask" ]
     },
     {
         "gameObject": "/One Way Wall (1)",
@@ -2930,7 +2950,13 @@
         "persistentBool": "",
         "requiredSetting": "Rando_WP",
         "sprite": "break_floor",
-        "mapLocations": [],
+        "mapLocations": [
+            {
+                "sceneName": "White_Palace_09",
+                "x": 52.633,
+                "y": 37.078
+            }
+        ],
         "alsoDestroy": null
     },
     {
@@ -2944,7 +2970,13 @@
         "persistentBool": "",
         "requiredSetting": "Rando_WP",
         "sprite": "break_floor",
-        "mapLocations": [],
+        "mapLocations": [
+            {
+                "sceneName": "White_Palace_15",
+                "x": 28.24,
+                "y": 112.214
+            }
+        ],
         "alsoDestroy": null
     }
 ]
