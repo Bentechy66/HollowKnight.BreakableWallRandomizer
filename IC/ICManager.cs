@@ -133,7 +133,7 @@ namespace BreakableWallRandomiser.IC
             "FlibberZERO this wall.",
             "You Onrywon't be seeing this wall any more after you purchase this product.",
 
-            "Hot Loading Screen Tip: Walls which you've unlocked, but haven't checked, will be transparent. You can fall walk through them!",
+            "Hot Loading Screen Tip: Walls which you've unlocked, but haven't checked, will be transparent. You can walk through them!",
             "Hot Loading Screen Tip: It can be kinda hard to tell if a wall is transparent. You can also completely just not see them! You should double check!",
             "Hot Loading Screen Tip: Breakable Walls in the white palace follow the WP Rando setting.",
         };

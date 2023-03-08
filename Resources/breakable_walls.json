@@ -724,7 +724,10 @@
         "gameObject": "/One Way Wall (2)",
         "fsmType": "break_floor",
         "logicOverrides": {},
-        "logicSubstitutions": {},
+        "logicSubstitutions": {
+            "Deepnest_41[left1]": { "Deepnest_41[left2]": "(Deepnest_41[left2] + BREAKABLE_Deepnest41_OneWayWall2 + BREAKABLE_Deepnest41_OneWayWall1)" },
+            "Deepnest_41[right1]": { "Deepnest_41[left2]": "(Deepnest_41[left2] + BREAKABLE_Deepnest41_OneWayWall2 + BREAKABLE_Deepnest41_OneWayWall1)" }
+        },
         "sceneName": "Deepnest_41",
         "niceName": "Deepnest Village Fall Climb Back Up Wall",
         "logic": "Deepnest_41[left2] + FULLCLAW + (LANTERN | DARKROOMS)",
@@ -1209,7 +1212,7 @@
                 "y": 62.769
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": [ "mask_01", "Secret Mask" ]
     },
     {
         "gameObject": "/_Props/Breakable Wall",
@@ -1381,7 +1384,7 @@
         },
         "sceneName": "Fungus3_39",
         "niceName": "Queen's Gardens Into Temple Wall",
-        "logic": "Fungus3_39[left1] + (Fungus3_39[right1] + BREAKABLE_Fungus339_OneWayWall)",
+        "logic": "Fungus3_39[left1] | (Fungus3_39[right1] + BREAKABLE_Fungus339_OneWayWall)",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "one_way_fung_266deg",
