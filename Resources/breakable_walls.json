@@ -1125,28 +1125,8 @@
         "alsoDestroy": null
     },
     {
-        "gameObject": "/Breakable Wall",
-        "fsmType": "breakable_wall_v2",
-        "logicOverrides": { "Fungus1_12[left1]": "(ORIG) + BREAKABLE_Fungus112_BreakableWall" },
-        "logicSubstitutions": {},
-        "sceneName": "Fungus1_12",
-        "niceName": "Greenpath Breakable Wall Near QG",
-        "logic": "Fungus1_12[right1]",
-        "persistentBool": "",
-        "requiredSetting": null,
-        "sprite": "grass_break_wall_0deg",
-        "mapLocations": [
-            {
-                "sceneName": "Fungus1_12",
-                "x": 0.33,
-                "y": 7.635508
-            }
-        ],
-        "alsoDestroy": null
-    },
-    {
         "gameObject": "/Break Floor 1",
-        "fsmType": "breakable_wall_v2",
+        "fsmType": "break_floor",
         "logicOverrides": {
             "Rancid_Egg-Fungal_Core": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + LEFTCLAW",
             "Geo_Rock-Fungal_Core_Entrance": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + LEFTCLAW",
