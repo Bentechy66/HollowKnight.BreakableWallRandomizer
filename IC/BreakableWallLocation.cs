@@ -16,15 +16,11 @@ namespace BreakableWallRandomiser.IC
 
         protected override void OnLoad()
         {
-            if (!wallData.shouldBeIncluded(RandomizerMod.RandomizerMod.RS.GenerationSettings)) { return; } // bit of a bodge
-
             Events.AddFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
         }
 
         protected override void OnUnload()
         {
-            if (!wallData.shouldBeIncluded(RandomizerMod.RandomizerMod.RS.GenerationSettings)) { return; }
-
             Events.RemoveFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
         }
 

@@ -5,7 +5,7 @@
         "logicOverrides": { "Abyss_03_c[right1]": "(ORIG) + BREAKABLE_Abyss03c_BreakableWall" },
         "logicSubstitutions": { "Abyss_03_c": { "Abyss_03_c[right1]": "(Abyss_03_c[right1] + BREAKABLE_Abyss03c_BreakableWall)" } },
         "sceneName": "Abyss_03_c",
-        "niceName": "Lower Wall Into Hive Near Tram",
+        "niceName": "Hive Entrance Near Lower Tram",
         "logic": "Abyss_03_c",
         "persistentBool": "",
         "requiredSetting": null,
@@ -42,11 +42,13 @@
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": {},
+        "logicOverrides": {
+            "Lifeblood_Core": "(ORIG) | (Abyss_08[right1] + (PRECISEMOVEMENT | FULLDASH + WINGS) + BREAKABLE_Abyss08_OneWayWall + (WINGS | RIGHTDASH | RIGHTSUPERDASH))"
+        },
         "logicSubstitutions": {},
         "sceneName": "Abyss_08",
         "niceName": "Lifeblood Core Egg Wall",
-        "logic": "Abyss_08[right1] + (PRECISEMOVEMENT | LEFTDASH) + (RIGHTSUPERDASH + (RIGHTCLAW | WINGS))",
+        "logic": "(Abyss_08[right1] + (PRECISEMOVEMENT | LEFTDASH) + (RIGHTSUPERDASH + (RIGHTCLAW | WINGS))) | (Abyss_08[right1] + (PRECISEMOVEMENT | FULLDASH + WINGS) + BREAKABLE_Abyss08_OneWayWall)",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "ancient_one_way_wall_270deg",
@@ -57,15 +59,15 @@
                 "y": 13.54
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Secret Mask"]
     },
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": { "Pale_Ore-Basin": "(ORIG) | (Abyss_17[top1] + BREAKABLE_Abyss17_OneWayWall) + LEFTCLAW" },
+        "logicOverrides": { "Pale_Ore-Basin": "(ORIG) | (Abyss_17[top1] + BREAKABLE_Abyss17_OneWayWall) + (LEFTCLAW | (RIGHTCLAW + WINGS))" },
         "logicSubstitutions": {},
         "sceneName": "Abyss_17",
-        "niceName": "Pale Ore near Lower Tram Wall",
+        "niceName": "Pale Ore Near Lower Tram Wall",
         "logic": "(Abyss_17[top1] + (ANYCLAW | WINGS | DAMAGEBOOSTS + $TAKEDAMAGE)) | (Abyss_17[top1] + BREAKABLE_Abyss17_OneWayWall)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -204,7 +206,7 @@
             "Cliffs_02[bot2]": { "Cliffs_02[bot1]": "(Cliffs_02[bot1] + BREAKABLE_Cliffs02_OneWayWall)" }
         },
         "sceneName": "Cliffs_02",
-        "niceName": "Wall into Howling Cliffs from KP",
+        "niceName": "One-Way Wall Into Howling Cliffs from KP",
         "logic": "Cliffs_02[bot1] + (ANYCLAW | WINGS) | (BREAKABLE_Cliffs02_OneWayWall + Cliffs_02)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -216,7 +218,7 @@
                 "y": 14.08
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Secret Mask (2)"]
     },
     {
         "gameObject": "/_Scenery/Break Floor 1",
@@ -266,7 +268,7 @@
                 "y": 39.93
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["_Scenery/crossroads_03_mask"]
     },
     {
         "gameObject": "/Break Wall 2",
@@ -334,7 +336,9 @@
     {
         "gameObject": "/Break Floor 1",
         "fsmType": "break_floor",
-        "logicOverrides": {},
+        "logicOverrides": {
+            "Crossroads_09[right1]": "(ORIG) + BREAKABLE_Crossroads09_BreakFloor1"
+        },
         "logicSubstitutions": {},
         "sceneName": "Crossroads_09",
         "niceName": "Mawlek Shortcut",
@@ -397,7 +401,7 @@
         "logicOverrides": { "Soul_Totem-Crossroads_Goam_Journal": "(ORIG) + BREAKABLE_Crossroads18_BreakableWallWaterways" },
         "logicSubstitutions": {},
         "sceneName": "Crossroads_18",
-        "niceName": "Goam Journal Entry Wall",
+        "niceName": "Crossroads Soul Totem Wall Near Goam Journal Room",
         "logic": "Crossroads_18 + (LEFTDASH | WINGS | LEFTCLAW | RIGHTCLAW + LEFTSUPERDASH + OBSCURESKIPS)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -420,7 +424,7 @@
         },
         "logicSubstitutions": {},
         "sceneName": "Crossroads_21",
-        "niceName": "Glowing Womb Entranace Wall",
+        "niceName": "Glowing Womb Entrance Wall",
         "logic": "Crossroads_21[top1] | Crossroads_21[right1]",
         "persistentBool": "",
         "requiredSetting": null,
@@ -440,7 +444,7 @@
         "logicOverrides": {},
         "logicSubstitutions": {},
         "sceneName": "Crossroads_37",
-        "niceName": "Crossroads Vessel Fragment Exit",
+        "niceName": "Crossroads Vessel Fragment Exit to Left of Elevator",
         "logic": "Crossroads_37[right1]",
         "persistentBool": "",
         "requiredSetting": null,
@@ -452,7 +456,7 @@
                 "y": 6.013
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Mask Bottom", "Mask Bottom 2"]
     },
     {
         "gameObject": "/One Way Wall",
@@ -460,7 +464,7 @@
         "logicOverrides": {},
         "logicSubstitutions": { "Deepnest_01": { "Deepnest_01[bot1]": "Deepnest_01[bot1] + BREAKABLE_Deepnest01_OneWayWall" } },
         "sceneName": "Deepnest_01",
-        "niceName": "Deepnest Exit Top",
+        "niceName": "Deepnest Exit Near Moss Prophet",
         "logic": "Deepnest_01[bot1]",
         "persistentBool": "",
         "requiredSetting": null,
@@ -472,7 +476,7 @@
                 "y": 6.54
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Secret Mask"]
     },
     {
         "gameObject": "/One Way Wall",
@@ -480,7 +484,7 @@
         "logicOverrides": {},
         "logicSubstitutions": { "Deepnest_01b": { "Deepnest_01b[right1]": "Deepnest_01b[right1] + BREAKABLE_Deepnest01b_OneWayWall" } },
         "sceneName": "Deepnest_01b",
-        "niceName": "Deepnest Exit Near Temple",
+        "niceName": "Deepnest Wall Underneath Moss Prophet",
         "logic": "Deepnest_01b[right1]",
         "persistentBool": "",
         "requiredSetting": null,
@@ -517,10 +521,12 @@
     {
         "gameObject": "/Breakable Wall",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {},
+        "logicOverrides": {
+            "Deepnest_03[left2]": "(ORIG) + BREAKABLE_Deepnest03_BreakableWall"
+        },
         "logicSubstitutions": { "Deepnest_03": { "Deepnest_03[left2]": "(Deepnest_03[left2] + BREAKABLE_Deepnest03_BreakableWall)" } },
         "sceneName": "Deepnest_03",
-        "niceName": "Nosk Entrance",
+        "niceName": "Nosk Room Entrance",
         "logic": "(Deepnest_03[left2] + BREAKABLE_Deepnest03_BreakableWall) | Deepnest_03 + (LEFTSUPERDASH | WINGS | LEFTCLAW + $SHADESKIP)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -537,11 +543,11 @@
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": { "Deepnest_31[right2]": "(ORIG) + BREAKABLE_Deepnest31_BreakableWall + BREAKABLE_Deepnest31_BreakableWall1" },
         "logicSubstitutions": {},
+        "logicOverrides": {},
         "sceneName": "Deepnest_31",
         "niceName": "Nosk One-Way Shortcut",
-        "logic": "RIGHTCLAW + ((BREAKABLE_Deepnest31_BreakableWall + BREAKABLE_Deepnest31_BreakableWall1 + Deepnest_31[right1]) | Deepnest_31[right2])",
+        "logic": "(((BREAKABLE_Deepnest31_BreakableWall + BREAKABLE_Deepnest31_BreakableWall1 + Deepnest_31[right1] + ANYCLAW) | (Deepnest_31[right2] + RIGHTCLAW))) | Deepnest_31[right1] + BREAKABLE_Deepnest31_OneWayWall",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "deep_crumble_floor_270deg",
@@ -552,13 +558,13 @@
                 "y": 31.86
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Secret Mask"]
     },
     {
         "gameObject": "/Breakable Wall (1)",
         "fsmType": "breakable_wall_v2",
         "logicOverrides": {
-            "Deepnest_31[right2]": "(ORIG) + BREAKABLE_Deepnest31_BreakableWall + BREAKABLE_Deepnest31_BreakableWall1",
+            "Deepnest_31[right2]": "((ORIG) + BREAKABLE_Deepnest31_BreakableWall + BREAKABLE_Deepnest31_BreakableWall1) | Deepnest_31[right1] + BREAKABLE_Deepnest31_OneWayWall",
             "Grub-Deepnest_Nosk": "(ORIG) + BREAKABLE_Deepnest31_BreakableWall + BREAKABLE_Deepnest31_BreakableWall1",
             "Geo_Rock-Deepnest_Nosk_1": "(ORIG) + BREAKABLE_Deepnest31_BreakableWall + BREAKABLE_Deepnest31_BreakableWall1",
             "Geo_Rock-Deepnest_Nosk_2": "(ORIG) + BREAKABLE_Deepnest31_BreakableWall + BREAKABLE_Deepnest31_BreakableWall1",
@@ -567,7 +573,7 @@
         "logicSubstitutions": {},
         "sceneName": "Deepnest_31",
         "niceName": "Nosk Second Breakable Wall",
-        "logic": "Deepnest_31[right1] + ANYCLAW + BREAKABLE_Deepnest31_BreakableWall",
+        "logic": "(Deepnest_31[right1] + BREAKABLE_Deepnest31_BreakableWall) | (Deepnest_31[right1] + BREAKABLE_Deepnest31_OneWayWall + (ANYCLAW | WINGS))",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_wall_deepnest_0deg",
@@ -587,7 +593,7 @@
         "logicSubstitutions": {},
         "sceneName": "Deepnest_31",
         "niceName": "Nosk First Breakable Wall",
-        "logic": "Deepnest_31[right1] + ANYCLAW",
+        "logic": "Deepnest_31[right1]",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_wall_deepnest_0deg",
@@ -606,7 +612,7 @@
         "logicOverrides": { "Soul_Totem-Deepnest_Vessel": "(ORIG) + BREAKABLE_Deepnest38_BreakableWall" },
         "logicSubstitutions": {},
         "sceneName": "Deepnest_38",
-        "niceName": "Deepnest Garpede Pogo Soul Totem Wall",
+        "niceName": "Deepnest Garpede Pogo Room Soul Totem Wall",
         "logic": "Deepnest_38[bot1] + (RIGHTCLAW | WINGS)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -646,7 +652,7 @@
         "logicOverrides": {},
         "logicSubstitutions": {},
         "sceneName": "Deepnest_39",
-        "niceName": "Rancid Egg Exit Wall Deepnest",
+        "niceName": "Rancid Egg Exit Wall Outside Weaver's Den",
         "logic": "(LANTERN | DARKROOMS) + (Deepnest_39[left1] | Deepnest_39[top1] | Deepnest_39[door1] | (Deepnest_39[right1] + (LEFTCLAW | (WINGS + RIGHTCLAW) | ((WINGS | RIGHTCLAW) + ENEMYPOGOS))))",
         "persistentBool": "",
         "requiredSetting": null,
@@ -686,7 +692,7 @@
         "logicOverrides": {},
         "logicSubstitutions": {},
         "sceneName": "Deepnest_41",
-        "niceName": "Deepnest Into Village Up-Facing Exit",
+        "niceName": "Deepnest Near Village Up-Facing Exit From Fall",
         "logic": "((Deepnest_41[right1]) | (Deepnest_41[left1]) + CLAW + BREAKABLE_Deepnest41_OneWayWall) + (LANTERN | DARKROOMS)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -729,7 +735,7 @@
             "Deepnest_41[right1]": { "Deepnest_41[left2]": "(Deepnest_41[left2] + BREAKABLE_Deepnest41_OneWayWall2 + BREAKABLE_Deepnest41_OneWayWall1)" }
         },
         "sceneName": "Deepnest_41",
-        "niceName": "Deepnest Village Fall Climb Back Up Wall",
+        "niceName": "Deepnest Village Fall Climb Back Up Wall Two",
         "logic": "Deepnest_41[left2] + FULLCLAW + (LANTERN | DARKROOMS)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -781,7 +787,7 @@
                 "y": 5.17
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Secret Mask"]
     },
     {
         "gameObject": "/Breakable Wall",
@@ -969,7 +975,10 @@
         "logicOverrides": { "Deepnest_East_06[bot1]": "(ORIG) | (BREAKABLE_DeepnestEast06_OneWayWall + ((Deepnest_East_06[door1] + LEFTCLAW) | (Deepnest_East_06[left1] + RIGHTCLAW) | Deepnest_East_06[top1]))" },
         "logicSubstitutions": {
             "Geo_Rock-Kingdom's_Edge_Oro_Far_Left": { "Deepnest_East_06[bot1]": "(Deepnest_East_06[bot1] + BREAKABLE_DeepnestEast06_OneWayWall)" },
-            "Geo_Rock-Kingdom's_Edge_Oro_Middle_Left": { "Deepnest_East_06[bot1]": "(Deepnest_East_06[bot1] + BREAKABLE_DeepnestEast06_OneWayWall)" }
+            "Geo_Rock-Kingdom's_Edge_Oro_Middle_Left": { "Deepnest_East_06[bot1]": "(Deepnest_East_06[bot1] + BREAKABLE_DeepnestEast06_OneWayWall)" },
+            "Deepnest_East_06[door1]": { "Deepnest_East_06[bot1]": "(Deepnest_East_06[bot1] + BREAKABLE_DeepnestEast06_OneWayWall)" },
+            "Deepnest_East_06[left1]": { "Deepnest_East_06[bot1]": "(Deepnest_East_06[bot1] + BREAKABLE_DeepnestEast06_OneWayWall)" },
+            "Deepnest_East_06[top1]": { "Deepnest_East_06[bot1]": "(Deepnest_East_06[bot1] + BREAKABLE_DeepnestEast06_OneWayWall)" }
         },
         "sceneName": "Deepnest_East_06",
         "niceName": "Quickslash Exit One-Way",
@@ -984,7 +993,7 @@
                 "y": 9.31
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Secret Mask"]
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1032,7 +1041,7 @@
         "logicOverrides": { "Grub-Kingdom's_Edge_Camp": "(ORIG) + BREAKABLE_DeepnestEast11_BreakableWall" },
         "logicSubstitutions": {},
         "sceneName": "Deepnest_East_11",
-        "niceName": "Kingdom's Edge Grub Camp",
+        "niceName": "Kingdom's Edge Grub Near Camp",
         "logic": "Deepnest_East_11",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1052,7 +1061,7 @@
         "logicOverrides": {},
         "logicSubstitutions": { "Deepnest_East_11[top1]": { "Broke_Camp_Bench_Wall": "BREAKABLE_DeepnestEast11_BreakableWalltop" } },
         "sceneName": "Deepnest_East_11",
-        "niceName": "Edge Camp Entrance",
+        "niceName": "Edge Camp Bench Entrance",
         "logic": "Deepnest_East_11[top1] + (LEFTCLAW | WINGS) | Deepnest_East_11[right1] + (LEFTCLAW | WINGS + BACKGROUNDPOGOS) | (Deepnest_East_11[left1] | Deepnest_East_11[bot1]) + (WINGS | FULLCLAW + $SHADESKIP | ENEMYPOGOS + DANGEROUSSKIPS) + (LEFTCLAW | WINGS + BACKGROUNDPOGOS)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1072,7 +1081,7 @@
         "logicOverrides": { "Deepnest_East_14[door1]": "(ORIG) + BREAKABLE_DeepnestEast14_BreakableWall" },
         "logicSubstitutions": {},
         "sceneName": "Deepnest_East_14",
-        "niceName": "Big Geo Rock Wall",
+        "niceName": "420 Geo Rock Wall Outer",
         "logic": "(Deepnest_East_14[door1] | Deepnest_East_14[top2] + Broke_Oro_Quake_Floor_2 + Broke_Oro_Quake_Floor_3 + (RIGHTCLAW | WINGS | LEFTCLAW + ENEMYPOGOS) + (RIGHTDASH | PRECISEMOVEMENT) | Deepnest_East_14[left1] + (RIGHTDASH | SPIKETUNNELS)) + (ANYCLAW | WINGS | $SHADESKIP[2HITS] + ENEMYPOGOS + (ANYDASH | SPELLAIRSTALL + $CASTSPELL[before:ROOMSOUL]))",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1135,7 +1144,7 @@
         "logicOverrides": { "Wanderer's_Journal-Greenpath_Stag": "(ORIG) + BREAKABLE_Fungus122_BreakableWall" },
         "logicSubstitutions": {},
         "sceneName": "Fungus1_22",
-        "niceName": "Greenpath Stag Journal Breakable Wall",
+        "niceName": "Breakable Wall near Greenpath Stag",
         "logic": "Fungus1_22[left1] | Fungus1_22[top1]",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1172,7 +1181,7 @@
                 "y": 31.75
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Secret Mask"]
     },
     {
         "gameObject": "/One Way Wall",
@@ -1383,7 +1392,7 @@
             "Fungus3_39[left1]": { "Fungus3_39[right1]": "(Fungus3_39[right1] + BREAKABLE_Fungus339_OneWayWall)" }
         },
         "sceneName": "Fungus3_39",
-        "niceName": "Queen's Gardens Into Temple Wall",
+        "niceName": "Queen's Gardens Into Moss Prophet Wall",
         "logic": "Fungus3_39[left1] | (Fungus3_39[right1] + BREAKABLE_Fungus339_OneWayWall)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1403,7 +1412,7 @@
         "logicOverrides": {},
         "logicSubstitutions": {},
         "sceneName": "Fungus3_44",
-        "niceName": "Shaman Fungus Room Wall",
+        "niceName": "Howling Wraiths Outer Room Wall",
         "logic": "Fungus3_44[door1]",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1538,7 +1547,7 @@
                 "y": 36.49
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": ["Secret Mask"]
     },
     {
         "gameObject": "/One Way Wall",
@@ -1610,7 +1619,7 @@
         "logicOverrides": { "RestingGrounds_10[top2]": "(ORIG) + BREAKABLE_RestingGrounds10_BreakableWall7 + BREAKABLE_RestingGrounds10_BreakableWall5" },
         "logicSubstitutions": { "RestingGrounds_10": { "RestingGrounds_10[top2]": "RestingGrounds_10[top2] + BREAKABLE_RestingGrounds10_BreakableWall7 + BREAKABLE_RestingGrounds10_BreakableWall5" } },
         "sceneName": "RestingGrounds_10",
-        "niceName": "Resting Grounds Grey Mourner Wall",
+        "niceName": "Catacombs Grey Mourner Wall",
         "logic": "RestingGrounds_10 + BREAKABLE_RestingGrounds10_BreakableWall7",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1673,7 +1682,7 @@
         },
         "logicSubstitutions": {},
         "sceneName": "RestingGrounds_10",
-        "niceName": "Resting Grounds Grub Wall",
+        "niceName": "Catacombs Grub Wall",
         "logic": "RestingGrounds_10 + (LEFTCLAW | WINGS) + UPWALLBREAK + BREAKABLE_RestingGrounds10_BreakableWall7",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1716,7 +1725,7 @@
             "Ruins2_10[right1]": { "Opened_Resting_Grounds_Catacombs_Wall": "BREAKABLE_RestingGrounds10_OneWayWall" }
         },
         "sceneName": "RestingGrounds_10",
-        "niceName": "Resting Grounds into Elevator Shaft Wall",
+        "niceName": "Catacombs into Elevator Shaft Wall",
         "logic": "RestingGrounds_10",
         "persistentBool": "restingGroundsCryptWall",
         "requiredSetting": null,
@@ -1756,7 +1765,7 @@
         "logicOverrides": { "Wanderer's_Journal-Resting_Grounds_Catacombs": "(ORIG) + BREAKABLE_RestingGrounds10_BreakableWall7 + BREAKABLE_RestingGrounds10_BreakableWall6" },
         "logicSubstitutions": {},
         "sceneName": "RestingGrounds_10",
-        "niceName": "Resting Grounds Right-Side Wall",
+        "niceName": "Catacombs Right-Side Wall",
         "logic": "RestingGrounds_10 + BREAKABLE_RestingGrounds10_BreakableWall7",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1779,7 +1788,7 @@
         },
         "logicSubstitutions": {},
         "sceneName": "RestingGrounds_10",
-        "niceName": "Resting Grounds Catacombs Up Wall Left Side",
+        "niceName": "Catacombs Up Wall Left Side",
         "logic": "RestingGrounds_10 + UPWALLBREAK",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1862,7 +1871,7 @@
             "Ruins1_31[left1]": { "Ruins1_31": "(Ruins1_31 + BREAKABLE_Ruins131_BreakableWallRuinLift)" }
         },
         "sceneName": "Ruins1_31",
-        "niceName": "Shade Soul Shortcut Wall",
+        "niceName": "Toll Bench near Shade Soul Shortcut Wall",
         "logic": "Ruins1_31",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1902,7 +1911,7 @@
         "logicOverrides": { "Ruins_Bathhouse[right1]": "(ORIG) + BREAKABLE_RuinsBathhouse_BreakableWall" },
         "logicSubstitutions": { "Ruins2_10b[left1]": { "Opened_Pleasure_House_Wall": "BREAKABLE_RuinsBathhouse_BreakableWall" } },
         "sceneName": "Ruins_Bathhouse",
-        "niceName": "Bath-house Wall Next to Bench",
+        "niceName": "Pleasure House Wall Next to Bench",
         "logic": "Ruins_Bathhouse[door1] | Ruins_Bathhouse[right1]",
         "persistentBool": "bathHouseWall",
         "requiredSetting": null,
@@ -1922,7 +1931,7 @@
         "logicOverrides": {},
         "logicSubstitutions": {},
         "sceneName": "Ruins_Elevator",
-        "niceName": "Pleasure House Elevator Wall",
+        "niceName": "Pleasure House Egg Exit Wall",
         "logic": "Ruins_Elevator[left1] | Ruins_Elevator[left2]",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1945,7 +1954,7 @@
         },
         "logicSubstitutions": {},
         "sceneName": "Tutorial_01",
-        "niceName": "Tutorial Blocker Floor",
+        "niceName": "King's Pass Blocker Floor",
         "logic": "Tutorial_01",
         "persistentBool": "",
         "requiredSetting": "RandomizeTutorialBreakableFloor",
@@ -2005,7 +2014,7 @@
         "logicOverrides": { "Grub-Waterways_Main": "(ORIG) + BREAKABLE_Waterways04_BreakableWallWaterways" },
         "logicSubstitutions": {},
         "sceneName": "Waterways_04",
-        "niceName": "Waterways Main Grub Wall",
+        "niceName": "Waterways Left Grub Wall",
         "logic": "Waterways_04[right1] + (RIGHTCLAW | SWIM | CYCLONE | (FIREBALL | SCREAM) + $CASTSPELL[before:ROOMSOUL]) | Waterways_04[left1] + (RIGHTCLAW | WINGS | ENEMYPOGOS) + (RIGHTCLAW | SWIM | CYCLONE | (FIREBALL | SCREAM) + $CASTSPELL[before:ROOMSOUL]) | Waterways_04[left2] + (SWIM | RIGHTSKIPACID)",
         "persistentBool": "",
         "requiredSetting": null,
@@ -2083,7 +2092,12 @@
         "gameObject": "/Breakable Wall Waterways",
         "fsmType": "breakable_wall_v2",
         "logicOverrides": { "Waterways_08[left2]": "(ORIG) + BREAKABLE_Waterways08_BreakableWallWaterways" },
-        "logicSubstitutions": {},
+        "logicSubstitutions": {
+            "Soul_Totem-Waterways_Flukemarm": {"Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)"},
+            "Geo_Rock-Waterways_Flukemarm": {"Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)"},
+            "Waterways_08[top1]": {"Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)"},
+            "Waterways_08[left1]": {"Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)"}
+        },
         "sceneName": "Waterways_08",
         "niceName": "Waterways Godhome Entrance",
         "logic": "Waterways_08[left2] | Waterways_08[left1] + (LEFTCLAW | WINGS) + UPWALLBREAK",
@@ -2645,7 +2659,7 @@
         "logicOverrides": { "Broke_Sanctum_Escape_Quake_Floor_1": "BREAKABLE_Ruins130_QuakeFloorGlass1" },
         "logicSubstitutions": {},
         "sceneName": "Ruins1_30",
-        "niceName": "Sanctum Escape Quake Floor One",
+        "niceName": "Sanctum Escape Dive Floor One",
         "logic": "Ruins1_30[left2] + (LEFTCLAW | RIGHTCLAW + BACKGROUNDPOGOS | WINGS) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
         "persistentBool": "",
         "requiredSetting": null,
@@ -2662,10 +2676,14 @@
     {
         "gameObject": "/Quake Floor Glass (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": { "Broke_Sanctum_Escape_Quake_Floor_2": "BREAKABLE_Ruins130_QuakeFloorGlass" },
-        "logicSubstitutions": {},
+        "logicOverrides": {
+            "Broke_Sanctum_Escape_Quake_Floor_2": "BREAKABLE_Ruins130_QuakeFloorGlass"
+        },
+        "logicSubstitutions": {
+            "Ruins1_30": { "Ruins1_30[left2]": "(Ruins1_30[left2]) + Broke_Sanctum_Escape_Quake_Floor_1 + Broke_Sanctum_Escape_Quake_Floor_2" }
+        },
         "sceneName": "Ruins1_30",
-        "niceName": "Santcum Escape Quake Floor Two",
+        "niceName": "Santcum Escape Dive Floor Two",
         "logic": "Ruins1_30[left2] + Broke_Sanctum_Escape_Quake_Floor_1 + (LEFTCLAW | RIGHTCLAW + BACKGROUNDPOGOS | WINGS) + QUAKE + $CASTSPELL[before:ROOMSOUL]",
         "persistentBool": "",
         "requiredSetting": null,
