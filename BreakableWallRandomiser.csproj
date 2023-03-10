@@ -115,6 +115,9 @@
 	<Reference Include="RandoSettingsManager">
       <HintPath>$(HollowKnightRefs)/Mods/RandoSettingsManager/RandoSettingsManager.dll</HintPath>
     </Reference>
+	<Reference Include="MoreDoors">
+		<HintPath>$(HollowKnightRefs)/Mods/MoreDoors/MoreDoors.dll</HintPath>
+	</Reference>
     <Reference Include="MonoMod.RuntimeDetour">
       <HintPath>$(HollowKnightRefs)/MonoMod.RuntimeDetour.dll</HintPath>
     </Reference>

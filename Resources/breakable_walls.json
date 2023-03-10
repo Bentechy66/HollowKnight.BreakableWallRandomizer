@@ -786,7 +786,7 @@
     {
         "gameObject": "/Breakable Wall",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": { "Weaversong": "(ORIG) + BREAKABLE_Deepnest45v02_BreakableWall" },
+        "logicOverrides": { "Geo_Chest-Weavers_Den": "(ORIG) + BREAKABLE_Deepnest45v02_BreakableWall" },
         "logicSubstitutions": {},
         "sceneName": "Deepnest_45_v02",
         "niceName": "Weaver's Den Inner",

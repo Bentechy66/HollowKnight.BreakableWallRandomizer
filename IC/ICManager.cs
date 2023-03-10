@@ -13,6 +13,8 @@ using ItemChanger.UIDefs;
 using RandomizerMod.Menu;
 using Modding;
 using RandomizerMod.Logging;
+using MoreDoors.Rando;
+using UnityEngine;
 
 namespace BreakableWallRandomiser.IC
 {
@@ -54,9 +56,35 @@ namespace BreakableWallRandomiser.IC
             public string getItemName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Itm_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getTermName() => $"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getGroupName() => WALL_GROUPS[fsmType].Item1;
+
+            private bool excludeWallDueToMoreDoors(GenerationSettings gs)
+            {
+                // If the PoP door is randomized, don't include our wall. Recipe for disaster, trust me.
+
+                // TODO: This is a horrible hack. Let's figure out a nicer way to do this in future. 
+                MoreDoors.Rando.LocalSettings LS = new();
+                System.Random r = new(gs.Seed + 13);
+                LS.EnabledDoorNames = LS.Settings.ComputeActiveDoors(gs, r);
+
+                return LS.IncludeDoor("Pain");
+            }
+
             public bool shouldBeIncluded(GenerationSettings gs)
             {
                 if (!BreakableWallRandomiser.settings.AnyWalls && !BreakableWallRandomiser.settings.RandomizeDiveFloors) { return false; }
+
+                // -- Patches for other mods --
+
+                // MoreDoors PoP door
+                if (sceneName == "White_Palace_06" && gameObject == "/Breakable Wall Ruin Lift")
+                {
+                    if (ModHooks.GetMod("MoreDoors") is Mod)
+                    {
+                        if (excludeWallDueToMoreDoors(gs)) { return false; }
+                    }
+                }
+
+                // -- End Patches --
 
                 if ((fsmType == "FSM" || fsmType == "breakable_wall_v2") && !BreakableWallRandomiser.settings.RandomizeBreakableRockWalls) { return false; }
                 if (fsmType == "break_floor" && !BreakableWallRandomiser.settings.RandomizeBreakableWoodenPlankWalls) { return false; }
@@ -159,7 +187,7 @@ namespace BreakableWallRandomiser.IC
 
         public void RegisterItemsAndLocations()
         {
-            Random random = new Random(0x1337);
+            System.Random random = new(0x1337);
 
             // UnityEngine.Sprite scaledSprite = UnityEngine.Sprite.Create(uiSprite.texture, uiSprite.rect, new UnityEngine.Vector2(0.5f, 0.5f), 100);
 
