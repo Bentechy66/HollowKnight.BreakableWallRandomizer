@@ -64,7 +64,7 @@
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": { "Pale_Ore-Basin": "(ORIG) | (Abyss_17[top1] + BREAKABLE_Abyss17_OneWayWall) + (LEFTCLAW | (RIGHTCLAW + WINGS))" },
+        "logicOverrides": { "Pale_Ore-Basin": "(ORIG) | (Abyss_17[top1] + BREAKABLE_Abyss17_OneWayWall) + (LEFTCLAW | WINGS)" },
         "logicSubstitutions": {},
         "sceneName": "Abyss_17",
         "niceName": "Pale Ore Near Lower Tram Wall",
@@ -689,7 +689,9 @@
     {
         "gameObject": "/One Way Wall (1)",
         "fsmType": "break_floor",
-        "logicOverrides": {},
+        "logicOverrides": {
+            "Deepnest_41[left2]": "(ORIG) | ((LANTERN | DARKROOMS) + COMBAT[Left_Devout] + (BREAKABLE_Deepnest41_OneWayWall2 + ((Deepnest_41[left1] + BREAKABLE_Deepnest41_OneWayWall) | (Deepnest_41[right1] + BREAKABLE_Deepnest41_OneWayWall1))))"
+        },
         "logicSubstitutions": {},
         "sceneName": "Deepnest_41",
         "niceName": "Deepnest Near Village Up-Facing Exit From Fall",
@@ -713,7 +715,7 @@
         "logicSubstitutions": {},
         "sceneName": "Deepnest_41",
         "niceName": "Deepnest Midwife Wall",
-        "logic": "Deepnest_41[left1] + (LANTERN | DARKROOMS)",
+        "logic": "Deepnest_41[left2] + (LANTERN | DARKROOMS)",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "break_wall_deepnest_0deg",
@@ -1058,7 +1060,7 @@
     {
         "gameObject": "/Breakable Wall top",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {},
+        "logicOverrides": {"Broke_Camp_Bench_Wall": "BREAKABLE_DeepnestEast11_BreakableWalltop"},
         "logicSubstitutions": { "Deepnest_East_11[top1]": { "Broke_Camp_Bench_Wall": "BREAKABLE_DeepnestEast11_BreakableWalltop" } },
         "sceneName": "Deepnest_East_11",
         "niceName": "Edge Camp Bench Entrance",
@@ -1101,7 +1103,7 @@
         "logicOverrides": {},
         "logicSubstitutions": {},
         "sceneName": "Deepnest_Spider_Town",
-        "niceName": "Distant Village Secret Wall Above Bench",
+        "niceName": "Distant Village Secret Wall Above Trap Bench",
         "logic": "(Deepnest_Spider_Town[left1] + (RIGHTCLAW + WINGS + LEFTSUPERDASH)) | (Deepnest_Spider_Town[left1] + (WINGS + ANYCLAW | FULLCLAW + (COMBAT[Left_Devout] | COMBAT[Any_Devout]))) + BREAKABLE_DeepnestSpiderTown_OneWayWall",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1119,7 +1121,7 @@
         "gameObject": "/Break Floor 1",
         "fsmType": "break_floor",
         "logicOverrides": {
-            "Fungus1_04[left1]": "(ORIG) | (BREAKABLE_Fungus104_BreakFloor1 + (WINGS | LEFTDASH) + Fungus1_04[right1])",
+            "Fungus1_04[left1]": "(ORIG) | (BREAKABLE_Fungus104_BreakFloor1 + (WINGS | LEFTDASH | ACID | SPELLAIRSTALL + $CASTSPELL[1,1]) + Fungus1_04[right1])",
             "Fungus1_04[right1]": "(ORIG) + BREAKABLE_Fungus104_BreakFloor1"
         },
         "logicSubstitutions": {},
@@ -1162,9 +1164,9 @@
         "gameObject": "/Break Floor 1",
         "fsmType": "break_floor",
         "logicOverrides": {
-            "Rancid_Egg-Fungal_Core": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + LEFTCLAW",
-            "Geo_Rock-Fungal_Core_Entrance": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + LEFTCLAW",
-            "Soul_Totem-Fungal_Core": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + LEFTCLAW",
+            "Rancid_Egg-Fungal_Core": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + (LEFTCLAW | (((RIGHTCLAW + ENEMYPOGOS) | LEFTSUPERDASH) + WINGS))",
+            "Geo_Rock-Fungal_Core_Entrance": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + (LEFTCLAW | (((RIGHTCLAW + ENEMYPOGOS) | LEFTSUPERDASH) + WINGS))",
+            "Soul_Totem-Fungal_Core": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1] + (LEFTCLAW | (((RIGHTCLAW + ENEMYPOGOS) | LEFTSUPERDASH) + WINGS))",
             "Fungus2_29[bot1]": "(ORIG) | BREAKABLE_Fungus229_BreakFloor1 + Fungus2_29[right1]"
         },
         "logicSubstitutions": {},
@@ -1209,7 +1211,7 @@
         "logicOverrides": {},
         "logicSubstitutions": {},
         "sceneName": "Fungus1_28",
-        "niceName": "Baldur Shell Exit Wall Two",
+        "niceName": "Baldur Shell Exit Wall Upper",
         "logic": "FULLCLAW + (((Fungus1_28[left1] | (Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP))) + Defeated_Right_Cliffs_Baldur) | (((Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP)) | Fungus1_28[left1]) + BREAKABLE_Fungus128_OneWayWall1))",
         "persistentBool": "",
         "requiredSetting": null,
@@ -1346,7 +1348,9 @@
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": {},
+        "logicOverrides": {
+            "Spore_Shroom": "(ORIG) | ((Fungus2_20[left1] | Fungus2_20[right1]) + BREAKABLE_Fungus220_OneWayWall)"
+        },
         "logicSubstitutions": {},
         "sceneName": "Fungus2_20",
         "niceName": "Spore Shroom Exit Wall",
@@ -1370,7 +1374,7 @@
         "logicSubstitutions": {},
         "sceneName": "Fungus3_05",
         "niceName": "Petra Arena Lever Exit Wall",
-        "logic": "Fungus3_05[right2] | (Fungus3_05[left1] | Fungus3_05[right1]) + (WINGS | (LEFTDASH | RIGHTCLAW + LEFTSUPERDASH) + (RIGHTDASH | RIGHTSUPERDASH))",
+        "logic": "((Fungus3_05[left1] | Fungus3_05[right1] | Fungus3_05[right2] + (Switch-Petra_Arena ? ANY)) + ((LEFTDASH + (RIGHTDASH | RIGHTSUPERDASH)) | ((RIGHTCLAW | WINGS) + LEFTSUPERDASH + (RIGHTDASH | RIGHTSUPERDASH))) + (RIGHTCLAW | (LEFTCLAW + WINGS))) | ((Fungus3_05[left1] | Fungus3_05[right1] | (Fungus3_05[right2] + (Switch-Petra_Arena ? ANY))) + BREAKABLE_Fungus305_OneWayWall)",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "crumble_floor_fungus_270deg",
@@ -1453,7 +1457,7 @@
         "logicSubstitutions": { "Hive_03_c": { "Hive_03_c[right2]": "(Hive_03_c[right2] + BREAKABLE_Hive03c_BreakFloor1)" } },
         "sceneName": "Hive_03_c",
         "niceName": "Hive Knight Shortcut",
-        "logic": "Hive_03_c[right2]",
+        "logic": "Hive_03_c[right2] | (Hive_03_c + BREAKABLE_Hive03c_BreakFloor1 + WINGS)",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "ancient_wall_pieces_0000_a_hive_90deg",
@@ -1536,7 +1540,7 @@
         "logicSubstitutions": {},
         "sceneName": "Mines_25",
         "niceName": "Crystal Crown Dive Geo Exit",
-        "logic": "((Mines_25[left1] + (FULLCLAW | (WINGS + ANYCLAW))) | (Mines_25[top1])) + Broke_Hallownest's_Crown_Quake_Floor",
+        "logic": "(((Mines_25[left1] + (FULLCLAW | (WINGS + ANYCLAW))) | (Mines_25[top1])) + Broke_Hallownest's_Crown_Quake_Floor) | (Mines_25[left1] + (FULLCLAW | WINGS + ANYCLAW) | Mines_25[top1]) + BREAKABLE_Mines25_OneWayWall",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "ancient_wall_pieces_0000_a_cave_270deg",
@@ -1574,8 +1578,8 @@
         "fsmType": "break_floor",
         "logicOverrides": {
             "Descending_Dark": "(ORIG) | BREAKABLE_Mines35_OneWayWall + Mines_35[left1]",
-            "Grub-Crystallized_Mound": "(ORIG) | BREAKABLE_Mines35_OneWayWall + Mines_35[left1] + RIGHTCLAW",
-            "Soul_Totem-Crystallized_Mound": "(ORIG) | BREAKABLE_Mines35_OneWayWall + Mines_35[left1] + RIGHTCLAW + LEFTDASH"
+            "Grub-Crystallized_Mound": "(ORIG) | BREAKABLE_Mines35_OneWayWall + Mines_35[left1] + (RIGHTCLAW | WINGS + LEFTCLAW + BACKGROUNDPOGOS)",
+            "Soul_Totem-Crystallized_Mound": "(ORIG) | BREAKABLE_Mines35_OneWayWall + Mines_35[left1] + (RIGHTCLAW | WINGS + LEFTCLAW + BACKGROUNDPOGOS) + LEFTDASH"
         },
         "logicSubstitutions": {},
         "sceneName": "Mines_35",
@@ -1908,7 +1912,7 @@
     {
         "gameObject": "/Breakable Wall",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": { "Ruins_Bathhouse[right1]": "(ORIG) + BREAKABLE_RuinsBathhouse_BreakableWall" },
+        "logicOverrides": { "Ruins_Bathhouse[right1]": "(ORIG) + BREAKABLE_RuinsBathhouse_BreakableWall", "Opened_Pleasure_House_Wall": "BREAKABLE_RuinsBathhouse_BreakableWall" },
         "logicSubstitutions": { "Ruins2_10b[left1]": { "Opened_Pleasure_House_Wall": "BREAKABLE_RuinsBathhouse_BreakableWall" } },
         "sceneName": "Ruins_Bathhouse",
         "niceName": "Pleasure House Wall Next to Bench",
@@ -2031,7 +2035,7 @@
     {
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
-        "logicOverrides": {},
+        "logicOverrides": { "Opened_Dung_Defender_Wall": "BREAKABLE_Waterways05_OneWayWall" },
         "logicSubstitutions": { "Abyss_01[left1]": { "Opened_Dung_Defender_Wall": "BREAKABLE_Waterways05_OneWayWall" } },
         "sceneName": "Waterways_05",
         "niceName": "Dung Defender Exit Wall",
@@ -2496,7 +2500,10 @@
     {
         "gameObject": "/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": { "Broke_Edge_Journal_Quake_Floor": "BREAKABLE_DeepnestEast18_QuakeFloor1" },
+        "logicOverrides": { 
+            "Broke_Edge_Journal_Quake_Floor": "BREAKABLE_DeepnestEast18_QuakeFloor1",
+            "Wanderer's_Journal-Kingdom's_Edge_Requires_Dive": "(ORIG) | (Deepnest_East_18 + (LEFTCLAW | (WINGS + RIGHTCLAW)) + BREAKABLE_DeepnestEast18_QuakeFloor2)"
+        },
         "logicSubstitutions": {},
         "sceneName": "Deepnest_East_18",
         "niceName": "Edge Journal Dive Floor",
@@ -2576,7 +2583,10 @@
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": { "Broke_Hallownest's_Crown_Quake_Floor": "BREAKABLE_Mines25_QuakeFloor" },
+        "logicOverrides": { 
+            "Broke_Hallownest's_Crown_Quake_Floor": "BREAKABLE_Mines25_QuakeFloor",
+            "Geo_Rock-Hallownest_Crown_Dive": "(ORIG) | ((Mines_25[left1] + (FULLCLAW | WINGS + ANYCLAW) | Mines_25[top1]) + BREAKABLE_Mines25_OneWayWall + ANYCLAW)"
+        },
         "logicSubstitutions": {},
         "sceneName": "Mines_25",
         "niceName": "Hallowneset's Crown Dive Floor",
