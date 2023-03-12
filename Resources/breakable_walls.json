@@ -43,7 +43,7 @@
         "gameObject": "/One Way Wall",
         "fsmType": "break_floor",
         "logicOverrides": {
-            "Lifeblood_Core": "(ORIG) | (Abyss_08[right1] + (PRECISEMOVEMENT | FULLDASH + WINGS) + BREAKABLE_Abyss08_OneWayWall + (WINGS | RIGHTDASH | RIGHTSUPERDASH))"
+            "Lifeblood_Core": "(ORIG) | (Abyss_08[right1] + (PRECISEMOVEMENT | FULLDASH + WINGS) + BREAKABLE_Abyss08_OneWayWall + (WINGS | RIGHTDASH | RIGHTSUPERDASH | (FIREBALLSKIPS + FIREBALL + $CASTSPELL)))"
         },
         "logicSubstitutions": {},
         "sceneName": "Abyss_08",
@@ -776,7 +776,7 @@
         "logicSubstitutions": {},
         "sceneName": "Deepnest_44",
         "niceName": "Sharp Shadow Exit Door",
-        "logic": "Deepnest_44[top1] + RIGHTSHADOWDASH + (LEFTSHADOWDASH | DAMAGEBOOSTS + ($TAKEDAMAGE + $TAKEDAMAGE + $TAKEDAMAGE | LEFTDASH + $TAKEDAMAGE + $TAKEDAMAGE | QUAKE + $CASTSPELL[2] + $TAKEDAMAGE))",
+        "logic": "(BREAKABLE_Deepnest44_OneWayWall + Deepnest_44[top1]) | (Deepnest_44[top1] + RIGHTSHADOWDASH + (LEFTSHADOWDASH | DAMAGEBOOSTS + ($TAKEDAMAGE + $TAKEDAMAGE + $TAKEDAMAGE | LEFTDASH + $TAKEDAMAGE + $TAKEDAMAGE | QUAKE + $CASTSPELL[2] + $TAKEDAMAGE)))",
         "persistentBool": "",
         "requiredSetting": null,
         "sprite": "ancient_wall_pieces_0000_a_deep_quake_270deg",
@@ -787,7 +787,7 @@
                 "y": 5.17
             }
         ],
-        "alsoDestroy": ["Secret Mask"]
+        "alsoDestroy": [ "Secret Mask" ]
     },
     {
         "gameObject": "/Breakable Wall",
@@ -2496,7 +2496,7 @@
     {
         "gameObject": "/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": { "Broke_Edge_Journal_Quake_Floor": "BREAKABLE_DeepnestEast18_QuakeFloor2" },
+        "logicOverrides": { "Broke_Edge_Journal_Quake_Floor": "BREAKABLE_DeepnestEast18_QuakeFloor1" },
         "logicSubstitutions": {},
         "sceneName": "Deepnest_East_18",
         "niceName": "Edge Journal Dive Floor",
