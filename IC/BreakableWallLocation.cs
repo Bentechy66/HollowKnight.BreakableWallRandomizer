@@ -17,11 +17,19 @@ namespace BreakableWallRandomiser.IC
         protected override void OnLoad()
         {
             Events.AddFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
+            if (wallData.secondaryGameObject != null)
+            {
+                Events.AddFsmEdit(wallData.secondarySceneName, new(wallData.secondaryGameObject, fsmType), ModifyWallBehaviour);
+            }
         }
 
         protected override void OnUnload()
         {
             Events.RemoveFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
+            if (wallData.secondaryGameObject != null)
+            {
+                Events.RemoveFsmEdit(wallData.secondarySceneName, new(wallData.secondaryGameObject, fsmType), ModifyWallBehaviour);
+            }
         }
 
         private void MakeWallPassable(GameObject go)

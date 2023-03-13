@@ -59,7 +59,7 @@
                 "y": 13.54
             }
         ],
-        "alsoDestroy": ["Secret Mask"]
+        "alsoDestroy": [ "Secret Mask" ]
     },
     {
         "gameObject": "/One Way Wall",
@@ -218,7 +218,7 @@
                 "y": 14.08
             }
         ],
-        "alsoDestroy": ["Secret Mask (2)"]
+        "alsoDestroy": [ "Secret Mask (2)" ]
     },
     {
         "gameObject": "/_Scenery/Break Floor 1",
@@ -268,7 +268,7 @@
                 "y": 39.93
             }
         ],
-        "alsoDestroy": ["_Scenery/crossroads_03_mask"]
+        "alsoDestroy": [ "_Scenery/crossroads_03_mask" ]
     },
     {
         "gameObject": "/Break Wall 2",
@@ -456,7 +456,7 @@
                 "y": 6.013
             }
         ],
-        "alsoDestroy": ["Mask Bottom", "Mask Bottom 2"]
+        "alsoDestroy": [ "Mask Bottom", "Mask Bottom 2" ]
     },
     {
         "gameObject": "/One Way Wall",
@@ -476,7 +476,7 @@
                 "y": 6.54
             }
         ],
-        "alsoDestroy": ["Secret Mask"]
+        "alsoDestroy": [ "Secret Mask" ]
     },
     {
         "gameObject": "/One Way Wall",
@@ -558,7 +558,7 @@
                 "y": 31.86
             }
         ],
-        "alsoDestroy": ["Secret Mask"]
+        "alsoDestroy": [ "Secret Mask" ]
     },
     {
         "gameObject": "/Breakable Wall (1)",
@@ -995,7 +995,7 @@
                 "y": 9.31
             }
         ],
-        "alsoDestroy": ["Secret Mask"]
+        "alsoDestroy": [ "Secret Mask" ]
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1060,7 +1060,7 @@
     {
         "gameObject": "/Breakable Wall top",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": {"Broke_Camp_Bench_Wall": "BREAKABLE_DeepnestEast11_BreakableWalltop"},
+        "logicOverrides": { "Broke_Camp_Bench_Wall": "BREAKABLE_DeepnestEast11_BreakableWalltop" },
         "logicSubstitutions": { "Deepnest_East_11[top1]": { "Broke_Camp_Bench_Wall": "BREAKABLE_DeepnestEast11_BreakableWalltop" } },
         "sceneName": "Deepnest_East_11",
         "niceName": "Edge Camp Bench Entrance",
@@ -1183,7 +1183,7 @@
                 "y": 31.75
             }
         ],
-        "alsoDestroy": ["Secret Mask"]
+        "alsoDestroy": [ "Secret Mask" ]
     },
     {
         "gameObject": "/One Way Wall",
@@ -1551,7 +1551,7 @@
                 "y": 36.49
             }
         ],
-        "alsoDestroy": ["Secret Mask"]
+        "alsoDestroy": [ "Secret Mask" ]
     },
     {
         "gameObject": "/One Way Wall",
@@ -1887,7 +1887,8 @@
                 "y": 20.07
             }
         ],
-        "alsoDestroy": null
+        "alsoDestroy": null,
+        "destroyUnconditionally": [ "/Breakable Wall Ruin Lift/Masks" ]
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1912,7 +1913,10 @@
     {
         "gameObject": "/Breakable Wall",
         "fsmType": "breakable_wall_v2",
-        "logicOverrides": { "Ruins_Bathhouse[right1]": "(ORIG) + BREAKABLE_RuinsBathhouse_BreakableWall", "Opened_Pleasure_House_Wall": "BREAKABLE_RuinsBathhouse_BreakableWall" },
+        "logicOverrides": {
+            "Ruins_Bathhouse[right1]": "(ORIG) + BREAKABLE_RuinsBathhouse_BreakableWall",
+            "Opened_Pleasure_House_Wall": "BREAKABLE_RuinsBathhouse_BreakableWall"
+        },
         "logicSubstitutions": { "Ruins2_10b[left1]": { "Opened_Pleasure_House_Wall": "BREAKABLE_RuinsBathhouse_BreakableWall" } },
         "sceneName": "Ruins_Bathhouse",
         "niceName": "Pleasure House Wall Next to Bench",
@@ -2097,10 +2101,10 @@
         "fsmType": "breakable_wall_v2",
         "logicOverrides": { "Waterways_08[left2]": "(ORIG) + BREAKABLE_Waterways08_BreakableWallWaterways" },
         "logicSubstitutions": {
-            "Soul_Totem-Waterways_Flukemarm": {"Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)"},
-            "Geo_Rock-Waterways_Flukemarm": {"Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)"},
-            "Waterways_08[top1]": {"Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)"},
-            "Waterways_08[left1]": {"Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)"}
+            "Soul_Totem-Waterways_Flukemarm": { "Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)" },
+            "Geo_Rock-Waterways_Flukemarm": { "Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)" },
+            "Waterways_08[top1]": { "Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)" },
+            "Waterways_08[left1]": { "Waterways_08[left2]": "(Waterways_08[left2] + BREAKABLE_Waterways08_BreakableWallWaterways)" }
         },
         "sceneName": "Waterways_08",
         "niceName": "Waterways Godhome Entrance",
@@ -2500,7 +2504,7 @@
     {
         "gameObject": "/Quake Floor (1)",
         "fsmType": "quake_floor",
-        "logicOverrides": { 
+        "logicOverrides": {
             "Broke_Edge_Journal_Quake_Floor": "BREAKABLE_DeepnestEast18_QuakeFloor1",
             "Wanderer's_Journal-Kingdom's_Edge_Requires_Dive": "(ORIG) | (Deepnest_East_18 + (LEFTCLAW | (WINGS + RIGHTCLAW)) + BREAKABLE_DeepnestEast18_QuakeFloor2)"
         },
@@ -2583,7 +2587,7 @@
     {
         "gameObject": "/Quake Floor",
         "fsmType": "quake_floor",
-        "logicOverrides": { 
+        "logicOverrides": {
             "Broke_Hallownest's_Crown_Quake_Floor": "BREAKABLE_Mines25_QuakeFloor",
             "Geo_Rock-Hallownest_Crown_Dive": "(ORIG) | ((Mines_25[left1] + (FULLCLAW | WINGS + ANYCLAW) | Mines_25[top1]) + BREAKABLE_Mines25_OneWayWall + ANYCLAW)"
         },
@@ -3009,5 +3013,31 @@
             }
         ],
         "alsoDestroy": null
+    },
+    {
+        "gameObject": "/Breakable Wall",
+        "secondaryGameObject": "/Breakable Wall Waterways",
+        "fsmType": "breakable_wall_v2",
+        "logicOverrides": {
+            "Fungus2_20[left1]": "(ORIG) + BREAKABLE_DeepnestFungalWall",
+            "Deepnest_01[right1]": "(ORIG) + BREAKABLE_DeepnestFungalWall"
+        },
+        "logicSubstitutions": {},
+        "sceneName": "Deepnest_01",
+        "secondarySceneName": "Fungus2_20",
+        "niceName": "Two-Way Wall between Fungal and Deepnest",
+        "logic": "Deepnest_01 | Fungus2_20[right1]",
+        "persistentBool": "deepnestWall",
+        "requiredSetting": null,
+        "sprite": "break_floor",
+        "mapLocations": [
+            {
+                "sceneName": "Deepnest_01",
+                "x": 57.6,
+                "y": 19.4
+            }
+        ],
+        "alsoDestroy": null,
+        "overrideTermName": "BREAKABLE_DeepnestFungalWall"
     }
 ]

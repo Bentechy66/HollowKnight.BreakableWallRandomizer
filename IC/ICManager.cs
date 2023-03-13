@@ -49,12 +49,16 @@ namespace BreakableWallRandomiser.IC
             public string sprite;
             public List<RelativeMapLocation> mapLocations;
             public List<string> alsoDestroy;
+            public string overrideTermName;
+
+            public string secondarySceneName;
+            public string secondaryGameObject;
 
             public string cleanGameObjectPath() => rgx.Replace(gameObject, "");
             public string cleanSceneName() => rgx.Replace(sceneName, "");
             public string getLocationName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Loc_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getItemName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Itm_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
-            public string getTermName() => $"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}";
+            public string getTermName() => overrideTermName ?? $"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getGroupName() => WALL_GROUPS[fsmType].Item1;
 
             private bool excludeWallDueToMoreDoors(GenerationSettings gs)
