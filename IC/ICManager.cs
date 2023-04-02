@@ -15,15 +15,21 @@ using Modding;
 using RandomizerMod.Logging;
 using MoreDoors.Rando;
 using UnityEngine;
+using MonoMod.Utils;
+using Mono.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BreakableWallRandomiser.IC
 {
     public class ICManager
     {
-        #pragma warning disable 0649
+#pragma warning disable 0649
         // This field is assigned to by JSON deserialization
+        [Serializable]
         public class WallData
         {
+            [Serializable]
             public class RelativeMapLocation
             {
                 public string sceneName;
@@ -32,6 +38,13 @@ namespace BreakableWallRandomiser.IC
 
                 [Newtonsoft.Json.JsonIgnore]
                 public (string, float, float) repr => (sceneName, x, y);
+            }
+
+            [Serializable]
+            public class LightWallDef
+            {
+                public string sceneName;
+                public string gameObject;
             }
 
             Regex rgx = new Regex("[^a-zA-Z0-9]");
@@ -49,16 +62,17 @@ namespace BreakableWallRandomiser.IC
             public string sprite;
             public List<RelativeMapLocation> mapLocations;
             public List<string> alsoDestroy;
-            public string overrideTermName;
+            public List<string> destroyUnconditionally;
+            public List<string> overrideTermNames;
+            public string group;
 
-            public string secondarySceneName;
-            public string secondaryGameObject;
+            public List<WallData> secondaryWalls;
 
             public string cleanGameObjectPath() => rgx.Replace(gameObject, "");
             public string cleanSceneName() => rgx.Replace(sceneName, "");
             public string getLocationName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Loc_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
             public string getItemName() => niceName != "" ? rgx_with_spaces.Replace(niceName, "") : $"Itm_Wall_{cleanSceneName()}_{cleanGameObjectPath()}";
-            public string getTermName() => overrideTermName ?? $"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}";
+            public List<string> getTermNames() => overrideTermNames ?? new List<string> {$"BREAKABLE_{cleanSceneName()}_{cleanGameObjectPath()}"};
             public string getGroupName() => WALL_GROUPS[fsmType].Item1;
 
             private bool excludeWallDueToMoreDoors(GenerationSettings gs)
@@ -126,9 +140,9 @@ namespace BreakableWallRandomiser.IC
 
         private static Dictionary<string, ItemGroupBuilder> definedGroups = new();
 
-        public readonly static List<WallData> wallData = JsonConvert.DeserializeObject<List<WallData>>(
+        public readonly static System.Collections.ObjectModel.ReadOnlyCollection<WallData> rawWallData = JsonConvert.DeserializeObject<List<WallData>>(
             System.Text.Encoding.UTF8.GetString(Properties.Resources.BreakableWallData)
-        );
+        ).AsReadOnly();
 
         readonly string[] wallShopDescriptions =
         {
@@ -195,6 +209,10 @@ namespace BreakableWallRandomiser.IC
 
             // UnityEngine.Sprite scaledSprite = UnityEngine.Sprite.Create(uiSprite.texture, uiSprite.rect, new UnityEngine.Vector2(0.5f, 0.5f), 100);
 
+            // ew.
+            var wallData = getSerializedWallData(true);
+            wallData.AddRange(getSerializedWallData(false));
+
             foreach (var wall in wallData)
             {
                 BreakableWallLocation wallLocation = new()
@@ -238,13 +256,74 @@ namespace BreakableWallRandomiser.IC
 
                 // Modding.Logger.LogDebug(wall.getLocationName() + " -> term: " + wall.getTermName() + " / itm: " + wall.getItemName());
 
-                Finder.DefineCustomLocation(wallLocation); 
-                Finder.DefineCustomItem(wallItem);
+                if (Finder.GetLocation(wallLocation.name) == null) { Finder.DefineCustomLocation(wallLocation); };
+                if (Finder.GetItem(wallItem.name) == null) { Finder.DefineCustomItem(wallItem); }
             }
+        }
+
+        public static T DeepClone<T>(T obj)
+        {
+            using (var ms = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(ms, obj);
+                ms.Position = 0;
+
+                return (T)formatter.Deserialize(ms);
+            }
+        }
+
+        public List<WallData> getSerializedWallData(bool groupNearbyWalls)
+        {
+            if (!groupNearbyWalls) { return rawWallData.ToList(); }
+
+            // Add all the walls which are grouped together to a single Location / Item pairing.
+            List<WallData> wallData = new List<WallData>();
+            List<string> addedGroups = new List<string>();
+
+            var rawWallDataList = DeepClone(rawWallData.ToList()); // mmmmmm non-explicit references!
+            foreach (var wall in rawWallDataList)
+            {
+                
+                if (wall.group == null) { wallData.Add(wall); continue; }
+                if (addedGroups.Contains(wall.group)) { continue; }
+
+                wall.overrideTermNames ??= wall.getTermNames();
+                wall.niceName = wall.group;
+
+                foreach (var secondaryWall in rawWallDataList.FindAll(i => i.group == wall.group))
+                {
+                    if (wall.getTermNames() == secondaryWall.getTermNames()) { continue;  }
+
+                    wall.overrideTermNames.AddRange(secondaryWall.getTermNames());
+
+                    wall.secondaryWalls.Add(secondaryWall);
+
+                    wall.logicOverrides.AddRange(secondaryWall.logicOverrides);
+                    wall.logicSubstitutions.AddRange(secondaryWall.logicSubstitutions); 
+                    if (secondaryWall.alsoDestroy != null) {
+                        wall.alsoDestroy ??= new List<string>();
+                        wall.alsoDestroy.AddRange(secondaryWall.alsoDestroy); 
+                    }
+                    if (secondaryWall.destroyUnconditionally != null) {
+                        wall.destroyUnconditionally ??= new List<string>(); 
+                        wall.destroyUnconditionally.AddRange(secondaryWall.destroyUnconditionally); 
+                    }
+                }
+
+                wall.logic = "(" + String.Join(") | (", rawWallDataList.FindAll(i => i.group == wall.group).Select(i => i.logic)) + ")";
+
+                addedGroups.Add(wall.group);
+                wallData.Add(wall);
+            }
+
+            return wallData;
         }
 
         public void Hook()
         {
+            RegisterItemsAndLocations();
+
             RCData.RuntimeLogicOverride.Subscribe(15f, ApplyLogic);
 
             RequestBuilder.OnUpdate.Subscribe(0.3f, AddWalls);
@@ -293,6 +372,8 @@ namespace BreakableWallRandomiser.IC
 
         private void AddWalls(RequestBuilder rb)
         {
+            var wallData = getSerializedWallData(BreakableWallRandomiser.settings.GroupTogetherNearbyWalls);
+
             foreach (var wall in wallData)
             {
                 if (!wall.shouldBeIncluded(rb.gs)) { continue; }
@@ -380,13 +461,16 @@ namespace BreakableWallRandomiser.IC
 
         private void ApplyLogic(GenerationSettings gs, LogicManagerBuilder lmb)
         {
+            var wallData = getSerializedWallData(BreakableWallRandomiser.settings.GroupTogetherNearbyWalls);
+
             foreach (var wall in wallData)
             {
                 // Always define terms, unless all options are off.
                 if (!BreakableWallRandomiser.settings.AnyWalls) { continue; }
 
-                Term wallTerm = lmb.GetOrAddTerm(wall.getTermName());
-                lmb.AddItem(new SingleItem(wall.getItemName(), new TermValue(wallTerm, 1)));
+                var wallTerms = wall.getTermNames().Select(x => new TermValue(lmb.GetOrAddTerm(x), 1));
+
+                lmb.AddItem(new MultiItem(wall.getItemName(), wallTerms.ToArray()));
 
                 lmb.AddLogicDef(new(wall.getLocationName(), wall.logic));
 

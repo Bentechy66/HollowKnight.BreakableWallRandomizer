@@ -158,7 +158,8 @@
         "alsoDestroy": [
             "/Breakable Wall/Masks"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Grimm Troupe Cave Walls"
     },
     {
         "gameObject": "/break wall bits/One Way Wall",
@@ -204,7 +205,8 @@
         "alsoDestroy": [
             "/Breakable Wall/Masks"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Grimm Troupe Cave Walls"
     },
     {
         "gameObject": "/Breakable Wall",
@@ -240,7 +242,8 @@
         "alsoDestroy": [
             "/Breakable Wall/Masks"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Grimm Troupe Cave Walls"
     },
     {
         "gameObject": "/One Way Wall",
@@ -638,7 +641,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "All Nosk Walls"
     },
     {
         "gameObject": "/One Way Wall",
@@ -661,7 +665,8 @@
         "alsoDestroy": [
             "Secret Mask"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "All Nosk Walls"
     },
     {
         "gameObject": "/Breakable Wall (1)",
@@ -687,8 +692,11 @@
                 "y": 16.97
             }
         ],
-        "alsoDestroy": null,
-        "secondaryWalls": []
+        "alsoDestroy": [
+            "Secret Mask"
+        ],
+        "secondaryWalls": [],
+        "group": "All Nosk Walls"
     },
     {
         "gameObject": "/Breakable Wall",
@@ -708,8 +716,11 @@
                 "y": 45.09
             }
         ],
-        "alsoDestroy": null,
-        "secondaryWalls": []
+        "alsoDestroy": [
+            "Secret Mask"
+        ],
+        "secondaryWalls": [],
+        "group": "All Nosk Walls"
     },
     {
         "gameObject": "/Breakable Wall",
@@ -802,10 +813,9 @@
     {
         "gameObject": "/One Way Wall (1)",
         "fsmType": "break_floor",
-        "logicOverrides": {
-            "Deepnest_41[left2]": "(ORIG) | (((LANTERN | (NOLANTERN ? FALSE)) | DARKROOMS) + COMBAT[Left_Devout] + (BREAKABLE_Deepnest41_OneWayWall2 + ((Deepnest_41[left1] + BREAKABLE_Deepnest41_OneWayWall) | (Deepnest_41[right1] + BREAKABLE_Deepnest41_OneWayWall1))))"
+        "logicOverrides": {},
+        "logicSubstitutions": {
         },
-        "logicSubstitutions": {},
         "sceneName": "Deepnest_41",
         "niceName": "Deepnest Near Village Up-Facing Exit From Fall",
         "logic": "((Deepnest_41[right1]) | (Deepnest_41[left1]) + CLAW + BREAKABLE_Deepnest41_OneWayWall) + ((LANTERN | (NOLANTERN ? FALSE)) | DARKROOMS)",
@@ -820,7 +830,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Walls After Falling From Distant Village"
     },
     {
         "gameObject": "/Breakable Wall",
@@ -841,7 +852,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Walls After Falling From Distant Village"
     },
     {
         "gameObject": "/One Way Wall (2)",
@@ -869,7 +881,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Walls After Falling From Distant Village"
     },
     {
         "gameObject": "/One Way Wall",
@@ -890,7 +903,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Walls After Falling From Distant Village"
     },
     {
         "gameObject": "/One Way Wall",
@@ -980,7 +994,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "White Palace Shortcut Corridor"
     },
     {
         "gameObject": "/Break Floor 1",
@@ -1001,7 +1016,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "White Palace Shortcut Corridor"
     },
     {
         "gameObject": "/Breakable Wall Ruin Lift",
@@ -1401,13 +1417,17 @@
             "mask_01",
             "Secret Mask"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Baldur Shell Walls"
     },
     {
         "gameObject": "/One Way Wall (1)",
         "fsmType": "break_floor",
         "logicOverrides": {},
-        "logicSubstitutions": {},
+        "logicSubstitutions": {
+            "Fungus1_28[left1]": { "Defeated_Right_Cliffs_Baldur": "(Defeated_Right_Cliffs_Baldur + BREAKABLE_Fungus128_OneWayWall1)" },
+            "Grub-Howling_Cliffs": { "Defeated_Right_Cliffs_Baldur": "(Defeated_Right_Cliffs_Baldur + BREAKABLE_Fungus128_OneWayWall1)" }
+        },
         "sceneName": "Fungus1_28",
         "niceName": "Baldur Shell Exit Wall Upper",
         "logic": "FULLCLAW + (((Fungus1_28[left1] | (Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP))) + Defeated_Right_Cliffs_Baldur) | (((Fungus1_28[left2] + (FULLCLAW | WINGS | RIGHTDASH | RIGHTSUPERDASH | $SHADESKIP)) | Fungus1_28[left1]) + BREAKABLE_Fungus128_OneWayWall1))",
@@ -1425,7 +1445,8 @@
             "mask_01",
             "Secret Mask"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Baldur Shell Walls"
     },
     {
         "gameObject": "/_Props/Breakable Wall",
@@ -1492,7 +1513,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Shape of Unn Shortcut Walls"
     },
     {
         "gameObject": "/One Way Wall (1)",
@@ -1513,7 +1535,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Shape of Unn Shortcut Walls"
     },
     {
         "gameObject": "/One Way Wall",
@@ -1897,7 +1920,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Catacombs Walls"
     },
     {
         "gameObject": "/Breakable Wall (7)",
@@ -1920,7 +1944,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Catacombs Walls"
     },
     {
         "gameObject": "/Breakable Wall (2)",
@@ -1941,7 +1966,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Catacombs Walls"
     },
     {
         "gameObject": "/Breakable Wall (4)",
@@ -1965,7 +1991,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Catacombs Walls"
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1986,7 +2013,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Catacombs Walls"
     },
     {
         "gameObject": "/One Way Wall",
@@ -2016,7 +2044,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": null
     },
     {
         "gameObject": "/Breakable Wall (8)",
@@ -2039,7 +2068,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Catacombs Walls"
     },
     {
         "gameObject": "/Breakable Wall (6)",
@@ -2062,7 +2092,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Catacombs Walls"
     },
     {
         "gameObject": "/Breakable Wall (3)",
@@ -2086,7 +2117,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Catacombs Walls"
     },
     {
         "gameObject": "/Breakable Wall_Silhouette",
@@ -2567,7 +2599,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Oro Dive Floors"
     },
     {
         "gameObject": "/Quake Floor (2)",
@@ -2590,7 +2623,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Oro Dive Floors"
     },
     {
         "gameObject": "/Quake Floor",
@@ -2613,7 +2647,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Oro Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor",
@@ -2636,7 +2671,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (1)",
@@ -2659,7 +2695,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (5)",
@@ -2682,7 +2719,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (9)",
@@ -2705,7 +2743,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (10)",
@@ -2728,7 +2767,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (2)",
@@ -2751,7 +2791,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (3)",
@@ -2774,7 +2815,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (8)",
@@ -2797,7 +2839,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (4)",
@@ -2820,7 +2863,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (6)",
@@ -2843,7 +2887,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/quake floors/Quake Floor (7)",
@@ -2866,7 +2911,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "420 Rock Dive Floors"
     },
     {
         "gameObject": "/Quake Floor (2)",
@@ -2887,7 +2933,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Edge Journal Dive Floors"
     },
     {
         "gameObject": "/Quake Floor (1)",
@@ -2911,7 +2958,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Edge Journal Dive Floors"
     },
     {
         "gameObject": "/Quake Floor",
@@ -3073,7 +3121,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor Glass",
@@ -3096,7 +3145,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor Glass (1)",
@@ -3123,7 +3173,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor Glass",
@@ -3144,7 +3195,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor Glass (1)",
@@ -3172,7 +3224,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor (1)",
@@ -3195,7 +3248,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor Glass (2)",
@@ -3216,7 +3270,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor",
@@ -3239,7 +3294,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor Glass (3)",
@@ -3260,7 +3316,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor Glass (4)",
@@ -3283,7 +3340,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Sanctum Dive Floors"
     },
     {
         "gameObject": "/Quake Floor Glass",
@@ -3327,7 +3385,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Waterways Bench Dive Floors"
     },
     {
         "gameObject": "/Quake Floor",
@@ -3373,7 +3432,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Waterways Bench Dive Floors"
     },
     {
         "gameObject": "/Quake Floor (1)",
@@ -3396,7 +3456,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "group": "Waterways Bench Dive Floors"
     },
     {
         "gameObject": "/Quake Floor",
@@ -3468,7 +3529,7 @@
         "secondaryWalls": [
             {
                 "gameObject": "/Breakable Wall Waterways",
-                "sceneName": "Deepnest_01"
+                "sceneName": "Fungus2_20"
             }
         ],
         "fsmType": "breakable_wall_v2",
@@ -3491,7 +3552,9 @@
             }
         ],
         "alsoDestroy": null,
-        "overrideTermName": "BREAKABLE_DeepnestFungalWall",
+        "overrideTermNames": [
+            "BREAKABLE_DeepnestFungalWall"
+        ],
         "importanceLevel": 5
     }
 ]

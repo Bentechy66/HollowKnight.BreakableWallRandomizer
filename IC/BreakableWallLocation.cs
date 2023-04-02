@@ -17,18 +17,18 @@ namespace BreakableWallRandomiser.IC
         protected override void OnLoad()
         {
             Events.AddFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
-            if (wallData.secondaryGameObject != null)
+            foreach (var secondaryWall in wallData.secondaryWalls)
             {
-                Events.AddFsmEdit(wallData.secondarySceneName, new(wallData.secondaryGameObject, fsmType), ModifyWallBehaviour);
+                Events.AddFsmEdit(secondaryWall.sceneName, new(secondaryWall.gameObject, secondaryWall.fsmType ?? fsmType), ModifyWallBehaviour);
             }
         }
 
         protected override void OnUnload()
         {
             Events.RemoveFsmEdit(sceneName, new(objectName, fsmType), ModifyWallBehaviour);
-            if (wallData.secondaryGameObject != null)
+            foreach(var secondaryWall in wallData.secondaryWalls)
             {
-                Events.RemoveFsmEdit(wallData.secondarySceneName, new(wallData.secondaryGameObject, fsmType), ModifyWallBehaviour);
+                Events.RemoveFsmEdit(secondaryWall.sceneName, new(secondaryWall.gameObject, secondaryWall.fsmType ?? fsmType), ModifyWallBehaviour);
             }
         }
 
@@ -91,6 +91,14 @@ namespace BreakableWallRandomiser.IC
 
         private void ModifyWallBehaviour(PlayMakerFSM fsm)
         {
+            if (wallData.destroyUnconditionally != null)
+            {
+                foreach(var destroy in wallData.destroyUnconditionally)
+                {
+                    GameObject.Destroy(GameObject.Find(destroy));
+                }
+            } 
+
             // The wall will delete itself based on its state if we don't do this.
             if (fsmType == "break_floor" || fsmType == "FSM")
             {
@@ -131,7 +139,7 @@ namespace BreakableWallRandomiser.IC
 
                 Placement.AddVisitFlag(VisitState.Opened);
 
-                if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
+                if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermNames()[0]))
                 {
                     // Delete the wall entirely.
                     if (fsmType == "quake_floor") { fsm.SetState("Destroy"); }
@@ -141,7 +149,7 @@ namespace BreakableWallRandomiser.IC
             });
 
             // If we already unlocked this wall, and items are still left there, make it passable.
-            if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermName()))
+            if (BreakableWallRandomiser.saveData.unlockedBreakableWalls.Contains(wallData.getTermNames()[0]))
             {
                 // If items are left, make wall semi-transparent and passable
                 if (Placement.Items.Any(x => !x.IsObtained()))

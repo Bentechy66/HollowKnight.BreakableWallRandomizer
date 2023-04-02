@@ -24,6 +24,8 @@ namespace BreakableWallRandomiser.Rando
         [MenuChanger.Attributes.MenuRange(-1, 99)]
         public int DiveFloorGroup = -1;
 
+        public bool GroupTogetherNearbyWalls = false;
+
         [Newtonsoft.Json.JsonIgnore]
         public bool AnyWalls => RandomizeBreakableRockWalls || RandomizeBreakableWoodenPlankWalls || RandomizeDiveFloors;
     }

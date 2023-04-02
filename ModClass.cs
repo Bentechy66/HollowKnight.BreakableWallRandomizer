@@ -18,7 +18,7 @@ namespace BreakableWallRandomiser
         public static WallRandoSettings settings = new WallRandoSettings();
 
         new public string GetName() => "Breakable Wall Randomizer";
-        public override string GetVersion() => "2.0.2.3"; 
+        public override string GetVersion() => "2.1.0.0-DEV"; 
         public override void Initialize()
         {
             Log("Initializing...");
@@ -32,7 +32,6 @@ namespace BreakableWallRandomiser
                 HookRSM();
             }
 
-            manager.RegisterItemsAndLocations();
             manager.Hook();
 
             // On.GameManager.BeginSceneTransition += LogTransName;

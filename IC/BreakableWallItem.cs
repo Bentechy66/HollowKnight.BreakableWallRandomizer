@@ -12,7 +12,7 @@ namespace BreakableWallRandomiser.IC
         public override void GiveImmediate(GiveInfo info)
         {
             // Set data in the save to indicate we got the wall
-            BreakableWallRandomiser.saveData.unlockedBreakableWalls.Add(wallData.getTermName());
+            BreakableWallRandomiser.saveData.unlockedBreakableWalls.Add(wallData.getTermNames()[0]);
             if (wallData.persistentBool != "") { PlayerData.instance.SetBool(wallData.persistentBool, true); }
 
             // If we're already in the same scene as the wall, break it. The wall's FSM should spawn a shiny.
