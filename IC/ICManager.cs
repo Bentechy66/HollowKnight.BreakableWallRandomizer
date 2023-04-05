@@ -65,6 +65,7 @@ namespace BreakableWallRandomiser.IC
             public List<string> destroyUnconditionally;
             public List<string> overrideTermNames;
             public string group;
+            public bool exit; // if true, this wall might be likely to softlock you.
 
             public List<WallData> secondaryWalls;
 
@@ -90,6 +91,7 @@ namespace BreakableWallRandomiser.IC
             public bool shouldBeIncluded(GenerationSettings gs)
             {
                 if (!BreakableWallRandomiser.settings.AnyWalls && !BreakableWallRandomiser.settings.RandomizeDiveFloors) { return false; }
+                if (BreakableWallRandomiser.settings.ExcludeWallsWhichMaySoftlockYou && exit) { return false; }
 
                 // -- Patches for other mods --
 

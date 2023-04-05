@@ -25,6 +25,7 @@ namespace BreakableWallRandomiser.Rando
         public int DiveFloorGroup = -1;
 
         public bool GroupTogetherNearbyWalls = false;
+        public bool ExcludeWallsWhichMaySoftlockYou = false;
 
         [Newtonsoft.Json.JsonIgnore]
         public bool AnyWalls => RandomizeBreakableRockWalls || RandomizeBreakableWoodenPlankWalls || RandomizeDiveFloors;
@@ -78,6 +79,9 @@ namespace BreakableWallRandomiser.Rando
                 wallMEF.ElementLookup[nameof(WallRandoSettings.WoodenPlankWallGroup)].SetValue(-1);
                 wallMEF.ElementLookup[nameof(WallRandoSettings.DiveFloorGroup)].SetValue(-1);
                 wallMEF.ElementLookup[nameof(WallRandoSettings.RockWallGroup)].SetValue(-1);
+
+                wallMEF.ElementLookup[nameof(WallRandoSettings.ExcludeWallsWhichMaySoftlockYou)].SetValue(false);
+                wallMEF.ElementLookup[nameof(WallRandoSettings.GroupTogetherNearbyWalls)].SetValue(false);
 
                 return;
             }

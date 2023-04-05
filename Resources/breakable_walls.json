@@ -76,7 +76,8 @@
         "alsoDestroy": [
             "Secret Mask"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall",
@@ -101,7 +102,8 @@
         "alsoDestroy": [
             "/Secret Mask (1)"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall",
@@ -159,7 +161,8 @@
             "/Breakable Wall/Masks"
         ],
         "secondaryWalls": [],
-        "group": "Grimm Troupe Cave Walls"
+        "group": "Grimm Troupe Cave Walls",
+        "exit": true
     },
     {
         "gameObject": "/break wall bits/One Way Wall",
@@ -306,7 +309,8 @@
         "alsoDestroy": [
             "/Secret Mask"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/_Scenery/Break Wall 2",
@@ -424,7 +428,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/Breakable Wall",
@@ -468,7 +473,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/Breakable Wall Waterways",
@@ -831,7 +837,8 @@
         ],
         "alsoDestroy": null,
         "secondaryWalls": [],
-        "group": "Walls After Falling From Distant Village"
+        "group": "Walls After Falling From Distant Village",
+        "exit": true
     },
     {
         "gameObject": "/Breakable Wall",
@@ -853,7 +860,8 @@
         ],
         "alsoDestroy": null,
         "secondaryWalls": [],
-        "group": "Walls After Falling From Distant Village"
+        "group": "Walls After Falling From Distant Village",
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall (2)",
@@ -882,7 +890,8 @@
         ],
         "alsoDestroy": null,
         "secondaryWalls": [],
-        "group": "Walls After Falling From Distant Village"
+        "group": "Walls After Falling From Distant Village",
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall",
@@ -904,7 +913,8 @@
         ],
         "alsoDestroy": null,
         "secondaryWalls": [],
-        "group": "Walls After Falling From Distant Village"
+        "group": "Walls After Falling From Distant Village",
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall",
@@ -929,7 +939,8 @@
         "alsoDestroy": [
             "Secret Mask"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/Breakable Wall",
@@ -1418,7 +1429,8 @@
             "Secret Mask"
         ],
         "secondaryWalls": [],
-        "group": "Baldur Shell Walls"
+        "group": "Baldur Shell Walls",
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall (1)",
@@ -1536,7 +1548,8 @@
         ],
         "alsoDestroy": null,
         "secondaryWalls": [],
-        "group": "Shape of Unn Shortcut Walls"
+        "group": "Shape of Unn Shortcut Walls",
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall",
@@ -1603,7 +1616,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall",
@@ -1628,7 +1642,8 @@
         "alsoDestroy": [
             "/Secret Mask (1)"
         ],
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall",
@@ -1845,7 +1860,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/One Way Wall",
@@ -2183,7 +2199,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/Breakable Wall Ruin Lift",
@@ -2286,7 +2303,8 @@
             }
         ],
         "alsoDestroy": null,
-        "secondaryWalls": []
+        "secondaryWalls": [],
+        "exit": true
     },
     {
         "gameObject": "/_Scenery/Break Floor 1",
